@@ -4,6 +4,11 @@
 public class JobScriptable : ScriptableObject
 {
     /// <summary>
+    /// Health Point Stat.
+    /// </summary>
+    public int HP;
+
+    /// <summary>
     /// Attak stat.
     /// </summary>
     public int Atk;
