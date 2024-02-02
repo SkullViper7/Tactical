@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SkillsScriptable : MonoBehaviour
+[CreateAssetMenu(fileName = "Skill_Name", menuName = "Player/New_Skill")]
+public class SkillsScriptable : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /// <summary>
+    /// Range for the Skill.
+    /// </summary>
+    public int Range;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// Power Stat.
+    /// </summary>
+    public int Pwr;
 }
