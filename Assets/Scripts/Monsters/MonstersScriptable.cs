@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MonstersScriptable : MonoBehaviour
+[CreateAssetMenu(fileName = "New Monster", menuName = "Create Monster")]
+public class MonstersScriptable : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Sprite MonsterSprite;
+    public string MonsterName;
+    public int MonsterPV;
+    public int MonsterAttack;
+    public int MonsterDefence;
 }
