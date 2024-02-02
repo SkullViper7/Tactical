@@ -12,4 +12,9 @@ public class SkillsScriptable : ScriptableObject
     /// Power Stat.
     /// </summary>
     public int Pwr;
+
+    /// <summary>
+    /// Is this skills was a support.
+    /// </summary>
+    public bool IsSupport;
 }
