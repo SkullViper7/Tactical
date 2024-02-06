@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MoveCharacter : MonoBehaviour
 {
@@ -17,28 +18,36 @@ public class MoveCharacter : MonoBehaviour
 
     List<PathNode> _path;
 
+    PlayerInput _playerInput;
+
     private void Start()
     {
         _pathFindingScript = _targetGrid.GetComponent<PathFinding>();
+
+        _playerInput = GetComponent<PlayerInput>();
+        _playerInput.onActionTriggered += OnClick;
     }
 
-    public void OnClick()
+    public void OnClick(InputAction.CallbackContext context)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, float.MaxValue, _terrainLayer))
+        if (context.started)
         {
-            Vector2Int gridPosition = _targetGrid.GetGridPosition(hit.point);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-            _path = _pathFindingScript.FindPath(_targetCharacter.PositionOnGrid.x, _targetCharacter.PositionOnGrid.y, gridPosition.x, gridPosition.y);
-
-            if (_path == null || _path.Count == 0)
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _terrainLayer))
             {
-                return;
-            }
+                Vector2Int gridPosition = _targetGrid.GetGridPosition(hit.point);
 
-            _targetCharacter.GetComponent<PlayerMovement>().Move(_path);
+                _path = _pathFindingScript.FindPath(_targetCharacter.PositionOnGrid.x, _targetCharacter.PositionOnGrid.y, gridPosition.x, gridPosition.y);
+
+                if (_path == null || _path.Count == 0)
+                {
+                    return;
+                }
+
+                _targetCharacter.GetComponent<PlayerMovement>().Move(_path);
+            }
         }
     }
 }
