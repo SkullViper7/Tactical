@@ -27,7 +27,6 @@ public class HighlightGrid : MonoBehaviour
     private void OnMouseOver()
     {
         GetComponent<MeshRenderer>().material = _highlightMat;
-        _path = _pathFindingScript.FindPath(_targetCharacter.PositionOnGrid.x, _targetCharacter.PositionOnGrid.y, gridPosition.x, gridPosition.y);
     }
 
     private void OnMouseExit()
