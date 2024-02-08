@@ -32,7 +32,20 @@ public class MonstersMovements : MonoBehaviour
 
         _gridObjectMonster.PositionOnGrid.x = path[path.Count - 1].Pos_X;
         _gridObjectMonster.PositionOnGrid.y = path[path.Count - 1].Pos_Y;
-        Debug.Log("ee");
+    }
+
+    public void Test()
+    {
+        _path = _pathFindingScript.FindPath(_gridObjectMonster.PositionOnGrid.x, _gridObjectMonster.PositionOnGrid.y, _gridObjectPlayer.PositionOnGrid.x, _gridObjectPlayer.PositionOnGrid.y);
+
+        if (_path == null || _path.Count == 0)
+        {
+            return;
+        }
+
+        _path.RemoveAt(_path.Count-1);
+
+        Move(_path);
     }
 
     private void Update()
@@ -42,22 +55,16 @@ public class MonstersMovements : MonoBehaviour
             return;
         }
 
-
-        transform.position = Vector3.MoveTowards(transform.position, _pathWorldPositions[0], _moveSpeed * Time.deltaTime);
-
         if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
         {
             _pathWorldPositions.RemoveAt(0);
         }
 
-        Vector2Int gridPosition = _targetGrid.GetGridPosition(((Vector3Int)_gridObjectPlayer.PositionOnGrid));
-
-        _path = _pathFindingScript.FindPath(_gridObjectPlayer.PositionOnGrid.x, _gridObjectPlayer.PositionOnGrid.y, gridPosition.x, gridPosition.y);
-
-        if (_path == null || _path.Count == 0)
+        if (_pathWorldPositions.Count == 0)
         {
             return;
         }
-        Move(_path);
+
+        transform.position = Vector3.MoveTowards(transform.position, _pathWorldPositions[0], _moveSpeed * Time.deltaTime);
     }
 }
