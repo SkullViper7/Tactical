@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3112289825133420762}
   - component: {fileID: 1523082127186221280}
   - component: {fileID: 2424126707174161339}
-  - component: {fileID: -3655064166780668062}
+  - component: {fileID: 4006160014988005619}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Tile
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-3655064166780668062
+--- !u!114 &4006160014988005619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,8 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3184445745079156305}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 288dddb369d7d60439927cc4c3cfcc23, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fca4b45ef140a54d8a5aea9b48e5d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseMat: {fileID: 2100000, guid: cb056af283dedb743a3df2f3fcce36bd, type: 2}
-  _highlightMat: {fileID: 2100000, guid: 760f1870d1d1a1346be09fc4faef967f, type: 2}
+  GridPosition: {x: 0, y: 0}
