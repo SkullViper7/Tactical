@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HighlightPath : MonoBehaviour
@@ -29,6 +30,8 @@ public class HighlightPath : MonoBehaviour
     Material _goodHighlightMat;
     [SerializeField]
     Material _badHighlightMat;
+
+    int _currentMovementPoints = 5;
 
     private void Start()
     {
@@ -65,7 +68,15 @@ public class HighlightPath : MonoBehaviour
             {
                 if (!_playerMovementScript.IsMoving || tileComponent.GridPosition == new Vector2Int(Path[0].Pos_X, Path[0].Pos_Y))
                 {
-                    tile.GetComponent<MeshRenderer>().material = _goodHighlightMat;
+                    int pathNodeIndex = Path.FindIndex(p => p.Pos_X == tileComponent.GridPosition.x && p.Pos_Y == tileComponent.GridPosition.y);
+                    if (pathNodeIndex >= _currentMovementPoints)
+                    {
+                        tile.GetComponent<MeshRenderer>().material = _badHighlightMat;
+                    }
+                    else
+                    {
+                        tile.GetComponent<MeshRenderer>().material = _goodHighlightMat;
+                    }
                 }
                 else
                 {
