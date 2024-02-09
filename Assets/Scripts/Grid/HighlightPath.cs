@@ -21,7 +21,6 @@ public class HighlightPath : MonoBehaviour
     [SerializeField]
     GridObject _targetCharacter;
 
-    [SerializeField]
     List<GameObject> _tiles;
 
     [SerializeField]
@@ -38,6 +37,11 @@ public class HighlightPath : MonoBehaviour
     private void Start()
     {
         _pathFindingScript = _targetGrid.GetComponent<PathFinding>();
+
+        foreach (GameObject tile in GameObject.FindGameObjectsWithTag("Tile"))
+        {
+            _tiles.Add(tile);
+        }
     }
 
     private void FixedUpdate()
