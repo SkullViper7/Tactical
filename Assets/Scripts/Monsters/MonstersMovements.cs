@@ -18,12 +18,15 @@ public class MonstersMovements : MonoBehaviour
     private List<PathNode> _path;
     private PathFinding _pathFindingScript;
 
+    private Monsters _monsters;
+
 
     private void Awake()
     {
         _gridObjectPlayer = TargetPlayer.GetComponent<GridObject>();
         _gridObjectMonster = GetComponent<GridObject>();
         _pathFindingScript = _targetGrid.GetComponent<PathFinding>();
+        _monsters = GetComponent<Monsters>();
     }
 
     public void Move(List<PathNode> path)
@@ -34,18 +37,25 @@ public class MonstersMovements : MonoBehaviour
         _gridObjectMonster.PositionOnGrid.y = path[path.Count - 1].Pos_Y;
     }
 
-    public void Test()
+    public void FindPath()
     {
-        _path = _pathFindingScript.FindPath(_gridObjectMonster.PositionOnGrid.x, _gridObjectMonster.PositionOnGrid.y, _gridObjectPlayer.PositionOnGrid.x, _gridObjectPlayer.PositionOnGrid.y);
-
-        if (_path == null || _path.Count == 0)
+        if (_monsters.MonsterPM > 0)
         {
-            return;
+            _path = _pathFindingScript.FindPath(_gridObjectMonster.PositionOnGrid.x, _gridObjectMonster.PositionOnGrid.y, _gridObjectPlayer.PositionOnGrid.x, _gridObjectPlayer.PositionOnGrid.y);
+
+            if (_path == null || _path.Count == 0)
+            {
+                return;
+            }
+
+            _path.RemoveAt(_path.Count - 1);
+
+            Move(_path);
         }
-
-        _path.RemoveAt(_path.Count-1);
-
-        Move(_path);
+        else
+        {
+            _path.RemoveAt(_path.Count - _path.Count);
+        }
     }
 
     private void Update()
@@ -58,6 +68,7 @@ public class MonstersMovements : MonoBehaviour
         if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
         {
             _pathWorldPositions.RemoveAt(0);
+            _monsters.MonsterPM--;
         }
 
         if (_pathWorldPositions.Count == 0)

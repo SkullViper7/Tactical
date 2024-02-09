@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +14,7 @@ public class MonsterAttack : MonoBehaviour
 
     public void AttackMelee(GameObject _targetPlayer)
     {
-        //_targetPlayer.Player.PV -= _monsters.MonsterAttack;
+        //Si le monstre est à une cases du player
+        //_targetPlayer.Player.PV -= _monsters.MonsterAttack - _targetPlayer.Player.Defence;
     }
 }
