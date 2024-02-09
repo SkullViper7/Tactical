@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float _moveSpeed = 1f;
 
+    public bool IsMoving;
+
     private void Awake()
     {
         _gridObject = GetComponent<GridObject>();
@@ -37,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
         if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
         {
             _pathWorldPositions.RemoveAt(0);
+            IsMoving = false;
+        }
+        else
+        {
+            IsMoving = true;
         }
     }
 }
