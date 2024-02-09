@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
@@ -12,6 +10,9 @@ public class Tile : MonoBehaviour
 
     public MeshRenderer TileMeshRenderer;
 
+    /// <summary>
+    /// Gets the required elements like the grid and the mesh renderer. Gets the grid position of the tile.
+    /// </summary>
     private void Start()
     {
         _targetGrid = GameObject.Find("Grid").GetComponent<Grid>();
