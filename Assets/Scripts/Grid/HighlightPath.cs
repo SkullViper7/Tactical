@@ -21,7 +21,7 @@ public class HighlightPath : MonoBehaviour
     [SerializeField]
     GridObject _targetCharacter;
 
-    List<GameObject> _tiles;
+    List<GameObject> _tiles = new List<GameObject>();
 
     [SerializeField]
     Material _baseMat;
