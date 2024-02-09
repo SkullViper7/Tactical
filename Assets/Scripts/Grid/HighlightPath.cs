@@ -21,8 +21,7 @@ public class HighlightPath : MonoBehaviour
     [SerializeField]
     GridObject _targetCharacter;
 
-    [SerializeField]
-    List<GameObject> _tiles;
+    List<GameObject> _tiles = new List<GameObject>();
 
     [SerializeField]
     Material _baseMat;
@@ -33,9 +32,16 @@ public class HighlightPath : MonoBehaviour
 
     int _currentMovementPoints = 5;
 
+    public bool CanMove = true;
+
     private void Start()
     {
         _pathFindingScript = _targetGrid.GetComponent<PathFinding>();
+
+        foreach (GameObject tile in GameObject.FindGameObjectsWithTag("Tile"))
+        {
+            _tiles.Add(tile);
+        }
     }
 
     private void FixedUpdate()
@@ -48,6 +54,15 @@ public class HighlightPath : MonoBehaviour
             Vector2Int gridPosition = _targetGrid.GetGridPosition(hit.point);
 
             Path = _pathFindingScript.FindPath(_targetCharacter.PositionOnGrid.x, _targetCharacter.PositionOnGrid.y, gridPosition.x, gridPosition.y);
+
+            if (hit.transform.gameObject.GetComponent<Tile>().IsReachable)
+            {
+                CanMove = true;
+            }
+            else
+            {
+                CanMove = false;
+            }
         }
 
         if (Path == null || Path.Count == 0)
@@ -72,10 +87,12 @@ public class HighlightPath : MonoBehaviour
                     if (pathNodeIndex >= _currentMovementPoints)
                     {
                         tile.GetComponent<MeshRenderer>().material = _badHighlightMat;
+                        tile.GetComponent<Tile>().IsReachable = false;
                     }
                     else
                     {
                         tile.GetComponent<MeshRenderer>().material = _goodHighlightMat;
+                        tile.GetComponent<Tile>().IsReachable = true;
                     }
                 }
                 else

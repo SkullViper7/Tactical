@@ -8,6 +8,8 @@ public class Tile : MonoBehaviour
 
     Grid _targetGrid;
 
+    public bool IsReachable;
+
     private void Start()
     {
         _targetGrid = GameObject.Find("Grid").GetComponent<Grid>();

@@ -24,8 +24,11 @@ public class MoveCharacter : MonoBehaviour
     {
         if (context.started)
         {
-            _targetCharacter.GetComponent<PlayerMovement>().Move(_highlightPath.Path);
-            _highlightPath.DisableHighights();
+            if (_highlightPath.CanMove)
+            {
+                _targetCharacter.GetComponent<PlayerMovement>().Move(_highlightPath.Path);
+                _highlightPath.DisableHighights();
+            }
         }
     }
 }
