@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HighlightPath : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class HighlightPath : MonoBehaviour
     [SerializeField]
     GridObject _targetCharacter;
 
-    List<GameObject> _tiles = new List<GameObject>();
+    List<Tile> _tiles = new List<Tile>();
 
     [SerializeField]
     Material _baseMat;
@@ -34,17 +35,22 @@ public class HighlightPath : MonoBehaviour
 
     public bool CanMove = true;
 
+    PlayerInput _playerInput;
+
     private void Start()
     {
         _pathFindingScript = _targetGrid.GetComponent<PathFinding>();
 
         foreach (GameObject tile in GameObject.FindGameObjectsWithTag("Tile"))
         {
-            _tiles.Add(tile);
+            _tiles.Add(tile.GetComponent<Tile>());
         }
+
+        _playerInput = GetComponent<PlayerInput>();
+        _playerInput.onActionTriggered += OnPoint;
     }
 
-    private void FixedUpdate()
+    public void OnPoint(InputAction.CallbackContext context)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -71,47 +77,46 @@ public class HighlightPath : MonoBehaviour
         }
 
         HashSet<Vector2Int> pathPositions = new HashSet<Vector2Int>();
-        foreach (PathNode pathNode in Path)
+        for (int i = 0; i < Path.Count; i++)
         {
-            pathPositions.Add(new Vector2Int(pathNode.Pos_X, pathNode.Pos_Y));
+            pathPositions.Add(new Vector2Int(Path[i].Pos_X, Path[i].Pos_Y));
         }
 
-        foreach (GameObject tile in _tiles)
+        for (int i = 0; i < _tiles.Count; i++)
         {
-            Tile tileComponent = tile.GetComponent<Tile>();
-            if (pathPositions.Contains(tileComponent.GridPosition))
+            if (pathPositions.Contains(_tiles[i].GridPosition))
             {
-                if (!_playerMovementScript.IsMoving || tileComponent.GridPosition == new Vector2Int(Path[0].Pos_X, Path[0].Pos_Y))
+                if (!_playerMovementScript.IsMoving || _tiles[i].GridPosition == new Vector2Int(Path[0].Pos_X, Path[0].Pos_Y))
                 {
-                    int pathNodeIndex = Path.FindIndex(p => p.Pos_X == tileComponent.GridPosition.x && p.Pos_Y == tileComponent.GridPosition.y);
+                    int pathNodeIndex = Path.FindIndex(p => p.Pos_X == _tiles[i].GridPosition.x && p.Pos_Y == _tiles[i].GridPosition.y);
                     if (pathNodeIndex >= _currentMovementPoints)
                     {
-                        tile.GetComponent<MeshRenderer>().material = _badHighlightMat;
-                        tile.GetComponent<Tile>().IsReachable = false;
+                        _tiles[i].TileMeshRenderer.material = _badHighlightMat;
+                        _tiles[i].IsReachable = false;
                     }
                     else
                     {
-                        tile.GetComponent<MeshRenderer>().material = _goodHighlightMat;
-                        tile.GetComponent<Tile>().IsReachable = true;
+                        _tiles[i].TileMeshRenderer.material = _goodHighlightMat;
+                        _tiles[i].IsReachable = true;
                     }
                 }
                 else
                 {
-                    tile.GetComponent<MeshRenderer>().material = _baseMat;
+                    _tiles[i].TileMeshRenderer.material = _baseMat;
                 }
             }
             else
             {
-                tile.GetComponent<MeshRenderer>().material = _baseMat;
+                _tiles[i].TileMeshRenderer.material = _baseMat;
             }
         }
     }
 
     public void DisableHighights()
     {
-        foreach (GameObject tile in _tiles)
+        for (int i = 0; i < _tiles.Count; i++)
         {
-            tile.GetComponent<MeshRenderer>().material = _baseMat;
+            _tiles[i].TileMeshRenderer.material = _baseMat;
         }
     }
 }
