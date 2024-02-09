@@ -101,6 +101,11 @@ public class PathFinding : MonoBehaviour
                         continue;
                     }
 
+                    if (Math.Abs(i) + Math.Abs(j) > 1)
+                    {
+                        continue;
+                    }
+
                     if (!_gridMap.CheckBoundary(currentNode.Pos_X + i, currentNode.Pos_Y + j))
                     {
                         continue;
