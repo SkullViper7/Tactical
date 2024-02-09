@@ -10,11 +10,14 @@ public class MonsterAttack : MonoBehaviour
     void Start()
     {
         _monsters = GetComponent<Monsters>();
+        _monstersMovements = GetComponent<MonstersMovements>();
     }
 
     public void AttackMelee(GameObject _targetPlayer)
     {
-        //Si le monstre est à une cases du player
-        //_targetPlayer.Player.PV -= _monsters.MonsterAttack - _targetPlayer.Player.Defence;
+        if (_monstersMovements.CanAttack)
+        {
+            //Lance l'attaque dans le battle manager
+        }
     }
 }

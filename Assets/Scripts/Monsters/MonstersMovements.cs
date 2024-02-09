@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class MonstersMovements : MonoBehaviour
@@ -20,6 +19,9 @@ public class MonstersMovements : MonoBehaviour
 
     private Monsters _monsters;
 
+    public bool CanAttack = false;
+    public bool CanMove = true;
+
 
     private void Awake()
     {
@@ -32,6 +34,8 @@ public class MonstersMovements : MonoBehaviour
     public void Move(List<PathNode> path)
     {
         _pathWorldPositions = _gridObjectMonster.TargetGrid.ConvertPathNodesToWorldPositions(path);
+        Debug.Log("move"+_pathWorldPositions.Count);
+
 
         _gridObjectMonster.PositionOnGrid.x = path[path.Count - 1].Pos_X;
         _gridObjectMonster.PositionOnGrid.y = path[path.Count - 1].Pos_Y;
@@ -39,22 +43,51 @@ public class MonstersMovements : MonoBehaviour
 
     public void FindPath()
     {
-        if (_monsters.MonsterPM > 0)
-        {
-            _path = _pathFindingScript.FindPath(_gridObjectMonster.PositionOnGrid.x, _gridObjectMonster.PositionOnGrid.y, _gridObjectPlayer.PositionOnGrid.x, _gridObjectPlayer.PositionOnGrid.y);
+        CanMove = true;
 
-            if (_path == null || _path.Count == 0)
+        _path = _pathFindingScript.FindPath(_gridObjectMonster.PositionOnGrid.x, _gridObjectMonster.PositionOnGrid.y, _gridObjectPlayer.PositionOnGrid.x, _gridObjectPlayer.PositionOnGrid.y);
+
+        _path.RemoveAt(_path.Count - 1);
+
+        if (_path == null || _path.Count == 0)
+        {
+               return;
+        }
+        Debug.Log(_path.Count);
+
+        Move(_path);
+    }
+
+    public void TravellingMonster()
+    {
+        if (_monsters.MonsterPM > 0 && CanMove)
+        {
+            if (_pathWorldPositions.Count == 0)
             {
+                CanAttack = true;
+                CanMove = false;
                 return;
             }
 
-            _path.RemoveAt(_path.Count - 1);
+            if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
+            {
+                _pathWorldPositions.RemoveAt(0);
+                Debug.Log(_pathWorldPositions.Count);
 
-            Move(_path);
+                _monsters.MonsterPM--;
+                CanAttack = false;
+                
+            }
+            Debug.Log(_pathWorldPositions.Count);
+
+            transform.position = Vector3.MoveTowards(transform.position, _pathWorldPositions[0], _moveSpeed * Time.deltaTime);
+
         }
         else
         {
-            _path.RemoveAt(_path.Count - _path.Count);
+            _pathWorldPositions.Clear();
+            CanMove = false;
+            return;
         }
     }
 
@@ -65,17 +98,23 @@ public class MonstersMovements : MonoBehaviour
             return;
         }
 
-        if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
+        if (_pathWorldPositions.Count > 0 && CanMove)
         {
-            _pathWorldPositions.RemoveAt(0);
-            _monsters.MonsterPM--;
+            Debug.Log(_pathWorldPositions.Count);
+
+            TravellingMonster();
+            Debug.Log(_pathWorldPositions.Count);
+
+        }
+        else
+        {
+
         }
 
-        if (_pathWorldPositions.Count == 0)
-        {
-            return;
-        }
+    }
 
-        transform.position = Vector3.MoveTowards(transform.position, _pathWorldPositions[0], _moveSpeed * Time.deltaTime);
+    public void AddPM()
+    {
+        _monsters.MonsterPM = 3;
     }
 }
