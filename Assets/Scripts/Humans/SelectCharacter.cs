@@ -6,9 +6,6 @@ public class SelectCharacter : MonoBehaviour
     [field : SerializeField] private TurnGameSystemTransmitter _gameSystemTransmitter { get; set; }
     [field: SerializeField] private PlayerStatsDisplayUI _statsDisplayUI { get; set; }
 
-    [SerializeField] MoveCharacter _moveCharacterSelected;
-    [SerializeField] HighlightPath _highlightPathCharacterSelected;
-
     public void Update()
     {
         if (_gameSystemTransmitter.PlayerCanPlay)
@@ -25,7 +22,6 @@ public class SelectCharacter : MonoBehaviour
                     if (CharacterSelected != null && CharacterSelected.CompareTag("Player"))
                     {
                         Debug.Log("Hey, 100/100");
-                        _moveCharacterSelected.TargetCharacter = null;
                     }
                 }
             }
