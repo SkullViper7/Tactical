@@ -6,10 +6,19 @@
             "id": "8a88843f-aad9-4b82-afef-37d8c1f4152f",
             "actions": [
                 {
-                    "name": "Point",
+                    "name": "Click",
                     "type": "Button",
                     "id": "1c95e81f-4161-478a-a6e4-c69e52b22249",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Point",
+                    "type": "PassThrough",
+                    "id": "31aaeab0-ed0c-4d3f-8c04-9205f9854899",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -20,6 +29,17 @@
                     "name": "",
                     "id": "15854bd9-ed0e-45b5-9f11-784cd5c035d1",
                     "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0781c4f4-016d-459b-83dd-43fb718eec6a",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
