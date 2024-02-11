@@ -3,10 +3,11 @@
 public class SkillsAction : MonoBehaviour
 {
     Human Hmn;
-    public string _skName;
+    public string SkName;
     public int _skRange;
-    public int _skPwr;
-    public bool _skIsHealing;
+    public int SkPwr;
+    public int SkAP;
+    public bool SkisHealing;
 
 
     private void Start()
@@ -19,10 +20,11 @@ public class SkillsAction : MonoBehaviour
     {
         if (Hmn.Skills[0] != null)
         {
-            _skName = Hmn.Skills[0].Name;
+            SkName = Hmn.Skills[0].Name;
             _skRange = Hmn.Skills[0].Range;
-            _skPwr = Hmn.Skills[0].Pwr;
-            _skIsHealing = Hmn.Skills[0].IsSupport;
+            SkPwr = Hmn.Skills[0].Pwr;
+            SkAP = Hmn.Skills[0].SkAp;
+            SkisHealing = Hmn.Skills[0].IsSupport;
         }
     }
 }

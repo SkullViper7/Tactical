@@ -5,15 +5,15 @@ public class Human : MonoBehaviour
     [SerializeField]
     private JobScriptable _job;
 
-    public int HP { get; private set; }
+    public int HP;
     public int CurrentHP;
-    public int Atk { get; private set; }
-    public int Def { get; private set; }
-    public int MP { get; private set; }
-    public int CurrentMP { get; private set; }
-    public int AP { get; private set; }
-    public int CurrentAP { get; private set; }
-    public float Crts { get; private set; }
+    public int Atk;
+    public int Def;
+    public int MP;
+    public int CurrentMP;
+    public int AP;
+    public int CurrentAP;
+    public float Crts;
 
     public SkillsScriptable[] Skills;
 
