@@ -8,7 +8,7 @@ public class MonstersMovements : MonoBehaviour
     [SerializeField]
     private Grid _targetGrid;
 
-    public GameObject TargetPlayer;
+    public Human _human;
     private GridObject _gridObjectPlayer;
     private GridObject _gridObjectMonster;
 
@@ -25,7 +25,6 @@ public class MonstersMovements : MonoBehaviour
 
     private void Awake()
     {
-        _gridObjectPlayer = TargetPlayer.GetComponent<GridObject>();
         _gridObjectMonster = GetComponent<GridObject>();
         _pathFindingScript = _targetGrid.GetComponent<PathFinding>();
         _monsters = GetComponent<Monsters>();
@@ -34,8 +33,6 @@ public class MonstersMovements : MonoBehaviour
     public void Move(List<PathNode> path)
     {
         _pathWorldPositions = _gridObjectMonster.TargetGrid.ConvertPathNodesToWorldPositions(path);
-        Debug.Log("move"+_pathWorldPositions.Count);
-
 
         _gridObjectMonster.PositionOnGrid.x = path[path.Count - 1].Pos_X;
         _gridObjectMonster.PositionOnGrid.y = path[path.Count - 1].Pos_Y;
@@ -53,7 +50,6 @@ public class MonstersMovements : MonoBehaviour
         {
                return;
         }
-        Debug.Log(_path.Count);
 
         Move(_path);
     }
@@ -72,23 +68,39 @@ public class MonstersMovements : MonoBehaviour
             if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
             {
                 _pathWorldPositions.RemoveAt(0);
-                Debug.Log(_pathWorldPositions.Count);
-
                 _monsters.MonsterPM--;
                 CanAttack = false;
-                
             }
+
             Debug.Log(_pathWorldPositions.Count);
-
             transform.position = Vector3.MoveTowards(transform.position, _pathWorldPositions[0], _moveSpeed * Time.deltaTime);
-
+            FindPath();
         }
         else
         {
-            _pathWorldPositions.Clear();
             CanMove = false;
             return;
         }
+    }
+
+    public void SearchPlayerNearby()
+    {
+        GameObject[] joueurs = GameObject.FindGameObjectsWithTag("Player");
+        float distanceMinimale = Mathf.Infinity;
+
+        foreach (GameObject joueur in joueurs)
+        {
+            float distance = Vector3.Distance(transform.position, joueur.transform.position);
+
+            if (distance < distanceMinimale)
+            {
+                distanceMinimale = distance;
+                _human = joueur.GetComponent<Human>();
+                _gridObjectPlayer = joueur.GetComponent<GridObject>();
+            }
+        }
+
+        TravellingMonster();
     }
 
     private void Update()
@@ -100,17 +112,8 @@ public class MonstersMovements : MonoBehaviour
 
         if (_pathWorldPositions.Count > 0 && CanMove)
         {
-            Debug.Log(_pathWorldPositions.Count);
-
             TravellingMonster();
-            Debug.Log(_pathWorldPositions.Count);
-
         }
-        else
-        {
-
-        }
-
     }
 
     public void AddPM()
