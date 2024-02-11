@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class MoveCharacter : MonoBehaviour
 {
     [SerializeField]
-    GridObject _targetCharacter;
+    public GridObject TargetCharacter;
 
     PlayerInput _playerInput;
 
@@ -24,7 +24,7 @@ public class MoveCharacter : MonoBehaviour
     {
         if (context.started)
         {
-            _targetCharacter.GetComponent<PlayerMovement>().Move(_highlightPath.Path);
+            TargetCharacter.GetComponent<PlayerMovement>().Move(_highlightPath.Path);
             _highlightPath.DisableHighights();
         }
     }
