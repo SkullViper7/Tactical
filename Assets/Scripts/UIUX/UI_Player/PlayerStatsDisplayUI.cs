@@ -1,16 +1,11 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class PlayerStatsDisplayUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    TextMeshProUGUI _playerName;
+    TextMeshProUGUI _playerMP;
+    TextMeshProUGUI _playerAP;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
