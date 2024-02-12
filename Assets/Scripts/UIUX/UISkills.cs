@@ -5,37 +5,37 @@ public class UISkills : MonoBehaviour
 
     // Reference to your Grid
 
-    [SerializeField] private Grid targetGrid;
+    [SerializeField] private Grid _targetGrid;
 
-    [SerializeField] private Human Hmn;
+    [SerializeField] private Human _hmn;
 
-    [SerializeField] private SkillsAction SA;
+    [SerializeField] private SkillsAction _sa;
 
-    private Camera mainCamera;
+    private Camera _mainCamera;
 
     private void Awake()
     {
-        mainCamera = Camera.main;
+        _mainCamera = Camera.main;
     }
 
     private void OnSelectButtonPressedSkill()
     {
         // Cast a ray from the position of the mouse to the scene
 
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
         {
             // Convert the hit position to grid position
-            Vector2Int gridPosition = targetGrid.GetGridPosition(hit.point);
+            Vector2Int gridPosition = _targetGrid.GetGridPosition(hit.point);
 
             // Ensure that the position is indeed on the grid
-            if (targetGrid.CheckBoundary(gridPosition))
+            if (_targetGrid.CheckBoundary(gridPosition))
             {
                 // Get the object on the grid at this position
-                GridObject gridObject = targetGrid.GetPlacedObject(gridPosition);
+                GridObject gridObject = _targetGrid.GetPlacedObject(gridPosition);
 
                 // Check if the object is a monster, and if yes, do something
                 if (gridObject != null && gridObject.GetComponent<Monsters>() != null)
@@ -43,7 +43,7 @@ public class UISkills : MonoBehaviour
                     Monsters monster = gridObject.GetComponent<Monsters>();
 
                     // call the function Use Skill
-                    BattleManager.Instance.UseSkill(Hmn, monster, SA);
+                    BattleManager.Instance.UseSkill(PlayerManager.Instance.HmnPlay, monster, _sa);
                 }
             }
         }
@@ -53,20 +53,20 @@ public class UISkills : MonoBehaviour
     {
         // Cast a ray from the position of the mouse to the scene
 
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
         {
             // Convert the hit position to grid position
-            Vector2Int gridPosition = targetGrid.GetGridPosition(hit.point);
+            Vector2Int gridPosition = _targetGrid.GetGridPosition(hit.point);
 
             // Ensure that the position is indeed on the grid
-            if (targetGrid.CheckBoundary(gridPosition))
+            if (_targetGrid.CheckBoundary(gridPosition))
             {
                 // Get the object on the grid at this position
-                GridObject gridObject = targetGrid.GetPlacedObject(gridPosition);
+                GridObject gridObject = _targetGrid.GetPlacedObject(gridPosition);
 
                 // Check if the object is a monster, and if yes, do something
                 if (gridObject != null && gridObject.GetComponent<Human>() != null)
@@ -74,7 +74,7 @@ public class UISkills : MonoBehaviour
                     Human human = gridObject.GetComponent<Human>();
 
                     // call the function Use Skill
-                    BattleManager.Instance.UseHeal(Hmn, human, SA);
+                    BattleManager.Instance.UseHeal(PlayerManager.Instance.HmnPlay, human, _sa);
                 }
             }
         }

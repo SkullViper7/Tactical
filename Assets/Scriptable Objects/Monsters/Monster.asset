@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MonsterSprite: {fileID: 0}
   MonsterName: Zombie
-  MonsterPV: 200
+  MonsterPVMax: 100
+  MonsterPM: 3
+  MonsterPA: 2
   MonsterAttack: 30
   MonsterDefence: 20

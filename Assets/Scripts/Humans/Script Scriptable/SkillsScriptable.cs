@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Skill_Name", menuName = "Player/New_Skill")]
 public class SkillsScriptable : ScriptableObject
