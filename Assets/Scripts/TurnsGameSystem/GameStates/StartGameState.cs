@@ -2,7 +2,6 @@
 
 public class StartGameState : BaseGameState
 {
-
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
         Debug.Log("StartGameState Enters State");
@@ -17,7 +16,6 @@ public class StartGameState : BaseGameState
     {
         if (turnGameSystem.GameSystemTransmitter.GameLaunched)
         {
-            turnGameSystem.SwitchState(turnGameSystem.PlayerTurnGameState);
         }
     }
 }

@@ -27,7 +27,6 @@ public class MonsterTurnGameState : BaseGameState
         if (_turn.GameSystemTransmitter.PlayerStillAlive)
         {
             Debug.Log("Switch State to Player Turn");
-            _turn.SwitchState(_turn.PlayerTurnGameState);
         }
         else
         {
