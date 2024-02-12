@@ -15,6 +15,8 @@ public class Human : MonoBehaviour
     public int CurrentAP;
     public float Crts;
 
+    public bool AsPlay;
+
     public SkillsScriptable[] Skills;
 
     private void Awake()
@@ -38,5 +40,6 @@ public class Human : MonoBehaviour
     {
         MP = CurrentMP;
         AP = CurrentAP;
+        AsPlay = true;
     }
 }

@@ -19,7 +19,7 @@ public class SelectPlayer : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && PlayerManager.Instance.CanSelect)
         {
             // Create a ray from the main camera to the current mouse position
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -30,9 +30,10 @@ public class SelectPlayer : MonoBehaviour
             {
                 PlayerManager.Instance.HmnGrid = hit.collider.gameObject.GetComponentInParent<GridObject>();
                 PlayerManager.Instance.HmnPlay = hit.collider.gameObject.GetComponentInParent<Human>();
+                PlayerManager.Instance.SAPlayer = hit.collider.gameObject.GetComponentInParent<SkillsAction>();
                 UIManager.Instance.UpdatePlayerStatsUI(PlayerManager.Instance.HmnPlay);
 
-                PlayerManager.Instance.ActivatePlayer();
+                PlayerManager.Instance.CanSelect = false;
             }
         }
     }
