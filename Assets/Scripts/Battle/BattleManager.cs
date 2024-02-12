@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
@@ -57,7 +54,7 @@ public class BattleManager : MonoBehaviour
             // Apply damage to target
             target.MonsterPV -= damage;
 
-            // Display the damage or other effects here
+            // Display the damage
             Debug.Log(user.name + " deals " + damage + " damage to " + target.MonsterName);
         }
         else
@@ -68,7 +65,7 @@ public class BattleManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Function called to use a heal on a target
+    /// Function called to use a heal on a target.
     /// </summary>
     /// <param name="user">Selected Player.</param>
     /// <param name="target">Selected target Player.</param>
@@ -96,7 +93,7 @@ public class BattleManager : MonoBehaviour
             // Apply heal to target
             target.HP -= heal;
 
-            // Display the damage or other effects here
+            // Display the heal or other effects here
             Debug.Log(user.name + " deals " + heal + " heal to " + target.gameObject.name);
         }
         else

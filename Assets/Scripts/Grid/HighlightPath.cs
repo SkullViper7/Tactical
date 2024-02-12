@@ -30,6 +30,7 @@ public class HighlightPath : MonoBehaviour
     Material _badHighlightMat;
 
     int _currentMovementPoints = 5;
+    int _currentActionPoints = 5;
 
     public bool CanMove = true;
 
@@ -105,11 +106,12 @@ public class HighlightPath : MonoBehaviour
                     // Find the index of the current tile in the path
                     int pathNodeIndex = Path.FindIndex(p => p.Pos_X == _tiles[i].GridPosition.x && p.Pos_Y == _tiles[i].GridPosition.y);
                     // Check if the index exceeds the current movement points, update the tile's material and reachability
-                    if (pathNodeIndex >= _currentMovementPoints)
+                    if (pathNodeIndex >= _currentMovementPoints && PlayerManager.Instance.IsMoving || pathNodeIndex >= _currentActionPoints && !PlayerManager.Instance.IsMoving)
                     {
                         _tiles[i].TileMeshRenderer.material = _badHighlightMat;
                         _tiles[i].IsReachable = false;
                     }
+
                     else
                     {
                         _tiles[i].TileMeshRenderer.material = _goodHighlightMat;
