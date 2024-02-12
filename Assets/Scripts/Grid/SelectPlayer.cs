@@ -30,6 +30,7 @@ public class SelectPlayer : MonoBehaviour
             {
                 PlayerManager.Instance.HmnGrid = hit.collider.gameObject.GetComponent<GridObject>();
                 PlayerManager.Instance.HmnPlay = hit.collider.gameObject.GetComponent<Human>();
+                UIManager.Instance.UpdatePlayerStatsUI(PlayerManager.Instance.HmnPlay);
 
                 PlayerManager.Instance.ActivatePlayer();
             }
