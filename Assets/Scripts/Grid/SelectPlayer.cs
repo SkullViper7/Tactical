@@ -28,8 +28,8 @@ public class SelectPlayer : MonoBehaviour
             // Cast a ray from the camera to find the objects hit by the ray within a maximum distance and with a the Terrain layer mask
             if (Physics.Raycast(ray, out hit, float.MaxValue, _playerLayer))
             {
-                PlayerManager.Instance.HmnGrid = hit.collider.gameObject.GetComponent<GridObject>();
-                PlayerManager.Instance.HmnPlay = hit.collider.gameObject.GetComponent<Human>();
+                PlayerManager.Instance.HmnGrid = hit.collider.gameObject.GetComponentInParent<GridObject>();
+                PlayerManager.Instance.HmnPlay = hit.collider.gameObject.GetComponentInParent<Human>();
 
                 PlayerManager.Instance.ActivatePlayer();
             }
