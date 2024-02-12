@@ -2193,6 +2193,7 @@ MonoBehaviour:
   AP: 0
   CurrentAP: 0
   Crts: 0
+  AsPlay: 0
   Skills: []
 --- !u!114 &413648543
 MonoBehaviour:
@@ -3329,6 +3330,7 @@ MonoBehaviour:
   AP: 0
   CurrentAP: 0
   Crts: 0
+  AsPlay: 0
   Skills: []
 --- !u!1001 &683564807
 PrefabInstance:
@@ -4826,6 +4828,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 996617949}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1011760257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1011760259}
+  - component: {fileID: 1011760258}
+  m_Layer: 0
+  m_Name: MonsterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1011760258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011760257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae283181200fdd4a9f90959a7293475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listMonster: []
+--- !u!4 &1011760259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011760257}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.303615, y: 4.7006016, z: 8.382733}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1030045941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6028,7 +6075,6 @@ MonoBehaviour:
     m_Bits: 64
   _targetGrid: {fileID: 1040629263}
   _playerMovementScript: {fileID: 682440606}
-  _targetCharacter: {fileID: 682440607}
   _baseMat: {fileID: 2100000, guid: cb056af283dedb743a3df2f3fcce36bd, type: 2}
   _goodHighlightMat: {fileID: 2100000, guid: 760f1870d1d1a1346be09fc4faef967f, type: 2}
   _badHighlightMat: {fileID: 2100000, guid: 96ac9fbd47816f54a9f9e64af5182805, type: 2}
@@ -6045,7 +6091,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c783260d87af41b0636a0486fbece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetCharacter: {fileID: 682440607}
+  _terrainLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1286796913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6856,7 +6904,7 @@ GameObject:
   - component: {fileID: 1372904967}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6892,6 +6940,7 @@ MonoBehaviour:
   _human: {fileID: 0}
   CanAttack: 0
   CanMove: 1
+  TurnFinish: 0
 --- !u!114 &1372904969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6926,6 +6975,7 @@ MonoBehaviour:
   MonsterDefence: 0
   MonsterPM: 0
   MonsterPA: 0
+  IsDead: 0
 --- !u!4 &1372904971
 Transform:
   m_ObjectHideFlags: 0
@@ -11392,3 +11442,4 @@ SceneRoots:
   - {fileID: 413648545}
   - {fileID: 415538516}
   - {fileID: 2111961658}
+  - {fileID: 1011760259}
