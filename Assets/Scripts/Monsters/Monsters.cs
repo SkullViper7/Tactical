@@ -13,6 +13,8 @@ public class Monsters : MonoBehaviour
     public int MonsterPM;
     public int MonsterPA;
 
+    public bool IsDead = false;
+
 
     private void Awake()
     {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     public Human HmnPlay;
     public SkillsAction SAPlayer;
     public GridObject HmnGrid;
+
+    public Human[] AllHmn;
 
     // Singleton
     private static PlayerManager _instance = null;
@@ -36,5 +39,10 @@ public class PlayerManager : MonoBehaviour
             _instance = this;
         }
         //
+    }
+
+    private void Start()
+    {
+        AllHmn = GameObject.FindObjectsOfType<Human>();
     }
 }

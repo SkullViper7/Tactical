@@ -22,6 +22,7 @@ public class MonstersMovements : MonoBehaviour
 
     public bool CanAttack = false;
     public bool CanMove = true;
+    public bool TurnFinish = false;
 
 
     private void Awake()
@@ -32,7 +33,11 @@ public class MonstersMovements : MonoBehaviour
         _monsterAttack = GetComponent<MonsterAttack>();
     }
 
-    public void Move(List<PathNode> path)
+    /// <summary>
+    /// Converts a list of path nodes to a list of world positions.
+    /// </summary>
+    /// <param name="path"></param>
+    void Move(List<PathNode> path)
     {
         CanMove = true;
 
@@ -44,13 +49,18 @@ public class MonstersMovements : MonoBehaviour
         TravellingMonster();
     }
 
-    public void TravellingMonster()
+    /// <summary>
+    /// Move the monster and  allows it to attack in close combat.
+    /// </summary>
+    void TravellingMonster()
     {
         if (_monsters.MonsterPM > 0 && CanMove)
         {
             if (_pathWorldPositions.Count == 0)
             {
                 CanMove = false;
+                TurnFinish = true;
+                Debug.LogError("list of _pathWorldPosition is void");
                 return;
             }
 
@@ -66,55 +76,69 @@ public class MonstersMovements : MonoBehaviour
             if (Vector3.Distance(transform.position, _human.transform.position) < 2f && _monsters.MonsterPA > 0)
             {
                 _monsterAttack.UseAttack(_monsters, _human);
+                TurnFinish = true;
             }
 
         }
         else
         {
+            Debug.LogError("The monster lacks MP or is not allowed to move");
             CanMove = false;
             return;
         }
     }
 
+    /// <summary>
+    /// find the player closest to the monster.
+    /// </summary>
     public void SearchPlayerNearby()
     {
         GameObject[] joueurs = GameObject.FindGameObjectsWithTag("Player");
-        List<PathNode> _finalPath = new List<PathNode>();
-
+        _path = new List<PathNode>();
+        List<PathNode> _currentPath = new List<PathNode>();
 
         foreach (GameObject joueur in joueurs)
         {
-            List<PathNode> _currentPath = new List<PathNode>();
+            _currentPath.Clear();
 
             GridObject _gridObjectPlayerTempo = joueur.GetComponent<GridObject>();
             _currentPath = _pathFindingScript.FindPath(_gridObjectMonster.PositionOnGrid.x, _gridObjectMonster.PositionOnGrid.y, _gridObjectPlayerTempo.PositionOnGrid.x, _gridObjectPlayerTempo.PositionOnGrid.y);
 
-            if (_finalPath.Count == 0)
+            if (_path.Count == 0)
             {
-                _finalPath = _currentPath;
+                _path = _currentPath;
                 _human = joueur.GetComponent<Human>();
                 _gridObjectPlayer = joueur.GetComponent<GridObject>();
             }
 
-            if (_currentPath.Count < _finalPath.Count)
+            if (_currentPath.Count < _path.Count)
             {
-                _finalPath = _currentPath;
+                _path = _currentPath;
                 _human = joueur.GetComponent<Human>();
                 _gridObjectPlayer = joueur.GetComponent<GridObject>();
             }
         }
 
-        _path = _finalPath;
+        if (_path == null || _path.Count == 0)
+        {
+            Debug.LogError("list of _path is void or null");
+            return;
+        }
+
         _path.RemoveAt(_path.Count - 1);
 
         if (_path == null || _path.Count == 0)
         {
+            Debug.LogError("list of _path is void or null");
             return;
         }
 
         Move(_path);
     }
 
+    /// <summary>
+    /// Use this method to move the monster.
+    /// </summary>
     private void Update()
     {
         if (_pathWorldPositions == null || _pathWorldPositions.Count == 0)
@@ -128,6 +152,9 @@ public class MonstersMovements : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Test add PM to the monster.
+    /// </summary>
     public void AddPM()
     {
         _monsters.MonsterPM = 3;

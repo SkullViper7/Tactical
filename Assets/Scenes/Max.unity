@@ -1674,6 +1674,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetCharacter: {fileID: 1779470196}
+  _terrainLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &330585551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,6 +2037,7 @@ MonoBehaviour:
   AP: 0
   CurrentAP: 0
   Crts: 0
+  AsPlay: 0
   Skills: []
 --- !u!1 &410087039
 GameObject:
@@ -2661,6 +2665,7 @@ MonoBehaviour:
   AP: 0
   CurrentAP: 0
   Crts: 0
+  AsPlay: 0
   Skills: []
 --- !u!1001 &494626432
 PrefabInstance:
@@ -6018,12 +6023,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMoving: 0
+  CanSelect: 0
+  CanMove: 0
+  CanFight: 0
+  CanFindPath: 0
   _actCam: {fileID: 330585545}
   HmnPlay: {fileID: 0}
+  SAPlayer: {fileID: 0}
   HmnGrid: {fileID: 386562162}
-  _mvPlayer: {fileID: 0}
-  _lightPath: {fileID: 0}
-  _selectPlayer: {fileID: 0}
+  AllHmn: []
 --- !u!4 &1201417574
 Transform:
   m_ObjectHideFlags: 0
@@ -8331,9 +8339,12 @@ MonoBehaviour:
   MS: {fileID: 11400000, guid: 8f97afd4a4cd29142b7ebebd0beb0310, type: 2}
   MonsterSprite: {fileID: 0}
   MonsterName: 
+  MonsterPVMax: 0
   MonsterPV: 0
   MonsterAttack: 0
   MonsterDefence: 0
+  MonsterPM: 0
+  MonsterPA: 0
 --- !u!136 &1635072468
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9002,6 +9013,7 @@ MonoBehaviour:
   AP: 0
   CurrentAP: 0
   Crts: 0
+  AsPlay: 0
   Skills: []
 --- !u!1 &1793228411
 GameObject:

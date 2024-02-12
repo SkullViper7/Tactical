@@ -17,6 +17,8 @@ public class Human : MonoBehaviour
 
     public bool AsPlay;
 
+    public bool IsDead = false;
+
     public SkillsScriptable[] Skills;
 
     private void Awake()
