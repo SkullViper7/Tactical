@@ -9,9 +9,9 @@ public class PlayerManager : MonoBehaviour
     public Human HmnPlay;
     public GridObject HmnGrid;
 
-    private MoveCharacter _mvPlayer;
-    private HighlightPath _lightPath;
-    private SelectPlayer _selectPlayer;
+    [SerializeField] private MoveCharacter _mvPlayer;
+    [SerializeField] private HighlightPath _lightPath;
+    [SerializeField] private SelectPlayer _selectPlayer;
 
     // Singleton
     private static PlayerManager _instance = null;
@@ -34,16 +34,19 @@ public class PlayerManager : MonoBehaviour
             _instance = this;
         }
         //
-    }
 
-    private void Start()
-    {
         _mvPlayer = _actCam.GetComponent<MoveCharacter>();
         _lightPath = _actCam.GetComponent<HighlightPath>();
         _selectPlayer = _actCam.GetComponent<SelectPlayer>();
 
         _mvPlayer.enabled = false;
         _lightPath.enabled = false;
+        _selectPlayer.enabled = true;
+    }
+
+    private void Start()
+    {
+        
     }
 
     public void ActivatePlayer()
