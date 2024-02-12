@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float _moveSpeed = 1f;
 
+    [HideInInspector]
     public bool IsMoving;
 
     private void Awake()

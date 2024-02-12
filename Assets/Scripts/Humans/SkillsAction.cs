@@ -27,4 +27,16 @@ public class SkillsAction : MonoBehaviour
             SkisHealing = Hmn.Skills[0].IsSupport;
         }
     }
+
+    public void SecondSkill()
+    {
+        if (Hmn.Skills[1] != null)
+        {
+            SkName = Hmn.Skills[1].Name;
+            _skRange = Hmn.Skills[1].Range;
+            SkPwr = Hmn.Skills[1].Pwr;
+            SkAP = Hmn.Skills[1].SkAp;
+            SkisHealing = Hmn.Skills[1].IsSupport;
+        }
+    }
 }

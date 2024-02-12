@@ -1,10 +1,10 @@
 ﻿using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TurnGameSystemTransmitter : MonoBehaviour
 {
     public bool GameLaunched;
+
     public bool PlayerCanPlay;
     public bool PlayerHasPlayedOrNot;
     public bool PlayerStillAlive;
