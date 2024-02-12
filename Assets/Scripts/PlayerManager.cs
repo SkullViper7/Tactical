@@ -39,27 +39,22 @@ public class PlayerManager : MonoBehaviour
         _lightPath = _actCam.GetComponent<HighlightPath>();
         _selectPlayer = _actCam.GetComponent<SelectPlayer>();
 
-        _mvPlayer.enabled = false;
-        _lightPath.enabled = false;
-        _selectPlayer.enabled = true;
-    }
-
-    private void Start()
-    {
-        
+        //_mvPlayer.enabled = false;
+        //_lightPath.enabled = false;
+        //_selectPlayer.enabled = true;
     }
 
     public void ActivatePlayer()
     {
-        _mvPlayer.enabled = true;
-        _lightPath.enabled = true;
-        _selectPlayer.enabled = false;
+        //_mvPlayer.enabled = true;
+        //_lightPath.enabled = true;
+        //_selectPlayer.enabled = false;
     }
 
     public void DesactivatePlayer()
     {
-        _mvPlayer.enabled = false;
-        _lightPath.enabled = false;
-        _selectPlayer.enabled = true;
+        //_mvPlayer.enabled = false;
+        //_lightPath.enabled = false;
+        //_selectPlayer.enabled = true;
     }
 }
