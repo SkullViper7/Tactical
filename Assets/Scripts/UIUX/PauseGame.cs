@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PauseGame : MonoBehaviour
 {
@@ -23,6 +21,6 @@ public class PauseGame : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quitter la partie");
+        Application.Quit();
     }
 }
