@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class PlayerLostGameState : BaseGameState
 {
-
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
-        // Annoncer Que Le Joueur A Perdu
-        Debug.Log("PlayerLostGameState Enters State");
+        SceneManager.LoadScene("GameWon");
     }
 
     public override void ExitState(TurnGameSystemController turnGameSystem)

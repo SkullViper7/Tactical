@@ -5,25 +5,22 @@ public class TurnGameSystemController : MonoBehaviour
     BaseGameState _currentGameState;
     public TurnGameSystemTransmitter GameSystemTransmitter;
 
-    public StartGameState _startGameState { get; private set; }
-
-    public PlayerTurnGameState PlayerTurnGameState { get; private set; }
-
+    public StartGameState StartGameState { get; private set; }
+    public PlayerMoveState PlayerMoveState { get; private set; }
+    public PlayerAttackState PlayerAttackState { get; private set; }
+    public SelectingPlayerState SelectingPlayerState { get; private set; }
     public MonsterTurnGameState MonsterTurnGameState { get; private set; }
-
     public PlayerLostGameState PlayerLostGameState { get; private set; }
-
     public PlayerWonGameState PlayerWonGameState { get; private set; }
 
     public void Start()
     {
-        _startGameState = new StartGameState();
-        PlayerTurnGameState = new PlayerTurnGameState();
+        StartGameState = new StartGameState();
         MonsterTurnGameState = new MonsterTurnGameState();
         PlayerLostGameState = new PlayerLostGameState();
         PlayerWonGameState = new PlayerWonGameState();
 
-        _currentGameState = _startGameState;
+        _currentGameState = StartGameState;
         _currentGameState.EnterState(this);
     }
 
