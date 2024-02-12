@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class PlayerWonGameState : BaseGameState
 {
-
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
-        // Annoncer Que Le Joueur A Gagné
-        Debug.Log("PlayerWonGameState Enters State");
+        SceneManager.LoadScene("GameWon");
     }
 
     public override void ExitState(TurnGameSystemController turnGameSystem)
