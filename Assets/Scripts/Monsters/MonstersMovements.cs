@@ -22,6 +22,7 @@ public class MonstersMovements : MonoBehaviour
 
     public bool CanAttack = false;
     public bool CanMove = true;
+    public bool TurnFinish = false;
 
 
     private void Awake()
@@ -58,6 +59,7 @@ public class MonstersMovements : MonoBehaviour
             if (_pathWorldPositions.Count == 0)
             {
                 CanMove = false;
+                TurnFinish = true;
                 Debug.LogError("list of _pathWorldPosition is void");
                 return;
             }
@@ -74,6 +76,7 @@ public class MonstersMovements : MonoBehaviour
             if (Vector3.Distance(transform.position, _human.transform.position) < 2f && _monsters.MonsterPA > 0)
             {
                 _monsterAttack.UseAttack(_monsters, _human);
+                TurnFinish = true;
             }
 
         }
