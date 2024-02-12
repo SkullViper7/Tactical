@@ -8340,6 +8340,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetCharacter: {fileID: 2083934424}
+  _terrainLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1308792106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14371,7 +14374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657207fd98f58f143b7521920ff58be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerName: {fileID: 0}
+  _playerName: {fileID: 1824722199}
+  PlayerHealth: {fileID: 1036203239}
+  PlayerMP: {fileID: 1294239941}
+  PlayerAP: {fileID: 502499703}
 --- !u!1001 &2102787652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14463,6 +14469,7 @@ GameObject:
   - component: {fileID: 2112704789}
   - component: {fileID: 2112704788}
   - component: {fileID: 2112704787}
+  - component: {fileID: 2112704790}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -14558,6 +14565,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112704785}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2112704790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112704785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddd4a5659586994894c2bf7765c207e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _job: {fileID: 0}
+  HP: 0
+  CurrentHP: 0
+  Atk: 0
+  Def: 0
+  MP: 0
+  CurrentMP: 0
+  AP: 0
+  CurrentAP: 0
+  Crts: 0
+  Skills: []
 --- !u!1001 &2119444762
 PrefabInstance:
   m_ObjectHideFlags: 0
