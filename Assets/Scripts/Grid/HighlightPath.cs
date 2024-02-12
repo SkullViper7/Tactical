@@ -32,8 +32,7 @@ public class HighlightPath : MonoBehaviour
     int _currentMovementPoints = 5;
     int _currentActionPoints = 5;
 
-    [HideInInspector]
-    public bool CanMove = true;
+    public bool CanClick = true;
 
     PlayerInput _playerInput;
 
@@ -78,11 +77,11 @@ public class HighlightPath : MonoBehaviour
                 // Check if the hit object's Tile component is reachable
                 if (hit.transform.gameObject.GetComponent<Tile>().IsReachable)
                 {
-                    CanMove = true;
+                    CanClick = true;
                 }
                 else
                 {
-                    CanMove = false;
+                    CanClick = false;
                 }
             }
 

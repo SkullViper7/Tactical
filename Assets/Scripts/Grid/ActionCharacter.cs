@@ -31,7 +31,7 @@ public class ActionCharacter : MonoBehaviour
         if (context.started)
         {
             // If the highlight path component indicates that movement is possible
-            if (_highlightPath.CanMove)
+            if (_highlightPath.CanClick)
             {
                 // Move the target character using the PlayerMovement component and the highlighted path
                 _targetCharacter.GetComponent<PlayerMovement>().Move(_highlightPath.Path);
