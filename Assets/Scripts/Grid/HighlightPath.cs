@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class HighlightPath : MonoBehaviour
 {
+    [Header("Terrain/Grid")]
     [SerializeField]
     LayerMask _terrainLayer;
 
@@ -14,6 +15,7 @@ public class HighlightPath : MonoBehaviour
 
     PathFinding _pathFindingScript;
 
+    [Header("Scripts Reference")]
     [SerializeField]
     PlayerMovement _playerMovementScript;
 
@@ -22,6 +24,7 @@ public class HighlightPath : MonoBehaviour
 
     List<Tile> _tiles = new List<Tile>();
 
+    [Header("Rendering")]
     [SerializeField]
     Material _baseMat;
     [SerializeField]
@@ -32,6 +35,7 @@ public class HighlightPath : MonoBehaviour
     int _currentMovementPoints = 5;
     int _currentActionPoints = 5;
 
+    [HideInInspector]
     public bool CanMove = true;
 
     PlayerInput _playerInput;
