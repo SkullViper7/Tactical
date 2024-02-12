@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -6,7 +8,11 @@ public class PlayerManager : MonoBehaviour
     public bool IsMoving;
 
     public bool CanSelect;
+    public event Action<bool> CanSelectEvent;
+
     public bool CanMove;
+    public event Action<bool> CanMoveEvent;
+
     public bool CanFight;
     public bool CanFindPath;
 
@@ -44,5 +50,17 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         AllHmn = GameObject.FindObjectsOfType<Human>();
+    }
+
+    public void SetCanSelect(bool canSelected)
+    {
+        CanSelect = canSelected;
+        CanSelectEvent?.Invoke(CanSelect);
+    }
+
+    public void SetCanMove(bool canMove)
+    {
+        CanMove = canMove;
+        CanMoveEvent?.Invoke(CanMove);
     }
 }

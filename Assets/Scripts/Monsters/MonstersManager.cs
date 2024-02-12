@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonstersManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject[] listMonster;
+    public MonstersMain[] ListMonster;
 
     private static MonstersManager _instance = null;
 
@@ -28,6 +28,6 @@ public class MonstersManager : MonoBehaviour
         }
         //
 
-        listMonster = GameObject.FindGameObjectsWithTag("Monster");
+        ListMonster = GameObject.FindObjectsOfType<MonstersMain>();
     }
 }

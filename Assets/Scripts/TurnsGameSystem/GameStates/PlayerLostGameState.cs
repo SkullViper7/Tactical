@@ -5,7 +5,7 @@ public class PlayerLostGameState : BaseGameState
 {
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
-        SceneManager.LoadScene("GameWon");
+        SceneManager.LoadScene("GameLost");
     }
 
     public override void ExitState(TurnGameSystemController turnGameSystem)
