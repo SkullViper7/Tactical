@@ -3,9 +3,6 @@ using UnityEngine.InputSystem;
 
 public class MoveCharacter : MonoBehaviour
 {
-    [SerializeField]
-    GridObject _targetCharacter;
-
     PlayerInput _playerInput;
 
     HighlightPath _highlightPath;
@@ -33,20 +30,23 @@ public class MoveCharacter : MonoBehaviour
         // Check if the context for the input started
         if (context.started)
         {
-            // Create a ray from the main camera to the current mouse position
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            // Cast a ray from the camera to find the objects hit by the ray within a maximum distance and with a the Terrain layer mask
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _terrainLayer))
+            if (PlayerManager.Instance.CanMove)
             {
-                // If the highlight path component indicates that movement is possible
-                if (_highlightPath.CanMove)
+                // Create a ray from the main camera to the current mouse position
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                // Cast a ray from the camera to find the objects hit by the ray within a maximum distance and with a the Terrain layer mask
+                if (Physics.Raycast(ray, out hit, float.MaxValue, _terrainLayer))
                 {
-                    // Move the target character using the PlayerMovement component and the highlighted path
-                    _targetCharacter.GetComponent<PlayerMovement>().Move(_highlightPath.Path);
-                    // Disable the highlights after the movement
-                    _highlightPath.DisableHighights();
+                    // If the highlight path component indicates that movement is possible
+                    if (_highlightPath.CanMove)
+                    {
+                        // Move the target character using the PlayerMovement component and the highlighted path
+                        PlayerManager.Instance.HmnGrid.GetComponent<PlayerMovement>().Move(_highlightPath.Path);
+                        // Disable the highlights after the movement
+                        _highlightPath.DisableHighights();
+                    }
                 }
             }
         }
