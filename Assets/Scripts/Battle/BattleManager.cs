@@ -54,6 +54,11 @@ public class BattleManager : MonoBehaviour
             // Apply damage to target
             target.MonsterPV -= damage;
 
+            if (target.MonsterPV <= 0)
+            {
+                target.IsDead = true;
+            }
+
             // Display the damage
             Debug.Log(user.name + " deals " + damage + " damage to " + target.MonsterName);
         }
