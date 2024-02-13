@@ -1,6 +1,7 @@
 ﻿public class PlayerMoveState : BaseGameState
 {
     TurnGameSystemController _turn;
+
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
         _turn = turnGameSystem;
@@ -8,10 +9,6 @@
         PlayerManager.Instance.CanMoveEvent += Notify;
 
         PlayerManager.Instance.CanFindPath = true;
-    }
-
-    public override void UpdateState(TurnGameSystemController turnGameSystem)
-    {
     }
 
     public override void ExitState(TurnGameSystemController turnGameSystem)
@@ -23,7 +20,7 @@
     public void Notify(bool canMove)
     {
         if (!canMove) {
-            _turn.SwitchState(_turn.PlayerAttackState);
+            _turn.SwitchState(_turn.PlAtkState);
         }
     }
 }

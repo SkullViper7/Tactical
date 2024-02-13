@@ -12,9 +12,4 @@ public class PlayerLostGameState : BaseGameState
     {
 
     }
-
-    public override void UpdateState(TurnGameSystemController turnGameSystem)
-    {
-
-    }
 }

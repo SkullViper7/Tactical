@@ -6,5 +6,4 @@ public abstract class BaseGameState : MonoBehaviour
 
     public abstract void ExitState(TurnGameSystemController turnGameSystem);
 
-    public abstract void UpdateState(TurnGameSystemController turnGameSystem);
 }
