@@ -29,7 +29,7 @@ public class Monsters : MonoBehaviour
     }
 
     /// <summary>
-    /// Resets PA and PM to the monster.
+    /// Resets PA and PM for the monster.
     /// </summary>
     public void ResetPAandPM()
     {

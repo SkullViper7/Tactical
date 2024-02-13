@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class MonsterAttack : MonoBehaviour
 {
-    private Monsters _monsters;
-    private MonstersMovements _monstersMovements;
-    private Human _human;
-
     [SerializeField]
     private int _attackCost = 2;
-
-    void Start()
-    {
-        _monsters = GetComponent<Monsters>();
-        _monstersMovements = GetComponent<MonstersMovements>();
-    }
 
     public void UseAttack(Monsters user, Human target)
     {

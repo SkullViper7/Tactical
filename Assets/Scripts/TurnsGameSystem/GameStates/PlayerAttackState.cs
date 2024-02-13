@@ -12,10 +12,6 @@ public class PlayerAttackState : BaseGameState
         PlayerManager.Instance.HmnPlay.HumanHasPlayed += Notify;
     }
 
-    public override void UpdateState(TurnGameSystemController turnGameSystem)
-    {
-    }
-
     public override void ExitState(TurnGameSystemController turnGameSystem)
     {
         PlayerManager.Instance.HmnPlay.HumanHasPlayed -= Notify;
@@ -25,20 +21,24 @@ public class PlayerAttackState : BaseGameState
     public void Notify(bool humanHasPlayed)
     {
         if (humanHasPlayed) {
+            // Counts number of humans who have played
             int playerWhoHasPlayed = 0;
             for (int i = 0; i < PlayerManager.Instance.AllHmn.Length; i++)
             {
-                if (!PlayerManager.Instance.AllHmn[i].HasPlayed)
+                if (PlayerManager.Instance.AllHmn[i].HasPlayed || PlayerManager.Instance.AllHmn[i].IsDead)
                 {
                     playerWhoHasPlayed++;
                 }
             }
 
+            // Checks whether all humans have played or not
             if (playerWhoHasPlayed >= PlayerManager.Instance.AllHmn.Length) {
                 int monstersDead = 0;
                 for (int i = 0; i < MonstersManager.Instance.ListMonster.Length; i++) {
+
+                    // Checks whether a monster is still alive or not
                     if (!MonstersManager.Instance.ListMonster[i].Monsters.IsDead) {
-                        _turn.SwitchState(_turn.MonsterTurnGameState);
+                        _turn.SwitchState(_turn.MonstTurnGmState);
                         break;
                     }
                     else {
@@ -46,13 +46,13 @@ public class PlayerAttackState : BaseGameState
                     }
                 }
 
+                // Checks whether all monsters are still alive or not, if it's the case, announce that the player have won
                 if (monstersDead == MonstersManager.Instance.ListMonster.Length) {
-                    _turn.SwitchState(_turn.PlayerWonGameState);
+                    _turn.SwitchState(_turn.PlWonGmState);
                 }
-
             }
             else {
-                _turn.SwitchState(_turn.SelectingPlayerState);
+                _turn.SwitchState(_turn.SelectPlState);
             }
         }
 

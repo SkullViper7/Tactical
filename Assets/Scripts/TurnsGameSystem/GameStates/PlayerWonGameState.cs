@@ -12,9 +12,4 @@ public class PlayerWonGameState : BaseGameState
     {
 
     }
-
-    public override void UpdateState(TurnGameSystemController turnGameSystem)
-    {
-
-    }
 }

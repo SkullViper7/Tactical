@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MonstersMovements : MonoBehaviour
@@ -17,20 +18,26 @@ public class MonstersMovements : MonoBehaviour
     private List<PathNode> _path;
     private PathFinding _pathFindingScript;
 
-    private Monsters _monsters;
-    private MonsterAttack _monsterAttack;
+    private MonstersMain _monstersMain;
 
     public bool CanAttack = false;
     public bool CanMove = true;
     public bool TurnFinish = false;
+
+    public event Action<bool> TurnFinishedEvent;
 
 
     private void Awake()
     {
         _gridObjectMonster = GetComponent<GridObject>();
         _pathFindingScript = _targetGrid.GetComponent<PathFinding>();
-        _monsters = GetComponent<Monsters>();
-        _monsterAttack = GetComponent<MonsterAttack>();
+        _monstersMain = GetComponent<MonstersMain>();
+    }
+
+    public void HasTurnFinished(bool turnFinished)
+    {
+        TurnFinish = turnFinished;
+        TurnFinishedEvent?.Invoke(TurnFinish);
     }
 
     /// <summary>
@@ -54,12 +61,12 @@ public class MonstersMovements : MonoBehaviour
     /// </summary>
     void TravellingMonster()
     {
-        if (_monsters.MonsterPM > 0 && CanMove)
+        if (_monstersMain.Monsters.MonsterPM > 0 && CanMove)
         {
             if (_pathWorldPositions.Count == 0)
             {
                 CanMove = false;
-                TurnFinish = true;
+                HasTurnFinished(true);
                 Debug.LogError("list of _pathWorldPosition is void");
                 return;
             }
@@ -69,14 +76,14 @@ public class MonstersMovements : MonoBehaviour
             if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
             {
                 _pathWorldPositions.RemoveAt(0);
-                _monsters.MonsterPM--;
+                _monstersMain.Monsters.MonsterPM--;
                 CanAttack = false;
             }
 
-            if (Vector3.Distance(transform.position, _human.transform.position) < 2f && _monsters.MonsterPA > 0)
+            if (Vector3.Distance(transform.position, _human.transform.position) < 2f && _monstersMain.Monsters.MonsterPA > 0)
             {
-                _monsterAttack.UseAttack(_monsters, _human);
-                TurnFinish = true;
+                _monstersMain.MonsterAttack.UseAttack(_monstersMain.Monsters, _human);
+                HasTurnFinished(true);
             }
 
         }
@@ -89,10 +96,12 @@ public class MonstersMovements : MonoBehaviour
     }
 
     /// <summary>
-    /// find the player closest to the monster.
+    /// find the closest player to the monster.
     /// </summary>
     public void SearchPlayerNearby()
     {
+        MonstersManager.Instance.CurrentMonsterMain = this._monstersMain;
+
         GameObject[] joueurs = GameObject.FindGameObjectsWithTag("Player");
         _path = new List<PathNode>();
         List<PathNode> _currentPath = new List<PathNode>();
