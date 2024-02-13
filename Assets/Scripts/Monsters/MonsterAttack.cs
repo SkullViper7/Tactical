@@ -48,9 +48,4 @@ public class MonsterAttack : MonoBehaviour
             Debug.Log("Not enough AP to use the skill.");
         }
     }
-
-    public void ResetPA()
-    {
-        _monsters.MonsterPA = _monsters.MS.MonsterPA;
-    }
 }

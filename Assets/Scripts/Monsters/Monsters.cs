@@ -27,4 +27,13 @@ public class Monsters : MonoBehaviour
         MonsterPM = MS.MonsterPM;
         MonsterPA = MS.MonsterPA;
     }
+
+    /// <summary>
+    /// Resets PA and PM to the monster.
+    /// </summary>
+    public void ResetPAandPM()
+    {
+        MonsterPA = MS.MonsterPA;
+        MonsterPM = MS.MonsterPM;
+    }
 }

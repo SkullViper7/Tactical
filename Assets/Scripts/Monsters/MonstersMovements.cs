@@ -151,12 +151,4 @@ public class MonstersMovements : MonoBehaviour
             TravellingMonster();
         }
     }
-
-    /// <summary>
-    /// Resets PM to the monster.
-    /// </summary>
-    public void ResetPM()
-    {
-        _monsters.MonsterPM = _monsters.MS.MonsterPM;
-    }
 }
