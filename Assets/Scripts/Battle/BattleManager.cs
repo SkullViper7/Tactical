@@ -2,6 +2,8 @@
 
 public class BattleManager : MonoBehaviour
 {
+    public SkillInfo currentSkill;
+
     // Singleton
     private static BattleManager _instance = null;
 
@@ -26,47 +28,97 @@ public class BattleManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Function to get the actual offensive skill for battle.
+    /// </summary>
+    /// <param name="skillInfo">Skill used</param>
+    public void PrepareAttack(SkillInfo skillInfo)
+    {
+        Human user = PlayerManager.Instance.HmnPlay;
+        currentSkill = skillInfo;
+    }
+
+    /// <summary>
+    /// Fuction to gat the actual healing skill for battle.
+    /// </summary>
+    /// <param name="skillInfo">Heal Used</param>
+    public void PrepareHeal(SkillInfo skillInfo)
+    {
+        Human user = PlayerManager.Instance.HmnPlay;
+        currentSkill = skillInfo;
+    }
+
+    public void PerformActionOnTarget(Monsters target)
+
+    {
+
+        // Fuction needed after target monster.
+        if (currentSkill != null && !currentSkill.SkisHealing)
+        {
+            UseSkill(target, currentSkill);
+        }
+    }
+
+    public void PerformActionOnTarget(Human target)
+
+    {
+
+        // Fuction needed after target human.
+        if (currentSkill != null && currentSkill.SkisHealing)
+
+        {
+            UseHeal(target, currentSkill);
+        }
+    }
+
+    /// <summary>
     /// Function called to use a skill on a target
     /// </summary>
-    /// <param name="user">Selected Player.</param>
     /// <param name="target">Selected Monster.</param>
-    /// <param name="skillAction">Selected Skill</param>
+    /// <param name="skill">Selected Skill</param>
 
-    public void UseSkill(Human user, Monsters target, SkillsAction skillAction)
+    public void UseSkill(Monsters target, SkillInfo skill)
     {
-        // Make sure we have valid arguments
-        if (user == null || target == null || skillAction == null)
+        Human user = PlayerManager.Instance.HmnPlay;
+        if (user == null || target == null || skill == null)
+
         {
-            Debug.LogError("Invalid arguments for UseSkill. Make sure to provide a valid user, target, and skillAction.");
+
+            Debug.LogError("Invalid arguments for UseSkill.");
 
             return;
+
         }
 
-        // Check if the user has enough AP to use the skill
-        if (user.CurrentAP >= skillAction.SkAP)
+        if (user.CurrentAP >= skill.SkAP)
+
         {
-            // Deduct the skill usage cost
-            user.CurrentAP -= skillAction.SkAP;
 
-            // Calculate damage inflicted
-            int damage = CalculateDamage(skillAction.SkPwr, user.Atk, target.MonsterDefence);
+            user.CurrentAP -= skill.SkAP;
 
-            // Apply damage to target
+            int damage = CalculateDamage(skill.SkPwr, user.Atk, target.MonsterDefence);
+
             target.MonsterPV -= damage;
 
             if (target.MonsterPV <= 0)
+
             {
+
                 target.IsDead = true;
+
             }
 
-            // Display the damage
             Debug.Log(user.name + " deals " + damage + " damage to " + target.MonsterName);
+
         }
+
         else
+
         {
-            // If not enough AP, log it
+
             Debug.Log("Not enough AP to use the skill.");
+
         }
+
     }
 
     /// <summary>
@@ -75,35 +127,24 @@ public class BattleManager : MonoBehaviour
     /// <param name="user">Selected Player.</param>
     /// <param name="target">Selected target Player.</param>
     /// <param name="skillAction">Selected Skill</param>
-
-    public void UseHeal(Human user, Human target, SkillsAction skillAction)
+    public void UseHeal(Human target, SkillInfo skill)
     {
-        // Make sure we have valid arguments
-        if (user == null || target == null || skillAction == null)
+        Human user = PlayerManager.Instance.HmnPlay;
+        if (user == null || target == null || skill == null)
         {
-            Debug.LogError("Invalid arguments for UseSkill. Make sure to provide a valid user, target, and skillAction.");
-
+            Debug.LogError("Invalid arguments for UseHeal.");
             return;
         }
 
-        // Check if the user has enough AP to use the skill
-        if (user.CurrentAP >= skillAction.SkAP)
+        if (user.CurrentAP >= skill.SkAP)
         {
-            // Deduct the skill usage cost
-            user.CurrentAP -= skillAction.SkAP;
-
-            // Calculate heal inflicted
-            int heal = CalculateHeal(skillAction.SkPwr, user.Atk);
-
-            // Apply heal to target
-            target.HP -= heal;
-
-            // Display the heal or other effects here
-            Debug.Log(user.name + " deals " + heal + " heal to " + target.gameObject.name);
+            user.CurrentAP -= skill.SkAP;
+            int heal = CalculateHeal(skill.SkPwr, user.Atk);
+            target.HP += heal; // Assuming that increasing HP is correct for a heal.
+            Debug.Log(user.name + " heals " + target.gameObject.name + " for " + heal);
         }
         else
         {
-            // If not enough AP, log it
             Debug.Log("Not enough AP to use the skill.");
         }
     }
