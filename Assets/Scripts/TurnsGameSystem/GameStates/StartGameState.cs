@@ -14,8 +14,5 @@ public class StartGameState : BaseGameState
 
     public override void UpdateState(TurnGameSystemController turnGameSystem)
     {
-        if (turnGameSystem.GameSystemTransmitter.GameLaunched)
-        {
-        }
     }
 }
