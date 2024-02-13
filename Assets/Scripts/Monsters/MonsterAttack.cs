@@ -49,13 +49,8 @@ public class MonsterAttack : MonoBehaviour
         }
     }
 
-    //private void Update()
-    //{
-    //    Debug.Log(_monstersMovements.CanAttack);
-    //    if (_monstersMovements.CanAttack)
-    //    {
-    //        _human = _monstersMovements._human.GetComponent<Human>();
-    //        UseAttack(_monsters, _human);
-    //    }
-    //}
+    public void ResetPA()
+    {
+        _monsters.MonsterPA = _monsters.MS.MonsterPA;
+    }
 }
