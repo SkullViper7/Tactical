@@ -16,6 +16,9 @@ public class PlayerManager : MonoBehaviour
     public bool CanFight;
     public bool CanFindPath;
 
+    public bool WillHeal;
+    public bool WillDamage;
+
     [SerializeField] private Camera _actCam;
 
     public Human HmnPlay;
