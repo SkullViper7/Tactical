@@ -5,6 +5,7 @@ public class MonsterTurnGameState : BaseGameState
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
         _turn = turnGameSystem;
+
     }
 
     public override void ExitState(TurnGameSystemController turnGameSystem)

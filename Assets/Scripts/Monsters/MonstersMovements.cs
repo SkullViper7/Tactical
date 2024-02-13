@@ -153,10 +153,10 @@ public class MonstersMovements : MonoBehaviour
     }
 
     /// <summary>
-    /// Test add PM to the monster.
+    /// Resets PM to the monster.
     /// </summary>
-    public void AddPM()
+    public void ResetPM()
     {
-        _monsters.MonsterPM = 3;
+        _monsters.MonsterPM = _monsters.MS.MonsterPM;
     }
 }
