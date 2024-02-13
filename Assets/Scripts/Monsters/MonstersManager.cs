@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class MonstersManager : MonoBehaviour
 {
     [SerializeField]
     public MonstersMain[] ListMonster;
+    public MonstersMain CurrentMonsterMain;
 
     private static MonstersManager _instance = null;
 

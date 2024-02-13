@@ -5,28 +5,25 @@ public class TurnGameSystemController : MonoBehaviour
     BaseGameState _currentGameState;
     public TurnGameSystemTransmitter GameSystemTransmitter;
 
-    public StartGameState StartGameState { get; private set; }
-    public PlayerMoveState PlayerMoveState { get; private set; }
-    public PlayerAttackState PlayerAttackState { get; private set; }
-    public SelectingPlayerState SelectingPlayerState { get; private set; }
-    public MonsterTurnGameState MonsterTurnGameState { get; private set; }
-    public PlayerLostGameState PlayerLostGameState { get; private set; }
-    public PlayerWonGameState PlayerWonGameState { get; private set; }
+    public PlayerMoveState PlMvState { get; private set; }
+    public PlayerAttackState PlAtkState { get; private set; }
+    public SelectingPlayerState SelectPlState { get; private set; }
+    public MonsterTurnGameState MonstTurnGmState { get; private set; }
+    public PlayerLostGameState PlLostGmState { get; private set; }
+    public PlayerWonGameState PlWonGmState { get; private set; }
 
     public void Start()
     {
-        StartGameState = new StartGameState();
-        MonsterTurnGameState = new MonsterTurnGameState();
-        PlayerLostGameState = new PlayerLostGameState();
-        PlayerWonGameState = new PlayerWonGameState();
+        SelectPlState = new SelectingPlayerState();
+        PlMvState = new PlayerMoveState();
+        PlAtkState = new PlayerAttackState();
 
-        _currentGameState = StartGameState;
+        MonstTurnGmState = new MonsterTurnGameState();
+
+        PlLostGmState = new PlayerLostGameState();
+        PlWonGmState = new PlayerWonGameState();
+
         _currentGameState.EnterState(this);
-    }
-
-    public void Update()
-    {
-        _currentGameState.UpdateState(this);
     }
 
     public void SwitchState(BaseGameState state)
