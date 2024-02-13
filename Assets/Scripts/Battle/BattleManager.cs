@@ -30,27 +30,28 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// Function to get the actual offensive skill for battle.
     /// </summary>
-    /// <param name="skillInfo">Skill used</param>
+    /// <param name="skillInfo">Skill used.</param>
     public void PrepareAttack(SkillInfo skillInfo)
     {
         Human user = PlayerManager.Instance.HmnPlay;
         currentSkill = skillInfo;
+        PlayerManager.Instance.WillDamage = true;
     }
 
     /// <summary>
     /// Fuction to gat the actual healing skill for battle.
     /// </summary>
-    /// <param name="skillInfo">Heal Used</param>
+    /// <param name="skillInfo">Heal Used.</param>
     public void PrepareHeal(SkillInfo skillInfo)
     {
         Human user = PlayerManager.Instance.HmnPlay;
         currentSkill = skillInfo;
+        PlayerManager.Instance.WillHeal = true;
     }
 
-    public void PerformActionOnTarget(Monsters target)
+    public void PerformDamageOnTarget(Monsters target)
 
     {
-
         // Fuction needed after target monster.
         if (currentSkill != null && !currentSkill.SkisHealing)
         {
@@ -58,7 +59,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void PerformActionOnTarget(Human target)
+    public void PerformHealOnTarget(Human target)
 
     {
 

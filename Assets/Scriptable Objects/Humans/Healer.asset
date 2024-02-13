@@ -20,3 +20,4 @@ MonoBehaviour:
   Crts: 25
   Skills:
   - {fileID: 11400000, guid: a8adcd7ddc3127343b7ed61e89396b2d, type: 2}
+  - {fileID: 11400000, guid: dd53c0c40b591ae4f9b85c5eaa63eb16, type: 2}
