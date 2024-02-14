@@ -117,16 +117,18 @@ public class HighlightPath : MonoBehaviour
                         }
                         else if (PlayerManager.Instance.WillDamage || PlayerManager.Instance.WillHeal)
                         {
-                            if (pathNodeIndex >= PlayerManager.Instance.HmnPlay.CurrentMP)
+                            if (pathNodeIndex >= PlayerManager.Instance.UseSkillInfo.SkRange)
                             {
                                 _tiles[i].TileMeshRenderer.material = _badHighlightMat;
                                 _tiles[i].IsReachable = false;
+                                PlayerManager.Instance.AsRange = false;
                             }
 
                             else
                             {
                                 _tiles[i].TileMeshRenderer.material = _goodHighlightMat;
                                 _tiles[i].IsReachable = true;
+                                PlayerManager.Instance.AsRange = true;
                             }
                         }
                     }

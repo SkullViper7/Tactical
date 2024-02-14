@@ -15,9 +15,11 @@ public class SkillButton : MonoBehaviour
 
     public void PrepareSkillUsage()
     {
+        PlayerManager.Instance.UseSkillInfo = skillInfo;
         if (skillInfo.SkisHealing)
             BattleManager.Instance.PrepareHeal(skillInfo);
         else
             BattleManager.Instance.PrepareAttack(skillInfo);
+        Debug.Log(PlayerManager.Instance.UseSkillInfo.SkRange);
     }
 }
