@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 public class SkillButton : MonoBehaviour
 {
@@ -8,8 +9,11 @@ public class SkillButton : MonoBehaviour
     public void Setup(SkillInfo skill)
     {
         skillInfo = skill;
+        TextMeshProUGUI btnText = GetComponentInChildren<TextMeshProUGUI>();
+        btnText.text = skill.SkName;
     }
-    private void PrepareSkillUsage()
+
+    public void PrepareSkillUsage()
     {
         if (skillInfo.SkisHealing)
             BattleManager.Instance.PrepareHeal(skillInfo);
