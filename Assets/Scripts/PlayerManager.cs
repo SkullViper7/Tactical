@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
     public SkillsAction SAPlayer;
     public GridObject HmnGrid;
     public PlayerMovement HmnMove;
+    public SkillInfo UseSkillInfo;
 
     public Human[] AllHmn;
 
