@@ -103,25 +103,18 @@ public class BattleManager : MonoBehaviour
             target.MonsterPV -= damage;
 
             if (target.MonsterPV <= 0)
-
             {
-
                 target.IsDead = true;
-
             }
-
+            PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
             Debug.Log(user.name + " deals " + damage + " damage to " + target.MonsterName);
 
         }
 
         else
-
         {
-
             Debug.Log("Not enough AP to use the skill.");
-
         }
-
     }
 
     /// <summary>
@@ -145,6 +138,7 @@ public class BattleManager : MonoBehaviour
             int heal = CalculateHeal(skill.SkPwr, user.Atk);
             target.HP += heal; // Assuming that increasing HP is correct for a heal.
             Debug.Log(user.name + " heals " + target.gameObject.name + " for " + heal);
+            PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
         }
         else
         {
