@@ -57,7 +57,6 @@ public class UIManager : MonoBehaviour
     }
 
     public void CreateSkillButtons()
-
     {
         Human user = PlayerManager.Instance.HmnPlay;
 
@@ -74,7 +73,6 @@ public class UIManager : MonoBehaviour
         // Iterate over each skill in the SkillsAction's SkillInfos list
 
         foreach (var skillInfo in skillsAction.SkillInfos)
-
         {
             // Instantiate a new button object from the prefab and set its parent in the UI
             var buttonObj = Instantiate(skillButtonPrefab, buttonsParent);
@@ -84,8 +82,6 @@ public class UIManager : MonoBehaviour
 
             // Assuming SkillButton's Setup method takes a SkillInfo object
             skillButton.Setup(skillInfo);
-
         }
-
     }
 }
