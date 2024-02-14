@@ -27,7 +27,6 @@ public class CameraShaker : MonoBehaviour
     private void Start()
     {
         _impulseSource = GetComponent<CinemachineImpulseSource>();
-        Invoke("Shake", 1);
     }
 
     /// <summary>
