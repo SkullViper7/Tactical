@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public bool IsMoving;
+    public bool IsMovingState;
 
     public bool CanSelect;
     public event Action<bool> CanSelectEvent;
@@ -24,6 +22,7 @@ public class PlayerManager : MonoBehaviour
     public Human HmnPlay;
     public SkillsAction SAPlayer;
     public GridObject HmnGrid;
+    public PlayerMovement HmnMove;
 
     public Human[] AllHmn;
 

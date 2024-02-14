@@ -15,10 +15,6 @@ public class HighlightPath : MonoBehaviour
 
     PathFinding _pathFindingScript;
 
-    [Header("Scripts Reference")]
-    [SerializeField]
-    PlayerMovement _playerMovementScript;
-
     List<Tile> _tiles = new List<Tile>();
 
     [Header("Rendering")]
@@ -28,9 +24,6 @@ public class HighlightPath : MonoBehaviour
     Material _goodHighlightMat;
     [SerializeField]
     Material _badHighlightMat;
-
-    int _currentMovementPoints = 5;
-    int _currentActionPoints = 5;
 
     public bool CanClick = true;
 
@@ -103,21 +96,38 @@ public class HighlightPath : MonoBehaviour
             {
                 if (pathPositions.Contains(_tiles[i].GridPosition))
                 {
-                    if (!_playerMovementScript.IsMoving || _tiles[i].GridPosition == new Vector2Int(Path[0].Pos_X, Path[0].Pos_Y))
+                    if (!PlayerManager.Instance.HmnMove.IsMoving || _tiles[i].GridPosition == new Vector2Int(Path[0].Pos_X, Path[0].Pos_Y))
                     {
                         // Find the index of the current tile in the path
                         int pathNodeIndex = Path.FindIndex(p => p.Pos_X == _tiles[i].GridPosition.x && p.Pos_Y == _tiles[i].GridPosition.y);
                         // Check if the index exceeds the current movement points, update the tile's material and reachability
-                        if (pathNodeIndex >= _currentMovementPoints && PlayerManager.Instance.IsMoving || pathNodeIndex >= _currentActionPoints && !PlayerManager.Instance.IsMoving)
+                        if (PlayerManager.Instance.IsMovingState)
                         {
-                            _tiles[i].TileMeshRenderer.material = _badHighlightMat;
-                            _tiles[i].IsReachable = false;
-                        }
+                            if (pathNodeIndex >= PlayerManager.Instance.HmnPlay.CurrentMP)
+                            {
+                                _tiles[i].TileMeshRenderer.material = _badHighlightMat;
+                                _tiles[i].IsReachable = false;
+                            }
 
-                        else
+                            else
+                            {
+                                _tiles[i].TileMeshRenderer.material = _goodHighlightMat;
+                                _tiles[i].IsReachable = true;
+                            }
+                        }
+                        else if (PlayerManager.Instance.WillDamage || PlayerManager.Instance.WillHeal)
                         {
-                            _tiles[i].TileMeshRenderer.material = _goodHighlightMat;
-                            _tiles[i].IsReachable = true;
+                            if (pathNodeIndex >= PlayerManager.Instance.HmnPlay.CurrentMP)
+                            {
+                                _tiles[i].TileMeshRenderer.material = _badHighlightMat;
+                                _tiles[i].IsReachable = false;
+                            }
+
+                            else
+                            {
+                                _tiles[i].TileMeshRenderer.material = _goodHighlightMat;
+                                _tiles[i].IsReachable = true;
+                            }
                         }
                     }
                     else
