@@ -17,6 +17,5 @@ public class Tile : MonoBehaviour
     {
         _targetGrid = GameObject.Find("Grid").GetComponent<Grid>();
         GridPosition = _targetGrid.GetGridPosition(transform.position);
-        TileMeshRenderer = GetComponent<MeshRenderer>();
     }
 }

@@ -40,7 +40,7 @@ public class MoveCharacter : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, float.MaxValue, _terrainLayer))
                 {
                     // If the highlight path component indicates that movement is possible
-                    if (_highlightPath.CanMove)
+                    if (_highlightPath.CanClick)
                     {
                         // Move the target character using the PlayerMovement component and the highlighted path
                         PlayerManager.Instance.HmnGrid.GetComponent<PlayerMovement>().Move(_highlightPath.Path);
@@ -48,6 +48,8 @@ public class MoveCharacter : MonoBehaviour
                         _highlightPath.DisableHighights();
                     }
                 }
+
+                PlayerManager.Instance.CanMove = false;
             }
         }
     }

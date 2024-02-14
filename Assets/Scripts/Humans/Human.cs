@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class Human : MonoBehaviour
 {
@@ -15,7 +17,10 @@ public class Human : MonoBehaviour
     public int CurrentAP;
     public float Crts;
 
-    public bool AsPlay;
+    public bool HasPlayed;
+    public event Action<bool> HumanHasPlayed;
+
+    public bool IsDead = false;
 
     public SkillsScriptable[] Skills;
 
@@ -40,6 +45,12 @@ public class Human : MonoBehaviour
     {
         MP = CurrentMP;
         AP = CurrentAP;
-        AsPlay = true;
+        HasPlayed = false;
+    }
+
+    public void SetHumanHasPlayed(bool b)
+    {
+        HasPlayed = b;
+        HumanHasPlayed?.Invoke(HasPlayed);
     }
 }

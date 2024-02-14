@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MonstersManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject[] listMonster;
+    public MonstersMain[] ListMonster;
+    public MonstersMain CurrentMonsterMain;
 
     private static MonstersManager _instance = null;
 
@@ -28,6 +30,6 @@ public class MonstersManager : MonoBehaviour
         }
         //
 
-        listMonster = GameObject.FindGameObjectsWithTag("Monster");
+        ListMonster = GameObject.FindObjectsOfType<MonstersMain>();
     }
 }

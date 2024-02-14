@@ -1,42 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class SkillsAction : MonoBehaviour
-{
-    Human Hmn;
-    public string SkName;
-    public int _skRange;
-    public int SkPwr;
-    public int SkAP;
-    public bool SkisHealing;
 
+{
+
+    Human Hmn;
+
+    public List<SkillInfo> SkillInfos = new List<SkillInfo>();
 
     private void Start()
+
     {
         Hmn = GetComponent<Human>();
-        FirstSkill();
+        LoadSkills();
     }
 
-    public void FirstSkill()
+    private void LoadSkills()
     {
-        if (Hmn.Skills[0] != null)
+        SkillInfos = new List<SkillInfo>();
+        foreach (var skill in Hmn.Skills)
         {
-            SkName = Hmn.Skills[0].Name;
-            _skRange = Hmn.Skills[0].Range;
-            SkPwr = Hmn.Skills[0].Pwr;
-            SkAP = Hmn.Skills[0].SkAp;
-            SkisHealing = Hmn.Skills[0].IsSupport;
-        }
-    }
-
-    public void SecondSkill()
-    {
-        if (Hmn.Skills[1] != null)
-        {
-            SkName = Hmn.Skills[1].Name;
-            _skRange = Hmn.Skills[1].Range;
-            SkPwr = Hmn.Skills[1].Pwr;
-            SkAP = Hmn.Skills[1].SkAp;
-            SkisHealing = Hmn.Skills[1].IsSupport;
+            SkillInfos.Add(new SkillInfo(skill));
         }
     }
 }

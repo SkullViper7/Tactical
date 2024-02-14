@@ -1,19 +1,30 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public bool IsMoving;
+    public bool IsMovingState;
 
     public bool CanSelect;
+    public event Action<bool> CanSelectEvent;
+
     public bool CanMove;
+    public event Action<bool> CanMoveEvent;
+
     public bool CanFight;
     public bool CanFindPath;
+
+    public bool WillHeal = false;
+    public bool WillDamage = false;
 
     [SerializeField] private Camera _actCam;
 
     public Human HmnPlay;
     public SkillsAction SAPlayer;
     public GridObject HmnGrid;
+    public PlayerMovement HmnMove;
+
+    public Human[] AllHmn;
 
     // Singleton
     private static PlayerManager _instance = null;
@@ -36,5 +47,22 @@ public class PlayerManager : MonoBehaviour
             _instance = this;
         }
         //
+    }
+
+    private void Start()
+    {
+        AllHmn = GameObject.FindObjectsOfType<Human>();
+    }
+
+    public void SetCanSelect(bool canSelected)
+    {
+        CanSelect = canSelected;
+        CanSelectEvent?.Invoke(CanSelect);
+    }
+
+    public void SetCanMove(bool canMove)
+    {
+        CanMove = canMove;
+        CanMoveEvent?.Invoke(CanMove);
     }
 }
