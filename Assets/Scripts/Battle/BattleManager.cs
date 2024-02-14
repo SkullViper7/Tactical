@@ -36,6 +36,7 @@ public class BattleManager : MonoBehaviour
         Human user = PlayerManager.Instance.HmnPlay;
         currentSkill = skillInfo;
         PlayerManager.Instance.WillDamage = true;
+        PlayerManager.Instance.WillHeal = false;
     }
 
     /// <summary>
@@ -47,6 +48,7 @@ public class BattleManager : MonoBehaviour
         Human user = PlayerManager.Instance.HmnPlay;
         currentSkill = skillInfo;
         PlayerManager.Instance.WillHeal = true;
+        PlayerManager.Instance.WillDamage = false;
     }
 
     public void PerformDamageOnTarget(Monsters target)
