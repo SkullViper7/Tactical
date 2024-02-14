@@ -3,8 +3,6 @@
 public class TurnGameSystemController : MonoBehaviour
 {
     BaseGameState _currentGameState;
-    public TurnGameSystemTransmitter GameSystemTransmitter;
-
     public PlayerMoveState PlMvState { get; private set; }
     public PlayerAttackState PlAtkState { get; private set; }
     public SelectingPlayerState SelectPlState { get; private set; }

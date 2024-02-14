@@ -3950,7 +3950,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1225473445}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TurnGameSystemTransmitter, Assembly-CSharp
         m_MethodName: MonstersHavePlayed
         m_Mode: 6
@@ -7955,7 +7955,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1225473444}
   - component: {fileID: 1225473446}
-  - component: {fileID: 1225473445}
   m_Layer: 0
   m_Name: TurnGameSystem
   m_TagString: Untagged
@@ -7978,25 +7977,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1266494204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1225473445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225473443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bede1ee3e20a9d47b8662e4175280f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameLaunched: 0
-  PlayerCanPlay: 0
-  PlayerHasPlayedOrNot: 0
-  PlayerStillAlive: 1
-  MonstersCanPlay: 0
-  MonstersHasPlayedOrNot: 0
-  AreMonstersStillAlives: 1
 --- !u!114 &1225473446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8009,7 +7989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4219e22e44a43234e9a4b383e1546933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameSystemTransmitter: {fileID: 1225473445}
 --- !u!1001 &1229316560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8583,7 +8562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c783260d87af41b0636a0486fbece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetCharacter: {fileID: 2083934424}
   _terrainLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -8769,11 +8747,10 @@ MonoBehaviour:
     m_Bits: 64
   _targetGrid: {fileID: 1507644428}
   _playerMovementScript: {fileID: 2083934423}
-  _targetCharacter: {fileID: 2083934424}
   _baseMat: {fileID: 2100000, guid: cb056af283dedb743a3df2f3fcce36bd, type: 2}
   _goodHighlightMat: {fileID: 2100000, guid: 760f1870d1d1a1346be09fc4faef967f, type: 2}
   _badHighlightMat: {fileID: 2100000, guid: 96ac9fbd47816f54a9f9e64af5182805, type: 2}
-  CanMove: 1
+  CanClick: 1
 --- !u!114 &1308792112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9118,6 +9095,8 @@ MonoBehaviour:
   SkillTwo: {fileID: 0}
   SkillThree: {fileID: 0}
   SkillFour: {fileID: 0}
+  skillButtonPrefab: {fileID: 0}
+  buttonsParent: {fileID: 0}
 --- !u!1 &1382144178
 GameObject:
   m_ObjectHideFlags: 0
@@ -12149,7 +12128,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1225473445}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TurnGameSystemTransmitter, Assembly-CSharp
         m_MethodName: PlayerHasPlayed
         m_Mode: 6
@@ -15066,6 +15045,8 @@ MonoBehaviour:
   AP: 0
   CurrentAP: 0
   Crts: 0
+  HasPlayed: 0
+  IsDead: 0
   Skills: []
 --- !u!1001 &2119444762
 PrefabInstance:
