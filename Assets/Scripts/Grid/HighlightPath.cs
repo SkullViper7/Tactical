@@ -121,12 +121,14 @@ public class HighlightPath : MonoBehaviour
                             {
                                 _tiles[i].TileMeshRenderer.material = _badHighlightMat;
                                 _tiles[i].IsReachable = false;
+                                PlayerManager.Instance.AsRange = false;
                             }
 
                             else
                             {
                                 _tiles[i].TileMeshRenderer.material = _goodHighlightMat;
                                 _tiles[i].IsReachable = true;
+                                PlayerManager.Instance.AsRange = true;
                             }
                         }
                     }
