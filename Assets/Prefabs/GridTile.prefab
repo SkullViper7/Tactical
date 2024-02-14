@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 723368480779102469}
   - component: {fileID: 3851003309741199340}
   - component: {fileID: 1506622938533338957}
-  - component: {fileID: 4353922812045070580}
-  - component: {fileID: 8007007287715411565}
   m_Layer: 6
   m_Name: Corners
   m_TagString: Untagged
@@ -3442,43 +3440,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3686481432991873018}
   m_Mesh: {fileID: 0}
---- !u!64 &4353922812045070580
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3686481432991873018}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
---- !u!114 &8007007287715411565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3686481432991873018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fca4b45ef140a54d8a5aea9b48e5d43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GridPosition: {x: 0, y: 0}
-  IsReachable: 0
-  TileMeshRenderer: {fileID: 0}
 --- !u!1 &8168492927166838425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3600,4 +3561,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GridPosition: {x: 0, y: 0}
   IsReachable: 0
-  TileMeshRenderer: {fileID: 0}
+  TileMeshRenderer: {fileID: 3851003309741199340}
