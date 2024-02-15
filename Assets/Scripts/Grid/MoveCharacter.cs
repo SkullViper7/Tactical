@@ -43,7 +43,11 @@ public class MoveCharacter : MonoBehaviour
                     if (_highlightPath.CanClick)
                     {
                         // Move the target character using the PlayerMovement component and the highlighted path
-                        PlayerManager.Instance.HmnGrid.GetComponent<PlayerMovement>().Move(_highlightPath.Path);
+                        PlayerManager.Instance.HmnMove.Move(_highlightPath.Path);
+
+                        // Update the animation of the character to Run
+                        AnimationManager.Instance.UpdateAnimState(PlayerManager.Instance.HmnGrid.GetComponentInChildren<Animator>(), 4);
+
                         // Disable the highlights after the movement
                         _highlightPath.DisableHighights();
                     }
