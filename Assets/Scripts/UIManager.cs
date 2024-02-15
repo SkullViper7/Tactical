@@ -98,4 +98,18 @@ public class UIManager : MonoBehaviour
             Object.Destroy(buttonsParent.transform.GetChild(i).gameObject);
         }
     }
+
+    public void EndCurrentPlayerStateButton()
+    {
+        if(PlayerManager.Instance.IsMovingState)
+        {
+            PlayerManager.Instance.SetCanMove(false);
+            CreateSkillButtons();
+        }
+        else
+        {
+            DestroyButton();
+            PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
+        }
+    }
 }

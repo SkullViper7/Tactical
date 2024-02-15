@@ -17,6 +17,7 @@ public class MonsterTurnGameState : BaseGameState
             }
         }
 
+        Debug.Log("Hey 2");
         StartCoroutine(MonstersArePlaying());
     }
 
@@ -33,6 +34,7 @@ public class MonsterTurnGameState : BaseGameState
 
     public IEnumerator MonstersArePlaying()
     {
+        Debug.Log("Hey");
         for (int i = 0; i < MonstersManager.Instance.ListMonster.Count; i++)
         {
             if (!MonstersManager.Instance.ListMonster[i].Monsters.IsDead)
