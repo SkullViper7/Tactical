@@ -6,7 +6,7 @@ using UnityEngine;
 public class MonstersManager : MonoBehaviour
 {
     [SerializeField]
-    public MonstersMain[] ListMonster;
+    public List<MonstersMain> ListMonster = new List<MonstersMain>();
     public MonstersMain CurrentMonsterMain;
 
     private static MonstersManager _instance = null;
@@ -30,6 +30,14 @@ public class MonstersManager : MonoBehaviour
         }
         //
 
-        ListMonster = GameObject.FindObjectsOfType<MonstersMain>();
+        MonstersMain[] _allGameObjectMonsters = GameObject.FindObjectsOfType<MonstersMain>();
+
+        foreach (MonstersMain _monsters in _allGameObjectMonsters)
+        {
+            if (_monsters.GetComponent<MonstersMain>() != null)
+            {
+                ListMonster.Add(_monsters);
+            }
+        }
     }
 }
