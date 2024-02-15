@@ -28,7 +28,7 @@ public class MoveCharacter : MonoBehaviour
     public void OnClick(InputAction.CallbackContext context)
     {
         // Check if the context for the input started
-        if (context.started)
+        if (context.started && PlayerManager.Instance.IsMovingState)
         {
             if (PlayerManager.Instance.CanMove)
             {
@@ -44,6 +44,7 @@ public class MoveCharacter : MonoBehaviour
                     {
                         // Move the target character using the PlayerMovement component and the highlighted path
                         PlayerManager.Instance.HmnMove.Move(_highlightPath.Path);
+                        PlayerManager.Instance.HmnPlay.CurrentMP -= _highlightPath.Path.Count;
 
                         // Update the animation of the character to Run
                         AnimationManager.Instance.UpdateAnimState(PlayerManager.Instance.HmnGrid.GetComponentInChildren<Animator>(), 4);
@@ -53,7 +54,6 @@ public class MoveCharacter : MonoBehaviour
                     }
                 }
 
-                PlayerManager.Instance.CanMove = false;
             }
         }
     }
