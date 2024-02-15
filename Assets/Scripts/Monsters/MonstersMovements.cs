@@ -79,19 +79,20 @@ public class MonstersMovements : MonoBehaviour
             {
                 _pathWorldPositions.RemoveAt(0);
                 _monstersMain.Monsters.MonsterPM--;
-                CanAttack = false;
                 AnimationManager.Instance.UpdateAnimState(gameObject.GetComponentInChildren<Animator>(), 0);
             }
 
-            if (Vector3.Distance(transform.position, _human.transform.position) < 2f && _monstersMain.Monsters.MonsterPA > 0)
+            if (Vector3.Distance(transform.position, _human.transform.position) < 2f && _monstersMain.Monsters.MonsterPA > 0 && CanAttack)
             {
                 _monstersMain.MonsterAttack.UseAttack(_monstersMain.Monsters, _human);
+                CanAttack = false;
                 HasTurnFinished(true);
             }
         }
         else
         {
             Debug.Log("The monster lacks MP or is not allowed to move");
+            HasTurnFinished(true);
             CanMove = false;
             return;
         }
@@ -104,31 +105,30 @@ public class MonstersMovements : MonoBehaviour
     {
         MonstersManager.Instance.CurrentMonsterMain = this._monstersMain;
 
-        GameObject[] joueurs = GameObject.FindGameObjectsWithTag("Player");
         _path = new List<PathNode>();
 
         List<PathNode> _currentPath = new List<PathNode>();
 
-        foreach (GameObject joueur in joueurs)
+        for (int i = 0; i < PlayerManager.Instance.AllHmn.Count; i++)
         {
             _currentPath.Clear();
 
-            GridObject _gridObjectPlayerTempo = joueur.GetComponent<GridObject>();
+            Human tempHuman = PlayerManager.Instance.AllHmn[i];
+            GridObject _gridObjectPlayerTempo = PlayerManager.Instance.AllHmn[i].gameObject.GetComponent<GridObject>();
             _currentPath = _pathFindingScript.FindPath(_gridObjectMonster.PositionOnGrid.x, _gridObjectMonster.PositionOnGrid.y, _gridObjectPlayerTempo.PositionOnGrid.x, _gridObjectPlayerTempo.PositionOnGrid.y);
-            Debug.Log(_currentPath.Count);
 
             if (_path.Count == 0)
             {
                 _path = _currentPath;
-                _human = joueur.GetComponent<Human>();
-                _gridObjectPlayer = joueur.GetComponent<GridObject>();
+                _human = tempHuman;
+                _gridObjectPlayer = _gridObjectPlayerTempo;
             }
 
             if (_currentPath.Count < _path.Count)
             {
                 _path = _currentPath;
-                _human = joueur.GetComponent<Human>();
-                _gridObjectPlayer = joueur.GetComponent<GridObject>();
+                _human = tempHuman;
+                _gridObjectPlayer = _gridObjectPlayerTempo;
             }
         }
 

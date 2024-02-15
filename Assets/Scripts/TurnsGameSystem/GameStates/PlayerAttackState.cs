@@ -47,7 +47,7 @@ public class PlayerAttackState : BaseGameState
                 }
 
                 // Checks whether all monsters are still alive or not, if it's the case, announce that the player have won
-                if (monstersDead == MonstersManager.Instance.ListMonster.Count) {
+                if (monstersDead >= MonstersManager.Instance.ListMonster.Count) {
                     _turn.SwitchState(_turn.PlWonGmState);
                 }
             }

@@ -43,8 +43,8 @@ public class Human : MonoBehaviour
     /// </summary>
     public void NewTurnResetAction()
     {
-        MP = CurrentMP;
-        AP = CurrentAP;
+        CurrentMP = MP;
+        CurrentAP = AP;
         HasPlayed = false;
     }
 
