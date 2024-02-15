@@ -32,9 +32,13 @@ public class MonsterAttack : MonoBehaviour
             // Apply damage to target
             target.CurrentHP -= damage;
 
+            AnimationManager.Instance.SetTrigger(user.GetComponentInChildren<Animator>(), "Attack");
+            AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Hurt");
+
             // Apply death if the target have 0HP
             if (target.CurrentHP <= 0)
             {
+                AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Death");
                 target.IsDead = true;
                 PlayerManager.AllHmn.Remove(target);
             }

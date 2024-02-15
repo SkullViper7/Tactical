@@ -1694,7 +1694,8 @@ MonoBehaviour:
     m_Bits: 64
   _targetGrid: {fileID: 1743990256}
   _baseMat: {fileID: 2100000, guid: cb056af283dedb743a3df2f3fcce36bd, type: 2}
-  _goodHighlightMat: {fileID: 2100000, guid: 760f1870d1d1a1346be09fc4faef967f, type: 2}
+  _goodMoveHighlightMat: {fileID: 0}
+  _goodAttackHighlightMat: {fileID: 0}
   _badHighlightMat: {fileID: 2100000, guid: 96ac9fbd47816f54a9f9e64af5182805, type: 2}
   CanClick: 1
 --- !u!114 &330585552
@@ -6102,6 +6103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808ccc437531f934698dccf51c4d903b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MonstersManager: {fileID: 0}
 --- !u!1001 &1246353024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6607,7 +6609,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321085595}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79e835da469c92c45b92d411d974c741, type: 3}
   m_Name: 

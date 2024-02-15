@@ -100,10 +100,13 @@ public class BattleManager : MonoBehaviour
 
             int damage = CalculateDamage(skill.SkPwr, user.Atk, target.Monsters.MonsterDefence);
 
+            AnimationManager.Instance.SetTrigger(user.GetComponentInChildren<Animator>(), "Attack");
+            AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Hurt");
             target.Monsters.MonsterPV -= damage;
 
             if (target.Monsters.MonsterPV <= 0)
             {
+                AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Death");
                 target.Monsters.IsDead = true;
                 MonstersManager.ListMonster.Remove(target);
             }
@@ -143,6 +146,7 @@ public class BattleManager : MonoBehaviour
             Debug.Log(user.name + " heals " + target.gameObject.name + " for " + heal);
             UIManager.Instance.DestroyButton();
             PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
+            AnimationManager.Instance.SetTrigger(user.GetComponentInChildren<Animator>(), "Attack");
         }
         else
         {
