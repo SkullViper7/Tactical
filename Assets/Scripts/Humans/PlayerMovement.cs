@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public bool IsMoving;
 
+    Animator _animator;
+
     private void Awake()
     {
         _gridObject = GetComponent<GridObject>();
@@ -33,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Set the y coordinate of the PositionOnGrid property of _gridObject to the y coordinate of the last node in the path
         _gridObject.PositionOnGrid.y = path[path.Count - 1].Pos_Y;
+
+        // Storing the animator component of the player
+        _animator = PlayerManager.Instance.HmnGrid.GetComponentInChildren<Animator>();
 
         StartCoroutine(MoveObject());
     }
@@ -55,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
                 IsMoving = false;
 
                 // Update animation state to Idle
-                AnimationManager.Instance.UpdateAnimState(PlayerManager.Instance.HmnGrid.GetComponentInChildren<Animator>(), 0);
+                AnimationManager.Instance.UpdateAnimState(_animator, 0);
             }
             else
             {
@@ -63,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
                 IsMoving = true;
 
                 // Update animation state to Run
-                AnimationManager.Instance.UpdateAnimState(PlayerManager.Instance.HmnGrid.GetComponentInChildren<Animator>(), 4);
+                AnimationManager.Instance.UpdateAnimState(_animator, 4);
             }
 
             yield return null;
