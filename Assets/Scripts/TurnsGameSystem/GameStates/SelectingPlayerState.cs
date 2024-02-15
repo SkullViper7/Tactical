@@ -21,7 +21,7 @@ public class SelectingPlayerState : BaseGameState
             _turn.SwitchState(_turn.PlMvState);
         }
         else {
-            PlayerManager.Instance.SetCanSelect(true);
+            PlayerManager.Instance.CanSelect = true;
         }
     }
 }
