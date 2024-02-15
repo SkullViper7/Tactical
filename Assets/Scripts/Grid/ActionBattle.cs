@@ -51,7 +51,7 @@ public class ActionBattle : MonoBehaviour
             if (Physics.Raycast(ray, out hit, float.MaxValue, _ennemiLayer)&& PlayerManager.Instance.AsRange == true)
             {
                 _targetMstr = hit.collider.gameObject.GetComponentInParent<MonstersMain>();
-                //BattleManager.Instance.PerformDamageOnTarget(_targetMstr);
+                BattleManager.Instance.PerformDamageOnTarget(_targetMstr);
                 PlayerManager.Instance.WillDamage = false;
             }
         }
