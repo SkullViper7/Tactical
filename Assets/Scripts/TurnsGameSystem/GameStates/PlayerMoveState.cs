@@ -9,6 +9,8 @@
         PlayerManager.Instance.CanMoveEvent += Notify;
 
         PlayerManager.Instance.CanFindPath = true;
+        PlayerManager.Instance.IsMovingState = true;
+        PlayerManager.Instance.CanMove = true;
     }
 
     public override void ExitState(TurnGameSystemController turnGameSystem)

@@ -7,6 +7,9 @@ public class MonsterAttack : MonoBehaviour
     [SerializeField]
     private int _attackCost = 2;
 
+    public PlayerManager PlayerManager;
+
+
     public void UseAttack(Monsters user, Human target)
     {
         // Make sure we have valid arguments
@@ -28,6 +31,13 @@ public class MonsterAttack : MonoBehaviour
 
             // Apply damage to target
             target.CurrentHP -= damage;
+
+            // Apply death if the target have 0HP
+            if (target.CurrentHP <= 0)
+            {
+                target.IsDead = true;
+                PlayerManager.AllHmn.Remove(target);
+            }
 
             // Display the damage or other effects here
             Debug.Log(user.name + " deals " + damage + " damage to " + target.name);

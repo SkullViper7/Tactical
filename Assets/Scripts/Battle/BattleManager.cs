@@ -2,8 +2,8 @@
 
 public class BattleManager : MonoBehaviour
 {
-    public SkillInfo currentSkill;
-
+    public SkillInfo CurrentSkill;
+    public MonstersManager MonstersManager;
     // Singleton
     private static BattleManager _instance = null;
 
@@ -34,7 +34,7 @@ public class BattleManager : MonoBehaviour
     public void PrepareAttack(SkillInfo skillInfo)
     {
         Human user = PlayerManager.Instance.HmnPlay;
-        currentSkill = skillInfo;
+        CurrentSkill = skillInfo;
         PlayerManager.Instance.WillDamage = true;
         PlayerManager.Instance.WillHeal = false;
     }
@@ -46,18 +46,18 @@ public class BattleManager : MonoBehaviour
     public void PrepareHeal(SkillInfo skillInfo)
     {
         Human user = PlayerManager.Instance.HmnPlay;
-        currentSkill = skillInfo;
+        CurrentSkill = skillInfo;
         PlayerManager.Instance.WillHeal = true;
         PlayerManager.Instance.WillDamage = false;
     }
 
-    public void PerformDamageOnTarget(Monsters target)
+    public void PerformDamageOnTarget(MonstersMain target)
 
     {
         // Fuction needed after target monster.
-        if (currentSkill != null && !currentSkill.SkisHealing)
+        if (CurrentSkill != null && !CurrentSkill.SkisHealing)
         {
-            UseSkill(target, currentSkill);
+            UseSkill(target, CurrentSkill);
         }
     }
 
@@ -66,10 +66,10 @@ public class BattleManager : MonoBehaviour
     {
 
         // Fuction needed after target human.
-        if (currentSkill != null && currentSkill.SkisHealing)
+        if (CurrentSkill != null && CurrentSkill.SkisHealing)
 
         {
-            UseHeal(target, currentSkill);
+            UseHeal(target, CurrentSkill);
         }
     }
 
@@ -79,7 +79,7 @@ public class BattleManager : MonoBehaviour
     /// <param name="target">Selected Monster.</param>
     /// <param name="skill">Selected Skill</param>
 
-    public void UseSkill(Monsters target, SkillInfo skill)
+    public void UseSkill(MonstersMain target, SkillInfo skill)
     {
         Human user = PlayerManager.Instance.HmnPlay;
         if (user == null || target == null || skill == null)
@@ -98,16 +98,19 @@ public class BattleManager : MonoBehaviour
 
             user.CurrentAP -= skill.SkAP;
 
-            int damage = CalculateDamage(skill.SkPwr, user.Atk, target.MonsterDefence);
+            int damage = CalculateDamage(skill.SkPwr, user.Atk, target.Monsters.MonsterDefence);
 
-            target.MonsterPV -= damage;
+            target.Monsters.MonsterPV -= damage;
 
-            if (target.MonsterPV <= 0)
+            if (target.Monsters.MonsterPV <= 0)
             {
-                target.IsDead = true;
+                target.Monsters.IsDead = true;
+                MonstersManager.ListMonster.Remove(target);
             }
+
+            UIManager.Instance.DestroyButton();
             PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
-            Debug.Log(user.name + " deals " + damage + " damage to " + target.MonsterName);
+            Debug.Log(user.name + " deals " + damage + " damage to " + target.Monsters.MonsterName);
 
         }
 
@@ -138,6 +141,7 @@ public class BattleManager : MonoBehaviour
             int heal = CalculateHeal(skill.SkPwr, user.Atk);
             target.HP += heal; // Assuming that increasing HP is correct for a heal.
             Debug.Log(user.name + " heals " + target.gameObject.name + " for " + heal);
+            UIManager.Instance.DestroyButton();
             PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
         }
         else

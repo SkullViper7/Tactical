@@ -6,7 +6,7 @@ public class ActionBattle : MonoBehaviour
     private PlayerInput _playerInput;
 
     private Human _targetHumn;
-    private Monsters _targetMstr;
+    private MonstersMain _targetMstr;
 
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] private LayerMask _ennemiLayer;
@@ -50,7 +50,7 @@ public class ActionBattle : MonoBehaviour
             // Cast a ray from the camera to find the objects hit by the ray within a maximum distance and with a the Terrain layer mask
             if (Physics.Raycast(ray, out hit, float.MaxValue, _ennemiLayer)&& PlayerManager.Instance.AsRange == true)
             {
-                _targetMstr = hit.collider.gameObject.GetComponentInParent<Monsters>();
+                _targetMstr = hit.collider.gameObject.GetComponentInParent<MonstersMain>();
                 BattleManager.Instance.PerformDamageOnTarget(_targetMstr);
                 PlayerManager.Instance.WillDamage = false;
             }

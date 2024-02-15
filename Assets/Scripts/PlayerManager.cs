@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -27,7 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool AsRange;
 
-    public Human[] AllHmn;
+    public List<Human> AllHmn = new List<Human>();
 
     // Singleton
     private static PlayerManager _instance = null;
@@ -54,7 +56,15 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        AllHmn = GameObject.FindObjectsOfType<Human>();
+        Human[] _allGameObjectHmn = GameObject.FindObjectsOfType<Human>();
+
+        foreach (Human _human in _allGameObjectHmn)
+        {
+            if (_human.GetComponent<Human>() != null)
+            {
+                AllHmn.Add(_human);
+            }
+        }
     }
 
     public void SetCanSelect(bool canSelected)
