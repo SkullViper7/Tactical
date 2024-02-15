@@ -8,6 +8,8 @@ public class SelectingPlayerState : BaseGameState
 
     public override void EnterState(TurnGameSystemController turnGameSystem) {
         _turn = turnGameSystem;
+        UIState.Instance.DisPlaySelectPhase();
+
         PlayerManager.Instance.SetCanSelect(true);
         PlayerManager.Instance.CanSelectEvent += Notify;
     }

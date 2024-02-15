@@ -8,6 +8,7 @@ public class PlayerAttackState : BaseGameState
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
         _turn = turnGameSystem;
+        UIState.Instance.DisplayAttackPhase();
         PlayerManager.Instance.CanFindPath = true;
         PlayerManager.Instance.HmnPlay.HumanHasPlayed += Notify;
     }

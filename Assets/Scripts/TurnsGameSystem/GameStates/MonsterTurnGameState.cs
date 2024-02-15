@@ -11,6 +11,7 @@ public class MonsterTurnGameState : BaseGameState
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
         _turn = turnGameSystem;
+        UIState.Instance.DisplayMonsterPhase();
         for (int i = 0; i < MonstersManager.Instance.ListMonster.Count; i++)
         {
             if (!MonstersManager.Instance.ListMonster[i].Monsters.IsDead)
