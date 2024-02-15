@@ -2193,7 +2193,8 @@ MonoBehaviour:
   AP: 0
   CurrentAP: 0
   Crts: 0
-  AsPlay: 0
+  HasPlayed: 0
+  IsDead: 0
   Skills: []
 --- !u!114 &413648543
 MonoBehaviour:
@@ -3330,7 +3331,8 @@ MonoBehaviour:
   AP: 0
   CurrentAP: 0
   Crts: 0
-  AsPlay: 0
+  HasPlayed: 0
+  IsDead: 0
   Skills: []
 --- !u!1001 &683564807
 PrefabInstance:
@@ -4857,7 +4859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae283181200fdd4a9f90959a7293475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listMonster: []
+  ListMonster: []
+  CurrentMonsterMain: {fileID: 0}
 --- !u!4 &1011760259
 Transform:
   m_ObjectHideFlags: 0
@@ -6074,11 +6077,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _targetGrid: {fileID: 1040629263}
-  _playerMovementScript: {fileID: 682440606}
   _baseMat: {fileID: 2100000, guid: cb056af283dedb743a3df2f3fcce36bd, type: 2}
   _goodHighlightMat: {fileID: 2100000, guid: 760f1870d1d1a1346be09fc4faef967f, type: 2}
   _badHighlightMat: {fileID: 2100000, guid: 96ac9fbd47816f54a9f9e64af5182805, type: 2}
-  CanMove: 1
+  CanClick: 1
 --- !u!114 &1286796912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6902,6 +6904,7 @@ GameObject:
   - component: {fileID: 1372904969}
   - component: {fileID: 1372904968}
   - component: {fileID: 1372904967}
+  - component: {fileID: 1372904972}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -6954,6 +6957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackCost: 2
+  PlayerManager: {fileID: 0}
 --- !u!114 &1372904970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6992,6 +6996,21 @@ Transform:
   - {fileID: 1483954552}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1372904972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372904966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a6a5c5ff4c53048bee55f6b631edf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Monsters: {fileID: 0}
+  MonsterAttack: {fileID: 0}
+  MonstersMovements: {fileID: 0}
 --- !u!1001 &1383810845
 PrefabInstance:
   m_ObjectHideFlags: 0
