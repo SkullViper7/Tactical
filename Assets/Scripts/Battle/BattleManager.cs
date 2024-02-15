@@ -100,7 +100,7 @@ public class BattleManager : MonoBehaviour
 
             int damage = CalculateDamage(skill.SkPwr, user.Atk, target.Monsters.MonsterDefence);
 
-            AnimationManager.Instance.UpdateAnimState(user.GetComponentInChildren<Animator>(), 1);
+            AnimationManager.Instance.SetTrigger(user.GetComponentInChildren<Animator>(), "Attack");
 
             target.Monsters.MonsterPV -= damage;
 

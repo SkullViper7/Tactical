@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
                 IsMoving = true;
 
                 // Update animation state to Run
-                AnimationManager.Instance.UpdateAnimState(_animator, 4);
+                AnimationManager.Instance.UpdateAnimState(_animator, 1);
             }
 
             yield return null;

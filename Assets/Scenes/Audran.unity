@@ -6987,9 +6987,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f01ad49413cf8240997bf52fdd39748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsMovingState: 0
+  IsMovingState: 1
   CanSelect: 0
-  CanMove: 0
+  CanMove: 1
   CanFight: 0
   CanFindPath: 1
   WillHeal: 0

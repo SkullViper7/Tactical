@@ -23,12 +23,23 @@ public class AnimationManager : MonoBehaviour
 
     /// <summary>
     /// Update the animation state for the target animator.
-    /// 0 for Idle, 1 for Attack (Heal for healer), 2 for Hurt, 3 for Death and 4 for Run animation.
+    /// 0 for Idle, 1 for Run.
     /// </summary>
     /// <param name="targetAnimator"></param>
     /// <param name="state"></param>
     public void UpdateAnimState(Animator targetAnimator, int state)
     {
         targetAnimator.SetInteger("State", state);
+    }
+
+    /// <summary>
+    /// Set the trigger for the target animator.
+    /// Hurt, Death or Attack.
+    /// </summary>
+    /// <param name="targetAnimator"></param>
+    /// <param name="trigger"></param>
+    public void SetTrigger(Animator targetAnimator, string trigger)
+    {
+        targetAnimator.SetTrigger(trigger);
     }
 }
