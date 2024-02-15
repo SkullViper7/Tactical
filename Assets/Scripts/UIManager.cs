@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -82,6 +83,14 @@ public class UIManager : MonoBehaviour
 
             // Assuming SkillButton's Setup method takes a SkillInfo object
             skillButton.Setup(skillInfo);
+        }
+    }
+
+    public void DestroyButton()
+    {
+        for (var i = buttonsParent.transform.childCount - 1; i >= 0; i--)
+        {
+            Object.Destroy(buttonsParent.transform.GetChild(i).gameObject);
         }
     }
 }
