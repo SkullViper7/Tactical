@@ -106,6 +106,7 @@ public class BattleManager : MonoBehaviour
             {
                 target.IsDead = true;
             }
+            UIManager.Instance.DestroyButton();
             PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
             Debug.Log(user.name + " deals " + damage + " damage to " + target.MonsterName);
 
@@ -138,6 +139,7 @@ public class BattleManager : MonoBehaviour
             int heal = CalculateHeal(skill.SkPwr, user.Atk);
             target.HP += heal; // Assuming that increasing HP is correct for a heal.
             Debug.Log(user.name + " heals " + target.gameObject.name + " for " + heal);
+            UIManager.Instance.DestroyButton();
             PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
         }
         else

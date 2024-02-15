@@ -21,7 +21,9 @@ public class HighlightPath : MonoBehaviour
     [SerializeField]
     Material _baseMat;
     [SerializeField]
-    Material _goodHighlightMat;
+    Material _goodMoveHighlightMat;
+    [SerializeField]
+    Material _goodAttackHighlightMat;
     [SerializeField]
     Material _badHighlightMat;
 
@@ -111,7 +113,7 @@ public class HighlightPath : MonoBehaviour
 
                             else
                             {
-                                _tiles[i].TileMeshRenderer.material = _goodHighlightMat;
+                                _tiles[i].TileMeshRenderer.material = _goodMoveHighlightMat;
                                 _tiles[i].IsReachable = true;
                             }
                         }
@@ -126,7 +128,7 @@ public class HighlightPath : MonoBehaviour
 
                             else
                             {
-                                _tiles[i].TileMeshRenderer.material = _goodHighlightMat;
+                                _tiles[i].TileMeshRenderer.material = _goodAttackHighlightMat;
                                 _tiles[i].IsReachable = true;
                                 PlayerManager.Instance.AsRange = true;
                             }
