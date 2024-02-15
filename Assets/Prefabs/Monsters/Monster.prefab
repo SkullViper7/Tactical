@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6f5756cb0d13a47b287f06c14a85e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _footstepSounds:
+  _footsteps:
   - {fileID: 8300000, guid: 9e68ea1ebd76aa44c8cfa5beb9850830, type: 3}
   - {fileID: 8300000, guid: 1deb201b8bf8f89479323a74e421150b, type: 3}
   - {fileID: 8300000, guid: 7c518e8469a403b4c981664ecb28a79a, type: 3}
@@ -430,6 +430,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6da235e2573048249bcbe608f984ff48, type: 3}
   - {fileID: 8300000, guid: fdc05ea2699023143ba7e93533cc5a0b, type: 3}
   - {fileID: 8300000, guid: f26cf9ded47cf0140957490a16f85acc, type: 3}
+  _attack: {fileID: 8300000, guid: 7079405761a817443a12f195cb4ce6be, type: 3}
+  _hurt: {fileID: 8300000, guid: 8eb23d2713e2b02499bc0ecc6b001f59, type: 3}
+  _death: {fileID: 8300000, guid: d2527b640f3db3649945f270be30ac9f, type: 3}
 --- !u!82 &3545987049667585180
 AudioSource:
   m_ObjectHideFlags: 0
