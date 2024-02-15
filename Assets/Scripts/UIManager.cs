@@ -10,10 +10,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI PlayerMP;
     [SerializeField] TextMeshProUGUI PlayerAP;
 
-    [SerializeField] Button SkillOne;
-    [SerializeField] Button SkillTwo;
-    [SerializeField] Button SkillThree;
-    [SerializeField] Button SkillFour;
+    // space between button
+    [SerializeField] private float buttonSpacing = 100f;
 
     // In a component that manages your user interface.
 
@@ -60,6 +58,7 @@ public class UIManager : MonoBehaviour
     public void CreateSkillButtons()
     {
         Human user = PlayerManager.Instance.HmnPlay;
+        int index = 0;
 
         // Assumer que l'utilisateur a un composant SkillsAction attaché
         SkillsAction skillsAction = user.GetComponent<SkillsAction>();
@@ -83,6 +82,12 @@ public class UIManager : MonoBehaviour
 
             // Assuming SkillButton's Setup method takes a SkillInfo object
             skillButton.Setup(skillInfo);
+
+            RectTransform rectTransform = buttonObj.GetComponent<RectTransform>();
+
+            rectTransform.anchoredPosition = new Vector2(index * buttonSpacing, rectTransform.anchoredPosition.y);
+
+            index++;
         }
     }
 

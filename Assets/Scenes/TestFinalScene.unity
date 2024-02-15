@@ -7058,6 +7058,7 @@ GameObject:
   - component: {fileID: 951315035}
   - component: {fileID: 951315034}
   - component: {fileID: 951315042}
+  - component: {fileID: 951315043}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7318,6 +7319,18 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &951315043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951315033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e835da469c92c45b92d411d974c741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &976888208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8085,7 +8098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0.000061035156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1035771515
@@ -8316,7 +8329,7 @@ MonoBehaviour:
   WillHeal: 0
   WillDamage: 0
   _actCam: {fileID: 951315040}
-  HmnPlay: {fileID: 0}
+  HmnPlay: {fileID: 1404789007}
   SAPlayer: {fileID: 0}
   HmnGrid: {fileID: 0}
   HmnMove: {fileID: 0}
@@ -10012,8 +10025,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240864762}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.0224023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10022,7 +10035,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -6.359173, y: -6.519264}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1001 &1256134923
@@ -11132,6 +11145,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390074872}
   m_CullTransparentMesh: 1
+--- !u!114 &1404789007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3471658909724854646, guid: addb8da8732185f41808c300eeea23fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 2028677523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddd4a5659586994894c2bf7765c207e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1415661368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16738,6 +16763,11 @@ PrefabInstance:
       objectReference: {fileID: 1980179193}
     - target: {fileID: 1303990347469564034, guid: c8b2e399174eeef4a97c30f488d92fee,
         type: 3}
+      propertyPath: buttonSpacing
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303990347469564034, guid: c8b2e399174eeef4a97c30f488d92fee,
+        type: 3}
       propertyPath: buttonsParent
       value: 
       objectReference: {fileID: 1035771514}
@@ -16745,7 +16775,8 @@ PrefabInstance:
         type: 3}
       propertyPath: skillButtonPrefab
       value: 
-      objectReference: {fileID: 1980179190}
+      objectReference: {fileID: 4524529235703110370, guid: ce520a6b5f7d89446a7f05943613f108,
+        type: 3}
     - target: {fileID: 3743243340241274540, guid: c8b2e399174eeef4a97c30f488d92fee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17087,6 +17118,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2097666503354973078, guid: b001615977e21f04dbe7523ec014a469,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2285966959318581065, guid: b001615977e21f04dbe7523ec014a469,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17157,12 +17193,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b001615977e21f04dbe7523ec014a469, type: 3}
---- !u!1 &1980179190 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8132101733981789562, guid: b001615977e21f04dbe7523ec014a469,
-    type: 3}
-  m_PrefabInstance: {fileID: 1980179189}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1980179191 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8745446124247909538, guid: b001615977e21f04dbe7523ec014a469,
@@ -18151,7 +18181,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
