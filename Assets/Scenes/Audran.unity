@@ -4678,6 +4678,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3851003309741199340, guid: d60c958c899749d4897ab840b15a98e8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c47d2e9f22b04c4f901b466726bb71b, type: 2}
     - target: {fileID: 4353922812045070580, guid: d60c958c899749d4897ab840b15a98e8,
         type: 3}
       propertyPath: m_Mesh
@@ -7763,7 +7768,10 @@ MonoBehaviour:
     m_Bits: 64
   _targetGrid: {fileID: 1858009856}
   _baseMat: {fileID: 2100000, guid: 0c47d2e9f22b04c4f901b466726bb71b, type: 2}
-  _goodHighlightMat: {fileID: 2100000, guid: 5cd4c71acbe798f44acf53086c6a87b2, type: 2}
+  _goodMoveHighlightMat: {fileID: 2100000, guid: 5cd4c71acbe798f44acf53086c6a87b2,
+    type: 2}
+  _goodAttackHighlightMat: {fileID: 2100000, guid: fcc4debd2df43f0409f212a72315d899,
+    type: 2}
   _badHighlightMat: {fileID: 2100000, guid: 44a0660423cda194a9784a7563e97f88, type: 2}
   CanClick: 1
 --- !u!114 &951315036
@@ -9036,7 +9044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsMovingState: 1
   CanSelect: 0
-  CanMove: 1
+  CanMove: 0
   CanFight: 0
   CanFindPath: 1
   WillHeal: 0
