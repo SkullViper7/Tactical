@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class MonsterTurnGameState : BaseGameState
 {
@@ -14,11 +16,11 @@ public class MonsterTurnGameState : BaseGameState
             if (!MonstersManager.Instance.ListMonster[i].Monsters.IsDead)
             {
                 MonstersManager.Instance.ListMonster[i].Monsters.ResetPAandPM();
+                MonstersManager.Instance.ListMonster[i].MonstersMovements.CanAttack = true;
             }
         }
 
-        Debug.Log("Hey 2");
-        StartCoroutine(MonstersArePlaying());
+        MonstersArePlaying();
     }
 
     public override void ExitState(TurnGameSystemController turnGameSystem)
@@ -28,31 +30,21 @@ public class MonsterTurnGameState : BaseGameState
             for (int i = 0; i < PlayerManager.Instance.AllHmn.Count; i++)
             {
                 PlayerManager.Instance.AllHmn[i].NewTurnResetAction();
+                Debug.Log(PlayerManager.Instance.AllHmn[i].CurrentMP);
             }
         }
     }
 
-    public IEnumerator MonstersArePlaying()
+    public async void MonstersArePlaying()
     {
-        Debug.Log("Hey");
         for (int i = 0; i < MonstersManager.Instance.ListMonster.Count; i++)
         {
             if (!MonstersManager.Instance.ListMonster[i].Monsters.IsDead)
             {
-                int antiWhile = 0;
                 MonstersManager.Instance.ListMonster[i].MonstersMovements.SearchPlayerNearby();
                 MonstersManager.Instance.CurrentMonsterMain.MonstersMovements.TurnFinishedEvent += Notify;
-                while (!MonstersManager.Instance.ListMonster[i].MonstersMovements.TurnFinish || antiWhile <= 3600) {
-                    yield return null;
-                    antiWhile++;
-                }
 
-                if (antiWhile >= 3600)
-                {
-                    Debug.Log("Boucle while terminée");
-                }
-
-                MonstersManager.Instance.CurrentMonsterMain.MonstersMovements.TurnFinishedEvent -= Notify;
+                await UniTask.WaitUntil(() => MonstersManager.Instance.CurrentMonsterMain.MonstersMovements.TurnFinish == true);
             }
         }
     }
@@ -68,6 +60,7 @@ public class MonsterTurnGameState : BaseGameState
                     MonstersManager.Instance.ListMonster[i].Monsters.IsDead) {
 
                     monstersWhoHavePlayed++;
+                    Debug.Log($"{monstersWhoHavePlayed}-> Après ++");
                 }
             }
 
@@ -96,6 +89,8 @@ public class MonsterTurnGameState : BaseGameState
                     _turn.SwitchState(_turn.PlLostGmState);
                 }
             }
+
+            MonstersManager.Instance.CurrentMonsterMain.MonstersMovements.TurnFinishedEvent -= Notify;
         }
     }
 }
