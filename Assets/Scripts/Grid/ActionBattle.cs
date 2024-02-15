@@ -33,7 +33,7 @@ public class ActionBattle : MonoBehaviour
             RaycastHit hit;
 
             // Cast a ray from the camera to find the objects hit by the ray within a maximum distance and with a the Terrain layer mask
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _playerLayer))
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _playerLayer) && PlayerManager.Instance.AsRange == true)
             {
                 _targetHumn = hit.collider.gameObject.GetComponentInParent<Human>();
                 BattleManager.Instance.PerformHealOnTarget(_targetHumn);
@@ -48,7 +48,7 @@ public class ActionBattle : MonoBehaviour
             RaycastHit hit;
 
             // Cast a ray from the camera to find the objects hit by the ray within a maximum distance and with a the Terrain layer mask
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _ennemiLayer))
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _ennemiLayer)&& PlayerManager.Instance.AsRange == true)
             {
                 _targetMstr = hit.collider.gameObject.GetComponentInParent<Monsters>();
                 BattleManager.Instance.PerformDamageOnTarget(_targetMstr);
