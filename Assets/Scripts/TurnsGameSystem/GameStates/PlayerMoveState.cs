@@ -16,6 +16,8 @@
     public override void ExitState(TurnGameSystemController turnGameSystem)
     {
         PlayerManager.Instance.CanFindPath = false;
+        PlayerManager.Instance.IsMovingState = false;
+        PlayerManager.Instance.CanMove = false;
         PlayerManager.Instance.CanMoveEvent -= Notify;
     }
 
