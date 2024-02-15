@@ -21,6 +21,7 @@ public class TurnGameSystemController : MonoBehaviour
         PlLostGmState = new PlayerLostGameState();
         PlWonGmState = new PlayerWonGameState();
 
+        _currentGameState = new SelectingPlayerState();
         _currentGameState.EnterState(this);
     }
 
