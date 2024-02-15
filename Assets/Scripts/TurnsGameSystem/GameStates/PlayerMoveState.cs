@@ -5,6 +5,7 @@
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
         _turn = turnGameSystem;
+        UIState.Instance.DisplayMovePhase();
         PlayerManager.Instance.CanMoveEvent += Notify;
         PlayerManager.Instance.SetCanMove(true);
 

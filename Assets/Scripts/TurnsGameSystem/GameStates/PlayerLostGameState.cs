@@ -1,15 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerLostGameState : BaseGameState
 {
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
-        SceneManager.LoadScene("GameLost");
+        GoToLoseScene();
     }
 
     public override void ExitState(TurnGameSystemController turnGameSystem)
     {
 
+    }
+
+    public async void GoToLoseScene()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(4), ignoreTimeScale: false);
+        SceneManager.LoadScene("GameLost");
     }
 }
