@@ -50,9 +50,10 @@ public class MonstersMovements : MonoBehaviour
 
         _pathWorldPositions = _gridObjectMonster.TargetGrid.ConvertPathNodesToWorldPositions(path);
 
-        _gridObjectMonster.PositionOnGrid.x = path[path.Count - 1].Pos_X;
-        _gridObjectMonster.PositionOnGrid.y = path[path.Count - 1].Pos_Y;
+        int targetNodeIndex = Mathf.Min(_monstersMain.Monsters.MonsterPM - 1, path.Count - 1);
 
+        _gridObjectMonster.PositionOnGrid.x = path[targetNodeIndex].Pos_X;
+        _gridObjectMonster.PositionOnGrid.y = path[targetNodeIndex].Pos_Y;
         TravellingMonster();
     }
 
@@ -85,11 +86,10 @@ public class MonstersMovements : MonoBehaviour
                 _monstersMain.MonsterAttack.UseAttack(_monstersMain.Monsters, _human);
                 HasTurnFinished(true);
             }
-
         }
         else
         {
-            Debug.LogError("The monster lacks MP or is not allowed to move");
+            Debug.Log("The monster lacks MP or is not allowed to move");
             CanMove = false;
             return;
         }
@@ -104,6 +104,7 @@ public class MonstersMovements : MonoBehaviour
 
         GameObject[] joueurs = GameObject.FindGameObjectsWithTag("Player");
         _path = new List<PathNode>();
+
         List<PathNode> _currentPath = new List<PathNode>();
 
         foreach (GameObject joueur in joueurs)
@@ -112,6 +113,7 @@ public class MonstersMovements : MonoBehaviour
 
             GridObject _gridObjectPlayerTempo = joueur.GetComponent<GridObject>();
             _currentPath = _pathFindingScript.FindPath(_gridObjectMonster.PositionOnGrid.x, _gridObjectMonster.PositionOnGrid.y, _gridObjectPlayerTempo.PositionOnGrid.x, _gridObjectPlayerTempo.PositionOnGrid.y);
+            Debug.Log(_currentPath.Count);
 
             if (_path.Count == 0)
             {

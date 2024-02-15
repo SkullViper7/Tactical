@@ -5259,6 +5259,64 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1120733461}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1130297590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130297592}
+  - component: {fileID: 1130297591}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1130297591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130297590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f01ad49413cf8240997bf52fdd39748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsMovingState: 0
+  CanSelect: 0
+  CanMove: 0
+  CanFight: 0
+  CanFindPath: 0
+  WillHeal: 0
+  WillDamage: 0
+  _actCam: {fileID: 0}
+  HmnPlay: {fileID: 682440609}
+  SAPlayer: {fileID: 0}
+  HmnGrid: {fileID: 682440607}
+  HmnMove: {fileID: 682440606}
+  AsRange: 0
+  AllHmn: []
+--- !u!4 &1130297592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130297590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.303615, y: 4.7006016, z: 8.382733}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1135997431
 GameObject:
   m_ObjectHideFlags: 0
@@ -6078,7 +6136,8 @@ MonoBehaviour:
     m_Bits: 64
   _targetGrid: {fileID: 1040629263}
   _baseMat: {fileID: 2100000, guid: cb056af283dedb743a3df2f3fcce36bd, type: 2}
-  _goodHighlightMat: {fileID: 2100000, guid: 760f1870d1d1a1346be09fc4faef967f, type: 2}
+  _goodMoveHighlightMat: {fileID: 0}
+  _goodAttackHighlightMat: {fileID: 0}
   _badHighlightMat: {fileID: 2100000, guid: 96ac9fbd47816f54a9f9e64af5182805, type: 2}
   CanClick: 1
 --- !u!114 &1286796912
@@ -6957,7 +7016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackCost: 2
-  PlayerManager: {fileID: 0}
+  PlayerManager: {fileID: 1130297591}
 --- !u!114 &1372904970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9175,9 +9234,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1372904968}
-        m_TargetAssemblyTypeName: MonstersMovements, Assembly-CSharp
-        m_MethodName: AddPM
+      - m_Target: {fileID: 1372904970}
+        m_TargetAssemblyTypeName: Monsters, Assembly-CSharp
+        m_MethodName: ResetPAandPM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11462,3 +11521,4 @@ SceneRoots:
   - {fileID: 415538516}
   - {fileID: 2111961658}
   - {fileID: 1011760259}
+  - {fileID: 1130297592}
