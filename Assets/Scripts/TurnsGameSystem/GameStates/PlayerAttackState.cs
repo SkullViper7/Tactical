@@ -23,7 +23,7 @@ public class PlayerAttackState : BaseGameState
         if (humanHasPlayed) {
             // Counts number of humans who have played
             int playerWhoHasPlayed = 0;
-            for (int i = 0; i < PlayerManager.Instance.AllHmn.Length; i++)
+            for (int i = 0; i < PlayerManager.Instance.AllHmn.Count; i++)
             {
                 if (PlayerManager.Instance.AllHmn[i].HasPlayed || PlayerManager.Instance.AllHmn[i].IsDead)
                 {
@@ -32,9 +32,9 @@ public class PlayerAttackState : BaseGameState
             }
 
             // Checks whether all humans have played or not
-            if (playerWhoHasPlayed >= PlayerManager.Instance.AllHmn.Length) {
+            if (playerWhoHasPlayed >= PlayerManager.Instance.AllHmn.Count) {
                 int monstersDead = 0;
-                for (int i = 0; i < MonstersManager.Instance.ListMonster.Length; i++) {
+                for (int i = 0; i < MonstersManager.Instance.ListMonster.Count; i++) {
 
                     // Checks whether a monster is still alive or not
                     if (!MonstersManager.Instance.ListMonster[i].Monsters.IsDead) {
@@ -47,7 +47,7 @@ public class PlayerAttackState : BaseGameState
                 }
 
                 // Checks whether all monsters are still alive or not, if it's the case, announce that the player have won
-                if (monstersDead == MonstersManager.Instance.ListMonster.Length) {
+                if (monstersDead == MonstersManager.Instance.ListMonster.Count) {
                     _turn.SwitchState(_turn.PlWonGmState);
                 }
             }
