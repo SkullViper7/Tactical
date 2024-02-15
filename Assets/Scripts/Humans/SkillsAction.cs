@@ -9,8 +9,7 @@ public class SkillsAction : MonoBehaviour
 
     public List<SkillInfo> SkillInfos = new List<SkillInfo>();
 
-    private void Start()
-
+    private void Awake()
     {
         Hmn = GetComponent<Human>();
         LoadSkills();
