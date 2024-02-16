@@ -22,3 +22,4 @@ Monster die sfx - Jigga
 Monster Hurt sfx - Sound Effects
 Monster Growl - BintanBanar
 Ground Smash sfx - catasorus anims
+Stylized rock - Elorian

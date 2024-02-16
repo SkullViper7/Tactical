@@ -48,6 +48,8 @@ public class MonstersMovements : MonoBehaviour
     /// <param name="path"></param>
     void Move(List<PathNode> path)
     {
+        _targetGrid.CheckPassableTerrain();
+
         CanMove = true;
 
         _pathWorldPositions = _gridObjectMonster.TargetGrid.ConvertPathNodesToWorldPositions(path);

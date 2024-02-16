@@ -35,6 +35,7 @@ public class UIState : MonoBehaviour
     {
         _playerUI.SetActive(true);
         _phaseText.text = "Select Player Phase";
+        _grid.CheckPassableTerrain();
     }
 
     public void DisplayMovePhase()

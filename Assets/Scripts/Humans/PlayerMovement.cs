@@ -52,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
     {
         while (_pathWorldPositions.Count > 0)
         {
+            IsMoving = true;
+            PlayerManager.Instance.CanFindPath = false;
+
             // Calculation of the direction to the next target position.
             Vector3 targetDirection = _pathWorldPositions[0] - transform.position;
 
@@ -79,21 +82,20 @@ public class PlayerMovement : MonoBehaviour
             {
                 // Remove the first point from _pathWorldPositions and set IsMoving to false
                 _pathWorldPositions.RemoveAt(0);
-                IsMoving = false;
 
                 // Update animation state to Idle
                 StartCoroutine(AnimationManager.Instance.UpdateAnimState(_animator, 0, 0));
             }
             else
             {
-                // Set IsMoving to true if the object is still moving towards the next point
-                IsMoving = true;
-
                 // Update animation state to Run
                 StartCoroutine(AnimationManager.Instance.UpdateAnimState(_animator, 1, 0));
             }
 
             yield return null;
         }
+
+        PlayerManager.Instance.CanFindPath = true;
+        IsMoving = false;
     }
 }
