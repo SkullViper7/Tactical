@@ -5,9 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerManager : MonoBehaviour
 {
-    public void SceneChange(string NameOfScene)
+    [SerializeField] Animator _blackAnim;
+
+
+    private void Start()
     {
-        SceneManager.LoadScene(NameOfScene);
+        _blackAnim.Play("FadeOut");
+    }
+
+    public void Click()
+    {
+        _blackAnim.Play("FadeIn");
+        Invoke("SceneChange", 1);
+    }
+
+    void SceneChange()
+    {
+        SceneManager.LoadScene("Final Scene");
     }
 
     public void QuitGame()

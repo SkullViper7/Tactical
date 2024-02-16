@@ -17,5 +17,5 @@ MonoBehaviour:
   MonsterPVMax: 20
   MonsterPM: 3
   MonsterPA: 2
-  MonsterAttack: 4
-  MonsterDefence: 1
+  MonsterAttack: 7
+  MonsterDefence: 3

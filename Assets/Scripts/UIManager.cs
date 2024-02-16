@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _playerName;
     [SerializeField] Slider PlayerHealth;
     [SerializeField] TextMeshProUGUI PlayerMP;
+    [SerializeField] Animator _blackAnim;
 
     // space between button
     [SerializeField] private float buttonSpacing = 100f;
@@ -36,6 +37,16 @@ public class UIManager : MonoBehaviour
         {
             _instance = this;
         }
+    }
+
+    private void Start()
+    {
+        _blackAnim.Play("FadeOut");
+    }
+
+    public void FadeIn()
+    {
+        _blackAnim.Play("FadeIn");
     }
 
     public void UpdatePlayerStatsUI(Human human)

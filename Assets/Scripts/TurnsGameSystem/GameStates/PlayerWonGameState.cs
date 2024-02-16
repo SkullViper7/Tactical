@@ -16,7 +16,8 @@ public class PlayerWonGameState : BaseGameState
 
     public async void GoToWinScene()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(4), ignoreTimeScale: false);
+        UIManager.Instance.FadeIn();
+        await UniTask.Delay(TimeSpan.FromSeconds(1), ignoreTimeScale: false);
         SceneManager.LoadScene("GameWon");
 
     }

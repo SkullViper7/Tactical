@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 45
   Atk: 6
-  Def: 4
+  Def: 2
   MP: 3
   AP: 3
   Crts: 65

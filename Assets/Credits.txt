@@ -23,3 +23,5 @@ Monster Hurt sfx - Sound Effects
 Monster Growl - BintanBanar
 Ground Smash sfx - catasorus anims
 Stylized rock - Elorian
+Sad Medieval Music - Brandon Fiechter's Music
+Trumpet Fanfare Medieval - HansonMusicStudios

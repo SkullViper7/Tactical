@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     GridObject _gridObject;
 
+    [SerializeField]
+    Grid _grid;
+
     List<Vector3> _pathWorldPositions;
 
     [SerializeField]
@@ -85,6 +88,8 @@ public class PlayerMovement : MonoBehaviour
 
                 // Update animation state to Idle
                 StartCoroutine(AnimationManager.Instance.UpdateAnimState(_animator, 0, 0));
+
+                _grid.CheckPassableTerrain();
             }
             else
             {
