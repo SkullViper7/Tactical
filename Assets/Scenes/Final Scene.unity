@@ -27604,7 +27604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0926a19c087c94bb2a5622d98526b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicAnimator: {fileID: 0}
+  _musicAnimator: {fileID: 120923750}
 --- !u!43 &2136523169
 Mesh:
   m_ObjectHideFlags: 0
