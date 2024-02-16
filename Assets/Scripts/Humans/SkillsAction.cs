@@ -2,9 +2,7 @@
 using UnityEngine;
 
 public class SkillsAction : MonoBehaviour
-
 {
-
     Human Hmn;
 
     public List<SkillInfo> SkillInfos = new List<SkillInfo>();

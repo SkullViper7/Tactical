@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 public class PlayerAttackState : BaseGameState
 {
     TurnGameSystemController _turn;
+
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
         _turn = turnGameSystem;
@@ -43,7 +44,8 @@ public class PlayerAttackState : BaseGameState
                         SwitchToMonster();
                         break;
                     }
-                    else {
+                    else
+                    {
                         monstersDead++;
                     }
                 }
@@ -53,11 +55,11 @@ public class PlayerAttackState : BaseGameState
                     _turn.SwitchState(_turn.PlWonGmState);
                 }
             }
-            else {
+            else
+            {
                 _turn.SwitchState(_turn.SelectPlState);
             }
         }
-
     }
 
     public async void SwitchToMonster()
@@ -66,6 +68,7 @@ public class PlayerAttackState : BaseGameState
         {
             await UniTask.Delay(TimeSpan.FromSeconds(4), ignoreTimeScale: false);
         }
+
         _turn.SwitchState(_turn.MonstTurnGmState);
     }
 }

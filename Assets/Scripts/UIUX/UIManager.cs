@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -73,7 +72,6 @@ public class UIManager : MonoBehaviour
         // Verifier si skillsAction n'est pas nul
         if (skillsAction == null)
         {
-            Debug.LogError("SkillsAction component not found on the user.");
             return;
         }
 
