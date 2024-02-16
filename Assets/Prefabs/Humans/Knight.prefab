@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2176659399739762700}
   m_Layer: 7
   m_Name: Knight
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   Atk: 0
   Def: 0
   MP: 0
-  CurrentMP: 7
+  CurrentMP: 0
   AP: 0
   CurrentAP: 0
   Crts: 0

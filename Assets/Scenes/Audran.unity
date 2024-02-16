@@ -4688,11 +4688,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Healer
       objectReference: {fileID: 0}
-    - target: {fileID: 6035072441762427824, guid: addb8da8732185f41808c300eeea23fa,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7422330134063101069, guid: addb8da8732185f41808c300eeea23fa,
         type: 3}
       propertyPath: TargetGrid
@@ -10080,11 +10075,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Archer
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919521488817550761, guid: 68f297b9c93fff040bf99432961fbcbe,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6768675623589048119, guid: 68f297b9c93fff040bf99432961fbcbe,
         type: 3}
@@ -24162,6 +24152,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 848202918}
     m_Modifications:
+    - target: {fileID: 2176659399739762700, guid: c90ccae54aae7b84c95a81ea364c5007,
+        type: 3}
+      propertyPath: CurrentMP
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4471950705325143029, guid: c90ccae54aae7b84c95a81ea364c5007,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24221,11 +24216,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Knight
-      objectReference: {fileID: 0}
-    - target: {fileID: 8243472917121714901, guid: c90ccae54aae7b84c95a81ea364c5007,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
