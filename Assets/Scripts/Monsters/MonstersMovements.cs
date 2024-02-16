@@ -24,6 +24,8 @@ public class MonstersMovements : MonoBehaviour
     public bool CanMove = true;
     public bool TurnFinish = false;
 
+    [SerializeField] private float turnSpeed = 10f;
+
     public event Action<bool> TurnFinishedEvent;
 
 
@@ -70,6 +72,24 @@ public class MonstersMovements : MonoBehaviour
                 HasTurnFinished(true);
                 Debug.LogError("list of _pathWorldPosition is void");
                 return;
+            }
+
+            // Calculation of the direction to the next target position.
+            Vector3 targetDirection = _pathWorldPositions[0] - transform.position;
+
+            // Check if the direction is not zero (the player is not already at the destination).
+            if (targetDirection != Vector3.zero)
+
+            {
+
+                // Calculate the rotation needed to look in the direction of the target.
+                Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+                targetRotation *= Quaternion.Euler(0, 90, 0);
+
+
+
+                // Interpolate to this rotation to smooth the transition using Quaternion.Lerp or Quaternion.Slerp.
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
             }
 
             transform.position = Vector3.MoveTowards(transform.position, _pathWorldPositions[0], _moveSpeed * Time.deltaTime);
