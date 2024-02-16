@@ -12,6 +12,7 @@
 
     public override void ExitState(TurnGameSystemController turnGameSystem) {
         PlayerManager.Instance.CanSelectEvent -= Notify;
+        _turn.HighlightPathScript.DisableHighights();
     }
 
     public void Notify(bool canSelect) {

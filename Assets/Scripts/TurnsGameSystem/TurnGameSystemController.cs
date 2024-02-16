@@ -12,6 +12,8 @@ public class TurnGameSystemController : MonoBehaviour
     public PlayerLostGameState PlLostGmState { get; private set; }
     public PlayerWonGameState PlWonGmState { get; private set; }
 
+    public HighlightPath HighlightPathScript;
+
     public void Start()
     {
         SelectPlState = new SelectingPlayerState();
