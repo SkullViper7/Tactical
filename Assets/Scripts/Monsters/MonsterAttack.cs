@@ -31,6 +31,7 @@ public class MonsterAttack : MonoBehaviour
 
             StartCoroutine(AnimationManager.Instance.SetTrigger(user.GetComponentInChildren<Animator>(), "Attack", 0));
             StartCoroutine(AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Hurt", 1.22f));
+            StartCoroutine(CameraShaker.Instance.Shake(0, 3, new Vector3(0, -0.25f, 0), 0.5f, 1.22f));
 
             // Apply death if the target have 0HP
             if (target.CurrentHP <= 0)

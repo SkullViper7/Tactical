@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using System.Collections;
+using Cinemachine;
 using UnityEngine;
 
 public class CameraShaker : MonoBehaviour
@@ -38,8 +39,10 @@ public class CameraShaker : MonoBehaviour
     /// <param name="shape"></param>
     /// <param name="velocity"></param>
     /// <param name="duration"></param>
-    public void Shake(int type, int shape, Vector3 velocity, float duration)
+    public IEnumerator Shake(int type, int shape, Vector3 velocity, float duration, float delay)
     {
+        yield return new WaitForSeconds(delay);
+
         // Set the impulse type based on the 'type' parameter using a switch statement
         switch (type)
         {
