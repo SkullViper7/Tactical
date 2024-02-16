@@ -168,6 +168,8 @@ public class BattleManager : MonoBehaviour
         // Base damage calculation
         int damage = skillPower + attackerAtk - targetDef;
 
+        PlayerManager.Instance.AsAttack = true;
+
         // Ensure damage is not negative
         return Mathf.Max(0, damage);
     }

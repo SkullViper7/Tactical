@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool WillHeal = false;
     public bool WillDamage = false;
+    public bool AsAttack;
 
     [SerializeField] private Camera _actCam;
 
