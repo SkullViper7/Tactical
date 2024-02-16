@@ -23,36 +23,9 @@ public class FloatingHealthBar : MonoBehaviour
     [SerializeField]
     private Monsters _monsters;
 
-    //public void UpdateHealthBar(float currentValue, float maxValue)
-    //{
-    //    _slider.value = currentValue / maxValue;
-    //}
-
-    private void OnHealthChanged(int newHealth)
+    public void UpdateHealthBar(float currentValue, float maxValue)
     {
-        if (_tween != null)
-        {
-            StopCoroutine(_tween);
-        }
-
-        float targetFillAmount = Mathf.InverseLerp(0, _monsters.MonsterPVMax, newHealth);
-        _tween = StartCoroutine(TweenHealthBar(targetFillAmount, _tweenDuration));
-    }
-
-    private IEnumerator TweenHealthBar(float targetFillAmount, float duration)
-    {
-        float startFillAmount = _healthImage.fillAmount;
-
-        float timer = 0f;
-
-        while (timer < duration)
-        {
-            timer += Time.deltaTime;
-            float t = timer / duration;
-            float x = _animationCurve.Evaluate(t);
-            _healthImage.fillAmount = Mathf.LerpUnclamped(startFillAmount, targetFillAmount, x);
-            yield return null;
-        }
+        _slider.value = currentValue / maxValue;
     }
 
     private void Update()
