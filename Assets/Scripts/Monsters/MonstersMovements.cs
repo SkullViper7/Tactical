@@ -84,6 +84,12 @@ public class MonstersMovements : MonoBehaviour
 
             if (Vector3.Distance(transform.position, _human.transform.position) < 2f && _monstersMain.Monsters.MonsterPA > 0 && CanAttack)
             {
+                if (_human == null)
+                {
+                    HasTurnFinished(true);
+                    return;
+                }
+
                 _monstersMain.MonsterAttack.UseAttack(_monstersMain.Monsters, _human);
                 CanAttack = false;
                 HasTurnFinished(true);
