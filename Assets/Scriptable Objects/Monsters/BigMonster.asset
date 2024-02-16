@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BigMonster
   m_EditorClassIdentifier: 
   MonsterSprite: {fileID: 0}
-  MonsterName: Griffon
+  MonsterName: Big Monster
   MonsterPVMax: 50
   MonsterPM: 3
   MonsterPA: 3
-  MonsterAttack: 50
-  MonsterDefence: 0
+  MonsterAttack: 8
+  MonsterDefence: 3
