@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class MonsterTurnGameState : BaseGameState
 {
@@ -65,26 +66,14 @@ public class MonsterTurnGameState : BaseGameState
             // Checks whether all monsters have played or not
             if (monstersWhoHavePlayed >= MonstersManager.Instance.ListMonster.Count)
             {
-                int playerWhoAreDead = 0;
-                for (int i = 0; i < PlayerManager.Instance.AllHmn.Count; i++)
-                {
-                    // Checks whether a player is still alive or not
-                    if (!PlayerManager.Instance.AllHmn[i].IsDead)
-                    {
-                        _turn.SwitchState(_turn.SelectPlState);
-                        break;
-                    }
-                    else
-                    {
-                        playerWhoAreDead++;
-                    }
-                }
-
-                // Checks whether all players are still alive or not, if it's the case, announce that the player have lost
-                if (playerWhoAreDead >= PlayerManager.Instance.AllHmn.Count)
+                if (PlayerManager.Instance.AllHmn.Count <= 0)
                 {
                     playerHasLost = true;
                     _turn.SwitchState(_turn.PlLostGmState);
+                }
+                else
+                {
+                    _turn.SwitchState(_turn.SelectPlState);
                 }
             }
 

@@ -6,6 +6,7 @@ public class PlayerLostGameState : BaseGameState
 {
     public override void EnterState(TurnGameSystemController turnGameSystem)
     {
+        GoToLoseScene();
     }
 
     public override void ExitState(TurnGameSystemController turnGameSystem)
