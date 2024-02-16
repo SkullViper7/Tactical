@@ -105,6 +105,7 @@ public class BattleManager : MonoBehaviour
             StartCoroutine(AnimationManager.Instance.SetTrigger(user.GetComponentInChildren<Animator>(), "Attack", 0));
             StartCoroutine(AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Hurt", 1.22f));
             target.Monsters.MonsterPV -= damage;
+            target.FloatingHealthBar.UpdateHealthBar(target.Monsters.MonsterPV, target.Monsters.MonsterPVMax);
 
             if (target.Monsters.MonsterPV <= 0)
             {
