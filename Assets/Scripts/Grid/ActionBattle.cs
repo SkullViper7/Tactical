@@ -53,7 +53,6 @@ public class ActionBattle : MonoBehaviour
             // Cast a ray from the camera to find the objects hit by the ray within a maximum distance and with a the Terrain layer mask
             if (Physics.Raycast(ray, out hit, float.MaxValue, _ennemiLayer) && _highlight.CanClick)
             {
-                Debug.Log("Mob hit");
                 _targetMstr = hit.collider.gameObject.GetComponentInParent<MonstersMain>();
                 BattleManager.Instance.PerformDamageOnTarget(_targetMstr);
                 PlayerManager.Instance.WillDamage = false;

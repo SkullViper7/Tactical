@@ -111,7 +111,6 @@ public class MonstersMovements : MonoBehaviour
         }
         else
         {
-            Debug.Log("The monster lacks MP or is not allowed to move");
             HasTurnFinished(true);
             CanMove = false;
             return;
@@ -156,7 +155,6 @@ public class MonstersMovements : MonoBehaviour
 
         if (_path == null)
         {
-            Debug.Log("list of _path is void");
             return;
         }
 
