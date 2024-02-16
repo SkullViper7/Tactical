@@ -15,6 +15,7 @@ public class PlayerLostGameState : BaseGameState
     public async void GoToLoseScene()
     {
         UIManager.Instance.FadeIn();
+        AnimationManager.Instance.FadeOut();
         await UniTask.Delay(TimeSpan.FromSeconds(1), ignoreTimeScale: false);
         SceneManager.LoadScene("GameLost");
     }

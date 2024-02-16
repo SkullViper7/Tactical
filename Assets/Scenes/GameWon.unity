@@ -5737,6 +5737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blackAnim: {fileID: 8075138213261188354}
+  _musicAnim: {fileID: 1555799859}
 --- !u!4 &1357379233
 Transform:
   m_ObjectHideFlags: 0
@@ -6271,6 +6272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1555799858}
   - component: {fileID: 1555799857}
+  - component: {fileID: 1555799859}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -6389,6 +6391,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1555799859
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555799856}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0ab89c72cbb3da4292384b7f702eed7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1600282595
 PrefabInstance:
   m_ObjectHideFlags: 0

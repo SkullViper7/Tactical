@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneManagerManager : MonoBehaviour
 {
     [SerializeField] Animator _blackAnim;
+    [SerializeField] Animator _musicAnim;
 
 
     private void Start()
@@ -16,6 +17,7 @@ public class SceneManagerManager : MonoBehaviour
     public void Click()
     {
         _blackAnim.Play("FadeIn");
+        _musicAnim.Play("FadeOut");
         Invoke("SceneChange", 1);
     }
 

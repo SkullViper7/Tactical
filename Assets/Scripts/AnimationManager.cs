@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class AnimationManager : MonoBehaviour
 {
+    [SerializeField] Animator _musicAnimator;
+
     // Singleton
     private static AnimationManager _instance = null;
 
@@ -46,5 +48,10 @@ public class AnimationManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         targetAnimator.SetTrigger(trigger);
+    }
+
+    public void FadeOut()
+    {
+        _musicAnimator.Play("FadeOut");
     }
 }
