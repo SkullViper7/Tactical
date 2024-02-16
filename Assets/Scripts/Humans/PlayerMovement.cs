@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
 
     Animator _animator;
 
+    // Adjust 'turnSpeed' to change how quickly the player turns: larger values will make the turn faster.
+    float turnSpeed = 10f;
+
     private void Awake()
     {
         _gridObject = GetComponent<GridObject>();
@@ -49,8 +52,31 @@ public class PlayerMovement : MonoBehaviour
     {
         while (_pathWorldPositions.Count > 0)
         {
+            // Calculation of the direction to the next target position.
+            Vector3 targetDirection = _pathWorldPositions[0] - transform.position;
+
+
+
+            // Check if the direction is not zero (the player is not already at the destination).
+
+            if (targetDirection != Vector3.zero)
+
+            {
+
+                // Calculate the rotation needed to look in the direction of the target.
+
+                Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+                targetRotation *= Quaternion.Euler(0, -90, 0);
+
+
+
+                // Interpolate to this rotation to smooth the transition using Quaternion.Lerp or Quaternion.Slerp.
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+            }
+
             // Move the current object's position towards the first point in the _pathWorldPositions list at a speed determined by _moveSpeed and Time.deltaTime
             transform.position = Vector3.MoveTowards(transform.position, _pathWorldPositions[0], _moveSpeed * Time.deltaTime);
+
 
             // Check if the object is still moving towards the next point
             if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
