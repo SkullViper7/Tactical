@@ -15,7 +15,7 @@ public class MonstersMovements : MonoBehaviour
 
     private List<Vector3> _pathWorldPositions;
 
-    private List<PathNode> _path;
+    private List<PathNode> _path = new List<PathNode>();
     private PathFinding _pathFindingScript;
 
     private MonstersMain _monstersMain;
@@ -129,9 +129,8 @@ public class MonstersMovements : MonoBehaviour
     /// </summary>
     public void SearchPlayerNearby()
     {
+        _path.Clear();
         MonstersManager.Instance.CurrentMonsterMain = this._monstersMain;
-
-        _path = new List<PathNode>();
 
         List<PathNode> _currentPath = new List<PathNode>();
 
@@ -145,14 +144,14 @@ public class MonstersMovements : MonoBehaviour
 
             if (_path.Count == 0)
             {
-                _path = _currentPath;
+                _path.AddRange(_currentPath);
                 _human = tempHuman;
                 _gridObjectPlayer = _gridObjectPlayerTempo;
             }
 
             if (_currentPath.Count < _path.Count)
             {
-                _path = _currentPath;
+                _path.AddRange(_currentPath);
                 _human = tempHuman;
                 _gridObjectPlayer = _gridObjectPlayerTempo;
             }
