@@ -110,7 +110,6 @@ public class HighlightPath : MonoBehaviour
                                 _tiles[i].TileMeshRenderer.material = _badHighlightMat;
                                 _tiles[i].IsReachable = false;
                             }
-
                             else
                             {
                                 _tiles[i].TileMeshRenderer.material = _goodMoveHighlightMat;
@@ -124,7 +123,6 @@ public class HighlightPath : MonoBehaviour
                                 _tiles[i].TileMeshRenderer.material = _badHighlightMat;
                                 _tiles[i].IsReachable = false;
                             }
-
                             else
                             {
                                 _tiles[i].TileMeshRenderer.material = _goodAttackHighlightMat;

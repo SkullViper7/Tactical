@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +19,6 @@ public class UIManager : MonoBehaviour
 
     // The parent of the buttons in your UI hierarchy.
     public Transform buttonsParent;
-
 
     private static UIManager _instance = null;
 

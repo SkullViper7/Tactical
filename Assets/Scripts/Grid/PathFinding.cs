@@ -125,10 +125,12 @@ public class PathFinding : MonoBehaviour
                     {
                         continue;
                     }
+
                     if (!_gridMap.CheckBoundary(currentNode.Pos_X + i, currentNode.Pos_Y + j))
                     {
                         continue;
                     }
+
                     neighbourNodes.Add(_pathNodes[currentNode.Pos_X + i, currentNode.Pos_Y + j]);
                 }
             }
@@ -141,6 +143,7 @@ public class PathFinding : MonoBehaviour
                 {
                     continue;
                 }
+
                 if (!_gridMap.CheckWalkable(neighbourNodes[i].Pos_X, neighbourNodes[i].Pos_Y))
                 {
                     continue;
@@ -181,6 +184,7 @@ public class PathFinding : MonoBehaviour
         {
             return 14 * distY + 10 * (distX - distY);
         }
+
         return 14 * distX + 10 * (distY - distX);
     }
 

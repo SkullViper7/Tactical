@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -50,7 +49,6 @@ public class PlayerManager : MonoBehaviour
         {
             _instance = this;
         }
-        //
     }
 
     private void Start()

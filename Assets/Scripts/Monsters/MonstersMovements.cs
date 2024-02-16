@@ -28,7 +28,6 @@ public class MonstersMovements : MonoBehaviour
 
     public event Action<bool> TurnFinishedEvent;
 
-
     private void Awake()
     {
         _gridObjectMonster = GetComponent<GridObject>();
@@ -73,7 +72,6 @@ public class MonstersMovements : MonoBehaviour
 
             // Check if the direction is not zero (the player is not already at the destination).
             if (targetDirection != Vector3.zero)
-
             {
 
                 // Calculate the rotation needed to look in the direction of the target.
@@ -111,7 +109,6 @@ public class MonstersMovements : MonoBehaviour
         }
         else
         {
-            Debug.Log("The monster lacks MP or is not allowed to move");
             HasTurnFinished(true);
             CanMove = false;
             return;
@@ -156,7 +153,6 @@ public class MonstersMovements : MonoBehaviour
 
         if (_path == null)
         {
-            Debug.Log("list of _path is void");
             return;
         }
 

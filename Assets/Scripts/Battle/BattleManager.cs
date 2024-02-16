@@ -26,7 +26,6 @@ public class BattleManager : MonoBehaviour
         {
             _instance = this;
         }
-        //
     }
 
     /// <summary>
@@ -54,7 +53,6 @@ public class BattleManager : MonoBehaviour
     }
 
     public void PerformDamageOnTarget(MonstersMain target)
-
     {
         // Fuction needed after target monster.
         if (CurrentSkill != null && !CurrentSkill.SkisHealing)
@@ -64,12 +62,9 @@ public class BattleManager : MonoBehaviour
     }
 
     public void PerformHealOnTarget(Human target)
-
     {
-
         // Fuction needed after target human.
         if (CurrentSkill != null && CurrentSkill.SkisHealing)
-
         {
             UseHeal(target, CurrentSkill);
         }
@@ -80,12 +75,10 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     /// <param name="target">Selected Monster.</param>
     /// <param name="skill">Selected Skill</param>
-
     public void UseSkill(MonstersMain target, SkillInfo skill)
     {
         Human user = PlayerManager.Instance.HmnPlay;
         if (user == null || target == null || skill == null)
-
         {
 
             Debug.LogError("Invalid arguments for UseSkill.");
@@ -95,9 +88,7 @@ public class BattleManager : MonoBehaviour
         }
 
         if (user.CurrentAP >= skill.SkAP)
-
         {
-
             user.CurrentAP -= skill.SkAP;
 
             int damage = CalculateDamage(skill.SkPwr, user.Atk, target.Monsters.MonsterDefence);
@@ -116,10 +107,7 @@ public class BattleManager : MonoBehaviour
 
             UIManager.Instance.DestroyButton();
             PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
-            Debug.Log(user.name + " deals " + damage + " damage to " + target.Monsters.MonsterName);
-
         }
-
         else
         {
             Debug.Log("Not enough AP to use the skill.");
