@@ -26,6 +26,7 @@ public class BattleManager : MonoBehaviour
         {
             _instance = this;
         }
+        //
     }
 
     /// <summary>
@@ -53,6 +54,7 @@ public class BattleManager : MonoBehaviour
     }
 
     public void PerformDamageOnTarget(MonstersMain target)
+
     {
         // Fuction needed after target monster.
         if (CurrentSkill != null && !CurrentSkill.SkisHealing)
@@ -62,9 +64,12 @@ public class BattleManager : MonoBehaviour
     }
 
     public void PerformHealOnTarget(Human target)
+
     {
+
         // Fuction needed after target human.
         if (CurrentSkill != null && CurrentSkill.SkisHealing)
+
         {
             UseHeal(target, CurrentSkill);
         }
@@ -80,12 +85,19 @@ public class BattleManager : MonoBehaviour
     {
         Human user = PlayerManager.Instance.HmnPlay;
         if (user == null || target == null || skill == null)
+
         {
+
+            Debug.LogError("Invalid arguments for UseSkill.");
+
             return;
+
         }
 
         if (user.CurrentAP >= skill.SkAP)
+
         {
+
             user.CurrentAP -= skill.SkAP;
 
             int damage = CalculateDamage(skill.SkPwr, user.Atk, target.Monsters.MonsterDefence);
@@ -104,6 +116,13 @@ public class BattleManager : MonoBehaviour
 
             UIManager.Instance.DestroyButton();
             PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
+            Debug.Log(user.name + " deals " + damage + " damage to " + target.Monsters.MonsterName);
+
+        }
+
+        else
+        {
+            Debug.Log("Not enough AP to use the skill.");
         }
     }
 
@@ -127,6 +146,7 @@ public class BattleManager : MonoBehaviour
             user.CurrentAP -= skill.SkAP;
             int heal = CalculateHeal(skill.SkPwr, user.Atk);
             target.HP += heal; // Assuming that increasing HP is correct for a heal.
+            Debug.Log(user.name + " heals " + target.gameObject.name + " for " + heal);
             UIManager.Instance.DestroyButton();
             PlayerManager.Instance.HmnPlay.SetHumanHasPlayed(true);
             StartCoroutine(AnimationManager.Instance.SetTrigger(user.GetComponentInChildren<Animator>(), "Attack", 0));

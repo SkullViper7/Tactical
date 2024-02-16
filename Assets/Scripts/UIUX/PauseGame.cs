@@ -7,7 +7,8 @@ public class PauseGame : MonoBehaviour
 
     public void SetPause(bool pause)
     {
-        if (pause)
+        Debug.Log("Pause Start");
+        if(pause)
         {
             _pauseMenu.SetActive(true);
             Time.timeScale = 0;

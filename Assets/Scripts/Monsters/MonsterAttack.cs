@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class MonsterAttack : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class MonsterAttack : MonoBehaviour
         // Make sure we have valid arguments
         if (user == null || target == null)
         {
+            Debug.Log("Invalid arguments for UseSkill. Make sure to provide a valid user and target");
+
             return;
         }
 
@@ -36,6 +40,9 @@ public class MonsterAttack : MonoBehaviour
                 target.IsDead = true;
                 PlayerManager.Instance.AllHmn.Remove(target);
             }
+
+            // Display the damage or other effects here
+            Debug.Log(user.name + " deals " + damage + " damage to " + target.name);
         }
         else
         {
