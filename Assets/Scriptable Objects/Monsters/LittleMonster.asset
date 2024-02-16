@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: LittleMonster
   m_EditorClassIdentifier: 
   MonsterSprite: {fileID: 0}
-  MonsterName: Goule
+  MonsterName: Little Monster
   MonsterPVMax: 20
   MonsterPM: 3
   MonsterPA: 3
-  MonsterAttack: 25
-  MonsterDefence: 10
+  MonsterAttack: 3
+  MonsterDefence: 2
