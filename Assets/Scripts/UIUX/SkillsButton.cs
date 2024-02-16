@@ -1,7 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class SkillButton : MonoBehaviour
 {
     public Button buttonComponent;
@@ -18,12 +17,9 @@ public class SkillButton : MonoBehaviour
     {
         PlayerManager.Instance.UseSkillInfo = skillInfo;
         if (skillInfo.SkisHealing)
-        {
             BattleManager.Instance.PrepareHeal(skillInfo);
-        }
         else
-        {
             BattleManager.Instance.PrepareAttack(skillInfo);
-        }
+        Debug.Log(PlayerManager.Instance.UseSkillInfo.SkRange);
     }
 }
