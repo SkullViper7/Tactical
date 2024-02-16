@@ -122,14 +122,12 @@ public class HighlightPath : MonoBehaviour
                             if (pathNodeIndex >= PlayerManager.Instance.UseSkillInfo.SkRange)
                             {
                                 _tiles[i].TileMeshRenderer.material = _badHighlightMat;
-                                PlayerManager.Instance.AsRange = false;
                                 _tiles[i].IsReachable = false;
                             }
 
                             else
                             {
                                 _tiles[i].TileMeshRenderer.material = _goodAttackHighlightMat;
-                                PlayerManager.Instance.AsRange = true;
                                 _tiles[i].IsReachable = true;
                             }
                         }

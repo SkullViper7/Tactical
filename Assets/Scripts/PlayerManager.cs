@@ -27,8 +27,6 @@ public class PlayerManager : MonoBehaviour
     public PlayerMovement HmnMove;
     public SkillInfo UseSkillInfo;
 
-    public bool AsRange;
-
     public List<Human> AllHmn = new List<Human>();
 
     // Singleton

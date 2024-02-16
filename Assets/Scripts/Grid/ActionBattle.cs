@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class ActionBattle : MonoBehaviour
 {
+    HighlightPath _highlight;
+
     private PlayerInput _playerInput;
 
     private Human _targetHumn;
@@ -16,6 +18,7 @@ public class ActionBattle : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        _highlight = GetComponent<HighlightPath>();
         _playerInput = GetComponent<PlayerInput>();
         _playerInput.onActionTriggered += OnClick;
     }
@@ -33,7 +36,7 @@ public class ActionBattle : MonoBehaviour
             RaycastHit hit;
 
             // Cast a ray from the camera to find the objects hit by the ray within a maximum distance and with a the Terrain layer mask
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _playerLayer) && PlayerManager.Instance.AsRange)
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _playerLayer) && _highlight.CanClick)
             {
                 _targetHumn = hit.collider.gameObject.GetComponentInParent<Human>();
                 BattleManager.Instance.PerformHealOnTarget(_targetHumn);
@@ -48,7 +51,7 @@ public class ActionBattle : MonoBehaviour
             RaycastHit hit;
 
             // Cast a ray from the camera to find the objects hit by the ray within a maximum distance and with a the Terrain layer mask
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _ennemiLayer) && PlayerManager.Instance.AsRange)
+            if (Physics.Raycast(ray, out hit, float.MaxValue, _ennemiLayer) && _highlight.CanClick)
             {
                 Debug.Log("Mob hit");
                 _targetMstr = hit.collider.gameObject.GetComponentInParent<MonstersMain>();
