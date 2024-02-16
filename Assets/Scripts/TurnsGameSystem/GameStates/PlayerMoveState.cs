@@ -18,7 +18,7 @@
         PlayerManager.Instance.CanFindPath = false;
         PlayerManager.Instance.IsMovingState = false;
         PlayerManager.Instance.CanMoveEvent -= Notify;
-
+        _turn.HighlightPathScript.DisableHighights();
     }
 
     public void Notify(bool canMove)

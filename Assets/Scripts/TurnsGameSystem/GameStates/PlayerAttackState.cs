@@ -16,6 +16,7 @@ public class PlayerAttackState : BaseGameState
     {
         PlayerManager.Instance.HmnPlay.HumanHasPlayed -= Notify;
         PlayerManager.Instance.CanFindPath = false;
+        _turn.HighlightPathScript.DisableHighights();
     }
 
     public void Notify(bool humanHasPlayed)
