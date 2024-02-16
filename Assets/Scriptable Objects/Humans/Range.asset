@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Range
   m_EditorClassIdentifier: 
   HP: 45
-  Atk: 6
+  Atk: 10
   Def: 2
   MP: 3
   AP: 3

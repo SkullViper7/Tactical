@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Melee
   m_EditorClassIdentifier: 
   HP: 75
-  Atk: 8
+  Atk: 15
   Def: 4
   MP: 4
   AP: 3
