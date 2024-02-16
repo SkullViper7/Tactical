@@ -70,7 +70,7 @@ public class MonstersMovements : MonoBehaviour
             {
                 CanMove = false;
                 HasTurnFinished(true);
-                Debug.LogError("list of _pathWorldPosition is void");
+                Debug.Log("list of _pathWorldPosition is void");
                 return;
             }
 
@@ -159,7 +159,7 @@ public class MonstersMovements : MonoBehaviour
 
         if (_path == null || _path.Count == 0)
         {
-            Debug.LogError("list of _path is void or null");
+            Debug.Log("list of _path is void or null");
             return;
         }
 
@@ -167,7 +167,7 @@ public class MonstersMovements : MonoBehaviour
 
         if (_path == null || _path.Count == 0)
         {
-            Debug.LogError("list of _path is void or null");
+            Debug.Log("list of _path is void or null");
             return;
         }
 
