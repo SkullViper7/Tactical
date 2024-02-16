@@ -145,6 +145,7 @@ public class MonstersMovements : MonoBehaviour
 
             if (_currentPath.Count < _path.Count)
             {
+                _path.Clear();
                 _path.AddRange(_currentPath);
                 _human = tempHuman;
                 _gridObjectPlayer = _gridObjectPlayerTempo;
