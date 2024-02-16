@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
                 IsMoving = false;
 
                 // Update animation state to Idle
-                AnimationManager.Instance.UpdateAnimState(_animator, 0);
+                StartCoroutine(AnimationManager.Instance.UpdateAnimState(_animator, 0, 0));
             }
             else
             {
@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
                 IsMoving = true;
 
                 // Update animation state to Run
-                AnimationManager.Instance.UpdateAnimState(_animator, 1);
+                StartCoroutine(AnimationManager.Instance.UpdateAnimState(_animator, 1, 0));
             }
 
             yield return null;

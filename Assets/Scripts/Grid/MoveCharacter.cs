@@ -47,7 +47,7 @@ public class MoveCharacter : MonoBehaviour
                         PlayerManager.Instance.HmnPlay.CurrentMP -= _highlightPath.Path.Count;
 
                         // Update the animation of the character to Run
-                        AnimationManager.Instance.UpdateAnimState(PlayerManager.Instance.HmnGrid.GetComponentInChildren<Animator>(), 4);
+                        StartCoroutine(AnimationManager.Instance.UpdateAnimState(PlayerManager.Instance.HmnGrid.GetComponentInChildren<Animator>(), 1, 0));
 
                         // Disable the highlights after the movement
                         _highlightPath.DisableHighights();
