@@ -4874,6 +4874,11 @@ PrefabInstance:
       propertyPath: _grid
       value: 
       objectReference: {fileID: 1299549971}
+    - target: {fileID: 4195401498245382795, guid: addb8da8732185f41808c300eeea23fa,
+        type: 3}
+      propertyPath: _endTurnButton
+      value: 
+      objectReference: {fileID: 1859018278}
     - target: {fileID: 6035072441762427824, guid: addb8da8732185f41808c300eeea23fa,
         type: 3}
       propertyPath: m_Name
@@ -10502,6 +10507,11 @@ PrefabInstance:
       propertyPath: _grid
       value: 
       objectReference: {fileID: 1299549971}
+    - target: {fileID: 7649812432257048611, guid: 68f297b9c93fff040bf99432961fbcbe,
+        type: 3}
+      propertyPath: _endTurnButton
+      value: 
+      objectReference: {fileID: 1859018278}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25279,6 +25289,11 @@ PrefabInstance:
       propertyPath: _grid
       value: 
       objectReference: {fileID: 1299549971}
+    - target: {fileID: 2032596232952912425, guid: c90ccae54aae7b84c95a81ea364c5007,
+        type: 3}
+      propertyPath: _endTurnButton
+      value: 
+      objectReference: {fileID: 1859018278}
     - target: {fileID: 2176659399739762700, guid: c90ccae54aae7b84c95a81ea364c5007,
         type: 3}
       propertyPath: CurrentMP
@@ -27561,6 +27576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0926a19c087c94bb2a5622d98526b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _musicAnimator: {fileID: 0}
 --- !u!43 &2136523169
 Mesh:
   m_ObjectHideFlags: 0
@@ -28705,6 +28721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blackAnim: {fileID: 0}
+  _musicAnim: {fileID: 0}
 --- !u!1 &5525754384102406633
 GameObject:
   m_ObjectHideFlags: 0

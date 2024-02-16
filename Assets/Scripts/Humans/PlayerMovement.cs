@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     float _moveSpeed = 1f;
+
+    [SerializeField]
+    Button _endTurnButton;
 
     [HideInInspector]
     public bool IsMoving;
@@ -57,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
         {
             IsMoving = true;
             PlayerManager.Instance.CanFindPath = false;
+            PlayerManager.Instance.CanMove = false;
+
+            _endTurnButton.interactable = false;
 
             // Calculation of the direction to the next target position.
             Vector3 targetDirection = _pathWorldPositions[0] - transform.position;
@@ -100,6 +107,9 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
 
+        _endTurnButton.interactable = true;
+
+        PlayerManager.Instance.CanMove = true;
         PlayerManager.Instance.CanFindPath = true;
         IsMoving = false;
     }
