@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 739911679484978142}
   - component: {fileID: 8314439214563397297}
+  - component: {fileID: 4918235878329946030}
+  - component: {fileID: 874600535580171364}
+  - component: {fileID: 8050606219402215573}
+  - component: {fileID: 5447033949957315054}
   m_Layer: 8
   m_Name: Monster
   m_TagString: Untagged
@@ -47,6 +51,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetGrid: {fileID: 0}
   PositionOnGrid: {x: 0, y: 0}
+--- !u!114 &4918235878329946030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6144673334920720420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940a901083affe343ba4e7163413175e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MS: {fileID: 11400000, guid: 8f97afd4a4cd29142b7ebebd0beb0310, type: 2}
+  MonsterSprite: {fileID: 0}
+  MonsterName: 
+  MonsterPVMax: 0
+  MonsterPV: 0
+  MonsterAttack: 0
+  MonsterDefence: 0
+  MonsterPM: 0
+  MonsterPA: 0
+  IsDead: 0
+--- !u!114 &874600535580171364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6144673334920720420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de8cbcce32c0e6459a5cd0849433126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCost: 2
+  PlayerManager: {fileID: 0}
+--- !u!114 &8050606219402215573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6144673334920720420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e4275f3a3ba3c48b6d71389833b353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 2
+  _targetGrid: {fileID: 0}
+  _human: {fileID: 0}
+  CanAttack: 0
+  CanMove: 1
+  TurnFinish: 0
+--- !u!114 &5447033949957315054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6144673334920720420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a6a5c5ff4c53048bee55f6b631edf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Monsters: {fileID: 0}
+  MonsterAttack: {fileID: 0}
+  MonstersMovements: {fileID: 0}
 --- !u!1001 &6127930610014660788
 PrefabInstance:
   m_ObjectHideFlags: 0

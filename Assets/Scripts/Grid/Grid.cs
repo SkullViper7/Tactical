@@ -10,8 +10,7 @@ public class Grid : MonoBehaviour
     [SerializeField]
     float _cellSize = 1;
 
-    [SerializeField]
-    LayerMask _obstacleLayer;
+    public LayerMask ObstacleLayer;
     [SerializeField]
     LayerMask _terrainLayer;
 
@@ -70,7 +69,7 @@ public class Grid : MonoBehaviour
     /// <summary>
     /// Checks the passable terrain for each node in the grid.
     /// </summary>
-    void CheckPassableTerrain()
+    public void CheckPassableTerrain()
     {
         // Iterate through each position in the grid to check for passable terrain and update the corresponding node in the grid
         for (int i = 0; i < Width; i++)
@@ -81,7 +80,7 @@ public class Grid : MonoBehaviour
                 Vector3 worldPosition = GetWorldPosition(j, i);
 
                 // Check if there are any obstacles at the world position using a small box (half the cell size) and update the passability of the node
-                bool passable = !Physics.CheckBox(worldPosition, Vector3.one / 2 * _cellSize, Quaternion.identity, _obstacleLayer);
+                bool passable = !Physics.CheckBox(worldPosition, Vector3.one / 2 * _cellSize, Quaternion.identity, ObstacleLayer);
                 _grid[j, i].Passable = passable;
             }
         }

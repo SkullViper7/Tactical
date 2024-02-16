@@ -40,6 +40,8 @@ public class MonsterTurnGameState : BaseGameState
     {
         for (int i = 0; i < MonstersManager.Instance.ListMonster.Count; i++)
         {
+            BattleManager.Instance.UpdateGrid();
+
             if (!MonstersManager.Instance.ListMonster[i].Monsters.IsDead)
             {
                 MonstersManager.Instance.ListMonster[i].MonstersMovements.SearchPlayerNearby();

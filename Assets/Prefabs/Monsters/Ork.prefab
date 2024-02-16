@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6357554054866673307}
   - component: {fileID: 890589152251804591}
+  - component: {fileID: 456559362436014760}
+  - component: {fileID: 2971954996655290350}
+  - component: {fileID: 9135301328393667770}
+  - component: {fileID: 2226512802773407533}
   m_Layer: 8
   m_Name: Ork
   m_TagString: Untagged
@@ -47,6 +51,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetGrid: {fileID: 0}
   PositionOnGrid: {x: 0, y: 0}
+--- !u!114 &456559362436014760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447114414178583765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940a901083affe343ba4e7163413175e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MS: {fileID: 11400000, guid: 56ac6b0edb4140c4a9f50d9e129ef0ac, type: 2}
+  MonsterSprite: {fileID: 0}
+  MonsterName: 
+  MonsterPVMax: 0
+  MonsterPV: 0
+  MonsterAttack: 0
+  MonsterDefence: 0
+  MonsterPM: 0
+  MonsterPA: 0
+  IsDead: 0
+--- !u!114 &2971954996655290350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447114414178583765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de8cbcce32c0e6459a5cd0849433126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCost: 2
+  PlayerManager: {fileID: 0}
+--- !u!114 &9135301328393667770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447114414178583765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e4275f3a3ba3c48b6d71389833b353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 2
+  _targetGrid: {fileID: 0}
+  _human: {fileID: 0}
+  CanAttack: 0
+  CanMove: 1
+  TurnFinish: 0
+--- !u!114 &2226512802773407533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447114414178583765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a6a5c5ff4c53048bee55f6b631edf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Monsters: {fileID: 0}
+  MonsterAttack: {fileID: 0}
+  MonstersMovements: {fileID: 0}
 --- !u!1001 &3499290594372421997
 PrefabInstance:
   m_ObjectHideFlags: 0

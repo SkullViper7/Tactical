@@ -2,6 +2,8 @@
 
 public class BattleManager : MonoBehaviour
 {
+    [SerializeField] Grid _grid;
+
     public SkillInfo CurrentSkill;
     public MonstersManager MonstersManager;
     // Singleton
@@ -177,5 +179,10 @@ public class BattleManager : MonoBehaviour
 
         // Ensure heal is not negative
         return Mathf.Max(0, heal);
+    }
+
+    public void UpdateGrid()
+    {
+        _grid.CheckPassableTerrain();
     }
 }
