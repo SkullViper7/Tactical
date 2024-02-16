@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SelectingPlayerState : BaseGameState
+﻿public class SelectingPlayerState : BaseGameState
 {
     TurnGameSystemController _turn;
 

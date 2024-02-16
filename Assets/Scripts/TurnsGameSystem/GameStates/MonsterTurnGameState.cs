@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Threading.Tasks;
-using UnityEngine;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 
 public class MonsterTurnGameState : BaseGameState
 {
@@ -31,7 +28,6 @@ public class MonsterTurnGameState : BaseGameState
             for (int i = 0; i < PlayerManager.Instance.AllHmn.Count; i++)
             {
                 PlayerManager.Instance.AllHmn[i].NewTurnResetAction();
-                Debug.Log(PlayerManager.Instance.AllHmn[i].CurrentMP);
             }
         }
     }
@@ -63,7 +59,6 @@ public class MonsterTurnGameState : BaseGameState
                     MonstersManager.Instance.ListMonster[i].Monsters.IsDead) {
 
                     monstersWhoHavePlayed++;
-                    Debug.Log($"{monstersWhoHavePlayed}-> Après ++");
                 }
             }
 

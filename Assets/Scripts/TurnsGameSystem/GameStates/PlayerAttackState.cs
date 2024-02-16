@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PlayerAttackState : BaseGameState
+﻿public class PlayerAttackState : BaseGameState
 {
     TurnGameSystemController _turn;
     public override void EnterState(TurnGameSystemController turnGameSystem)

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class TurnGameSystemController : MonoBehaviour
 {
@@ -25,9 +27,11 @@ public class TurnGameSystemController : MonoBehaviour
         _currentGameState.EnterState(this);
     }
 
-    public void SwitchState(BaseGameState state)
+    public async void SwitchState(BaseGameState state)
     {
         _currentGameState.ExitState(this);
+
+        await UniTask.Delay(TimeSpan.FromSeconds(4), ignoreTimeScale: false);
 
         _currentGameState = state;
         _currentGameState.EnterState(this);
