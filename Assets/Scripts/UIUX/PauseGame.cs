@@ -7,6 +7,7 @@ public class PauseGame : MonoBehaviour
 
     public void SetPause(bool pause)
     {
+        Debug.Log("Pause Start");
         if(pause)
         {
             _pauseMenu.SetActive(true);
