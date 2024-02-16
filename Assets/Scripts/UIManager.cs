@@ -8,7 +8,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _playerName;
     [SerializeField] Slider PlayerHealth;
     [SerializeField] TextMeshProUGUI PlayerMP;
-    [SerializeField] TextMeshProUGUI PlayerAP;
 
     // space between button
     [SerializeField] private float buttonSpacing = 100f;
@@ -50,9 +49,6 @@ public class UIManager : MonoBehaviour
 
         // Set up MP
         PlayerMP.text = $"{human.CurrentMP} / {human.MP}";
-
-        // Set up AP
-        PlayerAP.text = $"{human.CurrentAP} / {human.CurrentAP}";
     }
 
     public void CreateSkillButtons()

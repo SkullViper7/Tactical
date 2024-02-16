@@ -3699,7 +3699,7 @@ GameObject:
   - component: {fileID: 686177213}
   - component: {fileID: 686177212}
   m_Layer: 5
-  m_Name: OptionsButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3722,7 +3722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 676.99976, y: -233}
+  m_AnchoredPosition: {x: 676.99976, y: -371}
   m_SizeDelta: {x: 321.4, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686177212
@@ -3769,25 +3769,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 402051043}
-        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
-        m_MethodName: OpenCanvas
-        m_Mode: 2
+      - m_Target: {fileID: 2120170730}
+        m_TargetAssemblyTypeName: SceneManagerManager, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 136444349}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 402051043}
-        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
-        m_MethodName: CloseCanvas
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 696890026}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4450,7 +4438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d4f418ab38059443962bcf5c462eaf4, type: 2}
   m_sharedMaterial: {fileID: -7605926068314574294, guid: 5d4f418ab38059443962bcf5c462eaf4,
@@ -7477,7 +7465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 677, y: -371}
+  m_AnchoredPosition: {x: 677, y: -233}
   m_SizeDelta: {x: 309, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1491045583
