@@ -73,13 +73,13 @@ public class MonstersMovements : MonoBehaviour
             }
 
             transform.position = Vector3.MoveTowards(transform.position, _pathWorldPositions[0], _moveSpeed * Time.deltaTime);
-            AnimationManager.Instance.UpdateAnimState(gameObject.GetComponentInChildren<Animator>(), 1);
+            StartCoroutine(AnimationManager.Instance.UpdateAnimState(gameObject.GetComponentInChildren<Animator>(), 1, 0));
 
             if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
             {
                 _pathWorldPositions.RemoveAt(0);
                 _monstersMain.Monsters.MonsterPM--;
-                AnimationManager.Instance.UpdateAnimState(gameObject.GetComponentInChildren<Animator>(), 0);
+                StartCoroutine(AnimationManager.Instance.UpdateAnimState(gameObject.GetComponentInChildren<Animator>(), 0, 0));
             }
 
             if (Vector3.Distance(transform.position, _human.transform.position) < 2f && _monstersMain.Monsters.MonsterPA > 0 && CanAttack)
