@@ -1,4 +1,7 @@
-﻿public class PlayerAttackState : BaseGameState
+﻿using System;
+using Cysharp.Threading.Tasks;
+
+public class PlayerAttackState : BaseGameState
 {
     TurnGameSystemController _turn;
     public override void EnterState(TurnGameSystemController turnGameSystem)
@@ -35,7 +38,7 @@
 
                     // Checks whether a monster is still alive or not
                     if (!MonstersManager.Instance.ListMonster[i].Monsters.IsDead) {
-                        _turn.SwitchState(_turn.MonstTurnGmState);
+                        SwitchToMonster();
                         break;
                     }
                     else {
@@ -53,5 +56,11 @@
             }
         }
 
+    }
+
+    public async void SwitchToMonster()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(4), ignoreTimeScale: false);
+        _turn.SwitchState(_turn.MonstTurnGmState);
     }
 }

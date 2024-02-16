@@ -27,11 +27,9 @@ public class TurnGameSystemController : MonoBehaviour
         _currentGameState.EnterState(this);
     }
 
-    public async void SwitchState(BaseGameState state)
+    public void SwitchState(BaseGameState state)
     {
         _currentGameState.ExitState(this);
-
-        await UniTask.Delay(TimeSpan.FromSeconds(4), ignoreTimeScale: false);
 
         _currentGameState = state;
         _currentGameState.EnterState(this);
