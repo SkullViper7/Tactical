@@ -6,6 +6,7 @@ public class MonstersMain : MonoBehaviour
     public Monsters Monsters;
     public MonsterAttack MonsterAttack;
     public MonstersMovements MonstersMovements;
+    public FloatingHealthBar FloatingHealthBar;
 
     private void Start()
     {
