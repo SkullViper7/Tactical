@@ -34,7 +34,7 @@ public class UIState : MonoBehaviour
     public void DisPlaySelectPhase()
     {
         _playerUI.SetActive(true);
-        _phaseText.text = "Select Player Phase";
+        _phaseText.text = "Select Player";
         _grid.CheckPassableTerrain();
     }
 

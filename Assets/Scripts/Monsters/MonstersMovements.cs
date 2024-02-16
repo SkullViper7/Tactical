@@ -68,54 +68,45 @@ public class MonstersMovements : MonoBehaviour
     {
         if (_monstersMain.Monsters.MonsterPM > 0 && CanMove)
         {
-            if (_pathWorldPositions.Count == 0)
+            // Calculation of the direction to the next target position.
+            Vector3 targetDirection = _pathWorldPositions[0] - transform.position;
+
+            // Check if the direction is not zero (the player is not already at the destination).
+            if (targetDirection != Vector3.zero)
+
             {
-                _monstersMain.MonsterAttack.UseAttack(_monstersMain.Monsters, _human);
-                CanMove = false;
-                HasTurnFinished(true);
+
+                // Calculate the rotation needed to look in the direction of the target.
+                Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+                targetRotation *= Quaternion.Euler(0, 90, 0);
+
+
+
+                // Interpolate to this rotation to smooth the transition using Quaternion.Lerp or Quaternion.Slerp.
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
             }
-            else
+
+            transform.position = Vector3.MoveTowards(transform.position, _pathWorldPositions[0], _moveSpeed * Time.deltaTime);
+            StartCoroutine(AnimationManager.Instance.UpdateAnimState(gameObject.GetComponentInChildren<Animator>(), 1, 0));
+
+            if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
             {
-                // Calculation of the direction to the next target position.
-                Vector3 targetDirection = _pathWorldPositions[0] - transform.position;
+                _pathWorldPositions.RemoveAt(0);
+                _monstersMain.Monsters.MonsterPM--;
+                StartCoroutine(AnimationManager.Instance.UpdateAnimState(gameObject.GetComponentInChildren<Animator>(), 0, 0));
+            }
 
-                // Check if the direction is not zero (the player is not already at the destination).
-                if (targetDirection != Vector3.zero)
-
+            if (Vector3.Distance(transform.position, _human.transform.position) < 1.1f && _monstersMain.Monsters.MonsterPA > 0 && CanAttack)
+            {
+                if (_human == null)
                 {
-
-                    // Calculate the rotation needed to look in the direction of the target.
-                    Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-                    targetRotation *= Quaternion.Euler(0, 90, 0);
-
-
-
-                    // Interpolate to this rotation to smooth the transition using Quaternion.Lerp or Quaternion.Slerp.
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
-                }
-
-                transform.position = Vector3.MoveTowards(transform.position, _pathWorldPositions[0], _moveSpeed * Time.deltaTime);
-                StartCoroutine(AnimationManager.Instance.UpdateAnimState(gameObject.GetComponentInChildren<Animator>(), 1, 0));
-
-                if (Vector3.Distance(transform.position, _pathWorldPositions[0]) < 0.05f)
-                {
-                    _pathWorldPositions.RemoveAt(0);
-                    _monstersMain.Monsters.MonsterPM--;
-                    StartCoroutine(AnimationManager.Instance.UpdateAnimState(gameObject.GetComponentInChildren<Animator>(), 0, 0));
-                }
-
-                if (Vector3.Distance(transform.position, _human.transform.position) < 2f && _monstersMain.Monsters.MonsterPA > 0 && CanAttack)
-                {
-                    if (_human == null)
-                    {
-                        HasTurnFinished(true);
-                        return;
-                    }
-
-                    _monstersMain.MonsterAttack.UseAttack(_monstersMain.Monsters, _human);
-                    CanAttack = false;
                     HasTurnFinished(true);
+                    return;
                 }
+
+                _monstersMain.MonsterAttack.UseAttack(_monstersMain.Monsters, _human);
+                CanAttack = false;
+                HasTurnFinished(true);
             }
         }
         else
@@ -164,13 +155,15 @@ public class MonstersMovements : MonoBehaviour
 
         if (_path == null)
         {
-            Debug.Log("list of _path is void or null");
+            Debug.Log("list of _path is void");
             return;
         }
 
         if (_path.Count == 0)
         {
-            TravellingMonster();
+            _monstersMain.MonsterAttack.UseAttack(_monstersMain.Monsters, _human);
+            CanMove = false;
+            HasTurnFinished(true);
         }
         else
         {
