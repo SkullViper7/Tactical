@@ -15,7 +15,7 @@ public class MonsterAttack : MonoBehaviour
         // Make sure we have valid arguments
         if (user == null || target == null)
         {
-            Debug.LogError("Invalid arguments for UseSkill. Make sure to provide a valid user and target");
+            Debug.Log("Invalid arguments for UseSkill. Make sure to provide a valid user and target");
 
             return;
         }
@@ -32,13 +32,13 @@ public class MonsterAttack : MonoBehaviour
             // Apply damage to target
             target.CurrentHP -= damage;
 
-            AnimationManager.Instance.SetTrigger(user.GetComponentInChildren<Animator>(), "Attack");
-            AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Hurt");
+            StartCoroutine(AnimationManager.Instance.SetTrigger(user.GetComponentInChildren<Animator>(), "Attack", 0));
+            StartCoroutine(AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Hurt", 1.22f));
 
             // Apply death if the target have 0HP
             if (target.CurrentHP <= 0)
             {
-                AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Death");
+                StartCoroutine(AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Death", 0));
                 target.IsDead = true;
                 PlayerManager.AllHmn.Remove(target);
             }

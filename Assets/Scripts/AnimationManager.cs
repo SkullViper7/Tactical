@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class AnimationManager : MonoBehaviour
 {
@@ -27,8 +28,10 @@ public class AnimationManager : MonoBehaviour
     /// </summary>
     /// <param name="targetAnimator"></param>
     /// <param name="state"></param>
-    public void UpdateAnimState(Animator targetAnimator, int state)
+    public IEnumerator UpdateAnimState(Animator targetAnimator, int state, float delay)
     {
+        yield return new WaitForSeconds(delay);
+
         targetAnimator.SetInteger("State", state);
     }
 
@@ -38,8 +41,10 @@ public class AnimationManager : MonoBehaviour
     /// </summary>
     /// <param name="targetAnimator"></param>
     /// <param name="trigger"></param>
-    public void SetTrigger(Animator targetAnimator, string trigger)
+    public IEnumerator SetTrigger(Animator targetAnimator, string trigger, float delay)
     {
+        yield return new WaitForSeconds(delay);
+
         targetAnimator.SetTrigger(trigger);
     }
 }
