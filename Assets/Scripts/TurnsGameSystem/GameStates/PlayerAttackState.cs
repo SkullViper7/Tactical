@@ -17,6 +17,7 @@ public class PlayerAttackState : BaseGameState
         PlayerManager.Instance.HmnPlay.HumanHasPlayed -= Notify;
         PlayerManager.Instance.CanFindPath = false;
         _turn.HighlightPathScript.DisableHighights();
+        PlayerManager.Instance.HasAttacked = false;
     }
 
     public void Notify(bool humanHasPlayed)
@@ -61,7 +62,10 @@ public class PlayerAttackState : BaseGameState
 
     public async void SwitchToMonster()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(4), ignoreTimeScale: false);
+        if (PlayerManager.Instance.HasAttacked)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(4), ignoreTimeScale: false);
+        }
         _turn.SwitchState(_turn.MonstTurnGmState);
     }
 }
