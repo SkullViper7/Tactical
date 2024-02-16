@@ -33,7 +33,7 @@ public class SelectPlayer : MonoBehaviour
                 PlayerManager.Instance.SAPlayer = hit.collider.gameObject.GetComponentInParent<SkillsAction>();
                 PlayerManager.Instance.HmnMove = hit.collider.gameObject.GetComponentInParent<PlayerMovement>();
                 UIManager.Instance.UpdatePlayerStatsUI(PlayerManager.Instance.HmnPlay);
-                PlayerManager.Instance.AsAttack = false;
+                PlayerManager.Instance.HasAttacked = false;
 
                 PlayerManager.Instance.SetCanSelect(false);
             }
