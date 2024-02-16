@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     Animator _animator;
 
     // Adjust 'turnSpeed' to change how quickly the player turns: larger values will make the turn faster.
-    float turnSpeed = 10f;
+    [SerializeField] private float turnSpeed = 10f;
 
     private void Awake()
     {
@@ -55,16 +55,12 @@ public class PlayerMovement : MonoBehaviour
             // Calculation of the direction to the next target position.
             Vector3 targetDirection = _pathWorldPositions[0] - transform.position;
 
-
-
             // Check if the direction is not zero (the player is not already at the destination).
-
             if (targetDirection != Vector3.zero)
 
             {
 
                 // Calculate the rotation needed to look in the direction of the target.
-
                 Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
                 targetRotation *= Quaternion.Euler(0, -90, 0);
 
