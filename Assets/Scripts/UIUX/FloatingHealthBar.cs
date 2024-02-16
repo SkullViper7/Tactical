@@ -30,6 +30,6 @@ public class FloatingHealthBar : MonoBehaviour
 
     private void Update()
     {
-        transform.position = new Vector3(_target.position.x, _positionY, _target.position.z);
+        transform.rotation = Quaternion.Euler(45, 0, 0);
     }
 }
