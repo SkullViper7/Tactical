@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class UIState : MonoBehaviour
 {
-    [SerializeField] GameObject _playerUI;
-    [SerializeField] TextMeshProUGUI _phaseText;
+    [SerializeField] private GameObject _playerUI;
+    [SerializeField] private TextMeshProUGUI _phaseText;
+    [SerializeField] private GameObject _btnEndPhase;
 
 
     // Singleton
@@ -38,6 +39,7 @@ public class UIState : MonoBehaviour
 
     public void DisplayMovePhase()
     {
+        _btnEndPhase.SetActive(true);
         _phaseText.text = "Move Phase";
     }
 
@@ -49,6 +51,7 @@ public class UIState : MonoBehaviour
     public void DisplayMonsterPhase()
     {
         _playerUI.SetActive(false);
+        _btnEndPhase.SetActive(false);
         _phaseText.text = "Monster Phase";
     }
 }
