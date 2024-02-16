@@ -7,9 +7,6 @@ public class MonsterAttack : MonoBehaviour
     [SerializeField]
     private int _attackCost = 2;
 
-    public PlayerManager PlayerManager;
-
-
     public void UseAttack(Monsters user, Human target)
     {
         // Make sure we have valid arguments
@@ -40,7 +37,7 @@ public class MonsterAttack : MonoBehaviour
             {
                 StartCoroutine(AnimationManager.Instance.SetTrigger(target.GetComponentInChildren<Animator>(), "Death", 0));
                 target.IsDead = true;
-                PlayerManager.AllHmn.Remove(target);
+                PlayerManager.Instance.AllHmn.Remove(target);
             }
 
             // Display the damage or other effects here
